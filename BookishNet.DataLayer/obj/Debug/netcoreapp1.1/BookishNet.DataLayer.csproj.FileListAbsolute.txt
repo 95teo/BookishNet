@@ -1,0 +1,6 @@
+C:\Users\Teo\documents\visual studio 2017\Projects\BookishNet\BookishNet.DataLayer\bin\Debug\netcoreapp1.1\BookishNet.DataLayer.deps.json
+C:\Users\Teo\documents\visual studio 2017\Projects\BookishNet\BookishNet.DataLayer\bin\Debug\netcoreapp1.1\BookishNet.DataLayer.dll
+C:\Users\Teo\documents\visual studio 2017\Projects\BookishNet\BookishNet.DataLayer\bin\Debug\netcoreapp1.1\BookishNet.DataLayer.pdb
+C:\Users\Teo\documents\visual studio 2017\Projects\BookishNet\BookishNet.DataLayer\obj\Debug\netcoreapp1.1\BookishNet.DataLayer.AssemblyInfo.cs
+C:\Users\Teo\documents\visual studio 2017\Projects\BookishNet\BookishNet.DataLayer\obj\Debug\netcoreapp1.1\BookishNet.DataLayer.dll
+C:\Users\Teo\documents\visual studio 2017\Projects\BookishNet\BookishNet.DataLayer\obj\Debug\netcoreapp1.1\BookishNet.DataLayer.pdb
