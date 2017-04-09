@@ -2,13 +2,11 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
-using BookishNet.DataLayer;
 
 namespace BookishNet.DataLayer.Migrations
 {
     [DbContext(typeof(BookishNetContext))]
-    partial class BookishNetContextModelSnapshot : ModelSnapshot
+    internal class BookishNetContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
@@ -17,252 +15,252 @@ namespace BookishNet.DataLayer.Migrations
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("BookishNet.DataLayer.Models.Author", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
+            {
+                b.Property<int>("Id")
+                    .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Address");
+                b.Property<string>("Address");
 
-                    b.Property<DateTime>("DateOfBirth");
+                b.Property<DateTime>("DateOfBirth");
 
-                    b.Property<string>("Email")
-                        .IsRequired();
+                b.Property<string>("Email")
+                    .IsRequired();
 
-                    b.Property<string>("FirstName");
+                b.Property<string>("FirstName");
 
-                    b.Property<string>("Password")
-                        .IsRequired();
+                b.Property<string>("Password")
+                    .IsRequired();
 
-                    b.Property<string>("PenName");
+                b.Property<string>("PenName");
 
-                    b.Property<int>("RoleId");
+                b.Property<int>("RoleId");
 
-                    b.Property<string>("SecondName");
+                b.Property<string>("SecondName");
 
-                    b.Property<DateTime>("Timestamp");
+                b.Property<DateTime>("Timestamp");
 
-                    b.Property<string>("Username")
-                        .IsRequired();
+                b.Property<string>("Username")
+                    .IsRequired();
 
-                    b.HasKey("Id");
+                b.HasKey("Id");
 
-                    b.HasIndex("RoleId");
+                b.HasIndex("RoleId");
 
-                    b.ToTable("Authors");
-                });
+                b.ToTable("Authors");
+            });
 
             modelBuilder.Entity("BookishNet.DataLayer.Models.Book", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
+            {
+                b.Property<int>("Id")
+                    .ValueGeneratedOnAdd();
 
-                    b.Property<string>("AuthorName")
-                        .IsRequired();
+                b.Property<string>("AuthorName")
+                    .IsRequired();
 
-                    b.Property<int?>("BorrowerId");
+                b.Property<int?>("BorrowerId");
 
-                    b.Property<string>("Description");
+                b.Property<string>("Description");
 
-                    b.Property<int?>("GenreId");
+                b.Property<int?>("GenreId");
 
-                    b.Property<bool>("IsBorrowed");
+                b.Property<bool>("IsBorrowed");
 
-                    b.Property<int>("LoanerId");
+                b.Property<int>("LoanerId");
 
-                    b.Property<int>("PublishingYear");
+                b.Property<int>("PublishingYear");
 
-                    b.Property<DateTime>("Timestamp");
+                b.Property<DateTime>("Timestamp");
 
-                    b.Property<string>("Title")
-                        .IsRequired();
+                b.Property<string>("Title")
+                    .IsRequired();
 
-                    b.HasKey("Id");
+                b.HasKey("Id");
 
-                    b.HasIndex("BorrowerId");
+                b.HasIndex("BorrowerId");
 
-                    b.HasIndex("GenreId");
+                b.HasIndex("GenreId");
 
-                    b.HasIndex("LoanerId");
+                b.HasIndex("LoanerId");
 
-                    b.ToTable("Books");
-                });
+                b.ToTable("Books");
+            });
 
             modelBuilder.Entity("BookishNet.DataLayer.Models.BookAuthor", b =>
-                {
-                    b.Property<int>("BookId");
+            {
+                b.Property<int>("BookId");
 
-                    b.Property<int>("AuthorId");
+                b.Property<int>("AuthorId");
 
-                    b.HasKey("BookId", "AuthorId");
+                b.HasKey("BookId", "AuthorId");
 
-                    b.HasIndex("AuthorId");
+                b.HasIndex("AuthorId");
 
-                    b.ToTable("BookAuthor");
-                });
+                b.ToTable("BookAuthor");
+            });
 
             modelBuilder.Entity("BookishNet.DataLayer.Models.Genre", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
+            {
+                b.Property<int>("Id")
+                    .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Description");
+                b.Property<string>("Description");
 
-                    b.Property<string>("Name")
-                        .IsRequired();
+                b.Property<string>("Name")
+                    .IsRequired();
 
-                    b.HasKey("Id");
+                b.HasKey("Id");
 
-                    b.ToTable("Genres");
-                });
+                b.ToTable("Genres");
+            });
 
             modelBuilder.Entity("BookishNet.DataLayer.Models.Message", b =>
-                {
-                    b.Property<int>("SenderId");
+            {
+                b.Property<int>("SenderId");
 
-                    b.Property<int>("ReceiverId");
+                b.Property<int>("ReceiverId");
 
-                    b.Property<string>("Content");
+                b.Property<string>("Content");
 
-                    b.HasKey("SenderId", "ReceiverId");
+                b.HasKey("SenderId", "ReceiverId");
 
-                    b.HasIndex("ReceiverId");
+                b.HasIndex("ReceiverId");
 
-                    b.ToTable("Messages");
-                });
+                b.ToTable("Messages");
+            });
 
             modelBuilder.Entity("BookishNet.DataLayer.Models.Review", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
+            {
+                b.Property<int>("Id")
+                    .ValueGeneratedOnAdd();
 
-                    b.Property<int>("BookId");
+                b.Property<int>("BookId");
 
-                    b.Property<string>("ReviewText");
+                b.Property<string>("ReviewText");
 
-                    b.Property<double>("Stars");
+                b.Property<double>("Stars");
 
-                    b.Property<DateTime>("Timestamp");
+                b.Property<DateTime>("Timestamp");
 
-                    b.HasKey("Id");
+                b.HasKey("Id");
 
-                    b.HasIndex("BookId");
+                b.HasIndex("BookId");
 
-                    b.ToTable("Reviews");
-                });
+                b.ToTable("Reviews");
+            });
 
             modelBuilder.Entity("BookishNet.DataLayer.Models.Role", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
+            {
+                b.Property<int>("Id")
+                    .ValueGeneratedOnAdd();
 
-                    b.Property<string>("RoleName")
-                        .IsRequired();
+                b.Property<string>("RoleName")
+                    .IsRequired();
 
-                    b.HasKey("Id");
+                b.HasKey("Id");
 
-                    b.ToTable("Roles");
-                });
+                b.ToTable("Roles");
+            });
 
             modelBuilder.Entity("BookishNet.DataLayer.Models.User", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
+            {
+                b.Property<int>("Id")
+                    .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Address");
+                b.Property<string>("Address");
 
-                    b.Property<DateTime>("DateOfBirth");
+                b.Property<DateTime>("DateOfBirth");
 
-                    b.Property<string>("Email")
-                        .IsRequired();
+                b.Property<string>("Email")
+                    .IsRequired();
 
-                    b.Property<string>("FirstName");
+                b.Property<string>("FirstName");
 
-                    b.Property<string>("Password")
-                        .IsRequired();
+                b.Property<string>("Password")
+                    .IsRequired();
 
-                    b.Property<int>("RoleId");
+                b.Property<int>("RoleId");
 
-                    b.Property<string>("SecondName");
+                b.Property<string>("SecondName");
 
-                    b.Property<double>("Stars");
+                b.Property<double>("Stars");
 
-                    b.Property<DateTime>("Timestamp");
+                b.Property<DateTime>("Timestamp");
 
-                    b.Property<string>("Username")
-                        .IsRequired();
+                b.Property<string>("Username")
+                    .IsRequired();
 
-                    b.HasKey("Id");
+                b.HasKey("Id");
 
-                    b.HasIndex("RoleId");
+                b.HasIndex("RoleId");
 
-                    b.ToTable("Users");
-                });
+                b.ToTable("Users");
+            });
 
             modelBuilder.Entity("BookishNet.DataLayer.Models.Author", b =>
-                {
-                    b.HasOne("BookishNet.DataLayer.Models.Role", "Role")
-                        .WithMany()
-                        .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
+            {
+                b.HasOne("BookishNet.DataLayer.Models.Role", "Role")
+                    .WithMany()
+                    .HasForeignKey("RoleId")
+                    .OnDelete(DeleteBehavior.Cascade);
+            });
 
             modelBuilder.Entity("BookishNet.DataLayer.Models.Book", b =>
-                {
-                    b.HasOne("BookishNet.DataLayer.Models.User", "User")
-                        .WithMany("BorrowedBooks")
-                        .HasForeignKey("BorrowerId");
+            {
+                b.HasOne("BookishNet.DataLayer.Models.User", "User")
+                    .WithMany("BorrowedBooks")
+                    .HasForeignKey("BorrowerId");
 
-                    b.HasOne("BookishNet.DataLayer.Models.Genre", "Genre")
-                        .WithMany()
-                        .HasForeignKey("GenreId");
+                b.HasOne("BookishNet.DataLayer.Models.Genre", "Genre")
+                    .WithMany()
+                    .HasForeignKey("GenreId");
 
-                    b.HasOne("BookishNet.DataLayer.Models.User", "User1")
-                        .WithMany("LoanedBooks")
-                        .HasForeignKey("LoanerId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
+                b.HasOne("BookishNet.DataLayer.Models.User", "User1")
+                    .WithMany("LoanedBooks")
+                    .HasForeignKey("LoanerId")
+                    .OnDelete(DeleteBehavior.Cascade);
+            });
 
             modelBuilder.Entity("BookishNet.DataLayer.Models.BookAuthor", b =>
-                {
-                    b.HasOne("BookishNet.DataLayer.Models.Author", "Author")
-                        .WithMany("Books")
-                        .HasForeignKey("AuthorId")
-                        .OnDelete(DeleteBehavior.Cascade);
+            {
+                b.HasOne("BookishNet.DataLayer.Models.Author", "Author")
+                    .WithMany("Books")
+                    .HasForeignKey("AuthorId")
+                    .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("BookishNet.DataLayer.Models.Book", "Book")
-                        .WithMany("Authors")
-                        .HasForeignKey("BookId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
+                b.HasOne("BookishNet.DataLayer.Models.Book", "Book")
+                    .WithMany("Authors")
+                    .HasForeignKey("BookId")
+                    .OnDelete(DeleteBehavior.Cascade);
+            });
 
             modelBuilder.Entity("BookishNet.DataLayer.Models.Message", b =>
-                {
-                    b.HasOne("BookishNet.DataLayer.Models.User", "User1")
-                        .WithMany()
-                        .HasForeignKey("ReceiverId")
-                        .OnDelete(DeleteBehavior.Cascade);
+            {
+                b.HasOne("BookishNet.DataLayer.Models.User", "User1")
+                    .WithMany()
+                    .HasForeignKey("ReceiverId")
+                    .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("BookishNet.DataLayer.Models.User", "User")
-                        .WithMany()
-                        .HasForeignKey("SenderId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
+                b.HasOne("BookishNet.DataLayer.Models.User", "User")
+                    .WithMany()
+                    .HasForeignKey("SenderId")
+                    .OnDelete(DeleteBehavior.Cascade);
+            });
 
             modelBuilder.Entity("BookishNet.DataLayer.Models.Review", b =>
-                {
-                    b.HasOne("BookishNet.DataLayer.Models.Book", "Book")
-                        .WithMany("Reviews")
-                        .HasForeignKey("BookId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
+            {
+                b.HasOne("BookishNet.DataLayer.Models.Book", "Book")
+                    .WithMany("Reviews")
+                    .HasForeignKey("BookId")
+                    .OnDelete(DeleteBehavior.Cascade);
+            });
 
             modelBuilder.Entity("BookishNet.DataLayer.Models.User", b =>
-                {
-                    b.HasOne("BookishNet.DataLayer.Models.Role", "Role")
-                        .WithMany()
-                        .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
+            {
+                b.HasOne("BookishNet.DataLayer.Models.Role", "Role")
+                    .WithMany()
+                    .HasForeignKey("RoleId")
+                    .OnDelete(DeleteBehavior.Cascade);
+            });
         }
     }
 }
