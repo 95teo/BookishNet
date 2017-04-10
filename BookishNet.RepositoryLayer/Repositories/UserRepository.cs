@@ -54,8 +54,7 @@ namespace BookishNet.RepositoryLayer.Repositories
 
         public User GetUserByUsername(string username)
         {
-            var user = (from u in _context.Users where u.Username == username select u).SingleOrDefault();
-            return user;
+            return _context.Users.FirstOrDefault(user => user.Username == username);
         }
     }
 }

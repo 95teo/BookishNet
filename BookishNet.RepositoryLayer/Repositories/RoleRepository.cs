@@ -3,7 +3,6 @@ using System.Linq;
 using BookishNet.DataLayer;
 using BookishNet.DataLayer.Models;
 using BookishNet.RepositoryLayer.Interfaces;
-using Microsoft.EntityFrameworkCore;
 
 namespace BookishNet.RepositoryLayer.Repositories
 {
@@ -34,8 +33,7 @@ namespace BookishNet.RepositoryLayer.Repositories
 
         public void Update(Role obj)
         {
-            _context.Roles.Attach(obj);
-            _context.Entry(obj).State = EntityState.Modified;
+            _context.Roles.Update(obj);
             _context.SaveChanges();
         }
 

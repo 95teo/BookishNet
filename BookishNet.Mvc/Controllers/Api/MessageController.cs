@@ -5,51 +5,51 @@ using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
-namespace BookishNet.Api.Controllers
+namespace BookishNet.Mvc.Controllers.Api
 {
     [Route("api/[controller]")]
-    public class GenreController : Controller
+    public class MessageController : Controller
     {
-        private readonly IGenreService _genreService;
+        private readonly IMessageService _messageService;
 
-        public GenreController(IGenreService genreService)
+        public MessageController(IMessageService messageService)
         {
-            _genreService = genreService;
+            _messageService = messageService;
         }
 
         // GET: api/values
         [HttpGet]
-        public IEnumerable<Genre> Get()
+        public IEnumerable<Message> Get()
         {
-            return _genreService.GetAll();
+            return _messageService.GetAll();
         }
 
         // GET api/values/5
         [HttpGet("{id}")]
-        public Genre Get(int id)
+        public Message Get(int id)
         {
-            return _genreService.GetById(id);
+            return _messageService.GetById(id);
         }
 
         // POST api/values
         [HttpPost]
-        public void Post([FromBody] Genre genre)
+        public void Post([FromBody] Message message)
         {
-            _genreService.Add(genre);
+            _messageService.Add(message);
         }
 
         // PUT api/values/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] Genre genre)
+        public void Put(int id, [FromBody] Message message)
         {
-            _genreService.Update(genre);
+            _messageService.Update(message);
         }
 
         // DELETE api/values/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
-            _genreService.Delete(id);
+            _messageService.Delete(id);
         }
     }
 }

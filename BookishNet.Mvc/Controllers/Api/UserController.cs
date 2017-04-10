@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
-namespace BookishNet.Api.Controllers
+namespace BookishNet.Mvc.Controllers.Api
 {
     [Route("api/[controller]")]
     public class UserController : Controller
