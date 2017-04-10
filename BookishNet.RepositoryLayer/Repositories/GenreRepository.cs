@@ -41,7 +41,8 @@ namespace BookishNet.RepositoryLayer.Repositories
         {
             var myGenre = _context.Genres.FirstOrDefault(genre => genre.Id == id);
             if (myGenre == null) return;
-            _context.Genres.Remove(myGenre);
+            myGenre.IsDeleted = true;
+            _context.Genres.Update(myGenre);
             _context.SaveChanges();
         }
     }

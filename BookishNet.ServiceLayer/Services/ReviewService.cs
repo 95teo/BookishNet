@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using BookishNet.DataLayer.Models;
 using BookishNet.RepositoryLayer.Interfaces;
 using BookishNet.ServiceLayer.Interfaces;
@@ -10,10 +8,12 @@ namespace BookishNet.ServiceLayer.Services
     public class ReviewService : IReviewService
     {
         private readonly IReviewRepository _reviewRepository;
+
         public ReviewService(IReviewRepository reviewRepository)
         {
             _reviewRepository = reviewRepository;
         }
+
         public IEnumerable<Review> GetAll()
         {
             return _reviewRepository.GetAll();

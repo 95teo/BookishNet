@@ -41,7 +41,8 @@ namespace BookishNet.RepositoryLayer.Repositories
         {
             var myMessage = _context.Messages.FirstOrDefault(message => message.SenderId == id);
             if (myMessage == null) return;
-            _context.Messages.Remove(myMessage);
+            myMessage.IsDeleted = true;
+            _context.Messages.Update(myMessage);
             _context.SaveChanges();
         }
     }

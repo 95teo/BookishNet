@@ -43,19 +43,14 @@ namespace BookishNet.RepositoryLayer.Repositories
         {
             var myRole = _context.Roles.FirstOrDefault(role => role.Id == id);
             if (myRole == null) return;
-            _context.Roles.Remove(myRole);
+            myRole.IsDeleted = true;
+            _context.Roles.Update(myRole);
             _context.SaveChanges();
         }
 
-        public string GetRoleOfUser(Author user)
+        public string GetRoleOfUser(int userId)
         {
-            var x = _context.Roles.Single(role => user.RoleId == role.Id);
-            return x.RoleName;
-        }
-
-        public string GetRoleOfUser(User user)
-        {
-            var x = _context.Roles.Single(role => user.RoleId == role.Id);
+            var x = _context.Roles.Single(role => userId == role.Id);
             return x.RoleName;
         }
     }

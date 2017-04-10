@@ -41,7 +41,8 @@ namespace BookishNet.RepositoryLayer.Repositories
         {
             var myUser = _context.Users.FirstOrDefault(user => user.Id == id);
             if (myUser == null) return;
-            _context.Users.Remove(myUser);
+            myUser.IsDeleted = true;
+            _context.Users.Update(myUser);
             _context.SaveChanges();
         }
 

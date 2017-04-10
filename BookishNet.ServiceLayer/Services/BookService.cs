@@ -1,19 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using BookishNet.DataLayer.Models;
 using BookishNet.RepositoryLayer.Interfaces;
 using BookishNet.ServiceLayer.Interfaces;
 
 namespace BookishNet.ServiceLayer.Services
 {
-    public class BookService:IBookService
+    public class BookService : IBookService
     {
         private readonly IBookRepository _bookRepository;
+
         public BookService(IBookRepository bookRepository)
         {
             _bookRepository = bookRepository;
         }
+
         public IEnumerable<Book> GetAll()
         {
             return _bookRepository.GetAll();

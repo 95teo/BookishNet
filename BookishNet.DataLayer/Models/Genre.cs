@@ -10,5 +10,8 @@ namespace BookishNet.DataLayer.Models
         public string Name { get; set; }
 
         public string Description { get; set; }
+
+        [Required]
+        public bool IsDeleted { get; set; }
     }
 }

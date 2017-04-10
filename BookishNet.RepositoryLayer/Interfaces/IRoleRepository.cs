@@ -4,8 +4,6 @@ namespace BookishNet.RepositoryLayer.Interfaces
 {
     public interface IRoleRepository : IGenericRepository<Role>
     {
-        string GetRoleOfUser(Author user);
-
-        string GetRoleOfUser(User user);
+        string GetRoleOfUser(int userId);
     }
 }

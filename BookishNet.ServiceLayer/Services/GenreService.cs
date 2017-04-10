@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using BookishNet.DataLayer.Models;
 using BookishNet.RepositoryLayer.Interfaces;
 using BookishNet.ServiceLayer.Interfaces;
@@ -10,10 +8,12 @@ namespace BookishNet.ServiceLayer.Services
     public class GenreService : IGenreService
     {
         private readonly IGenreRepository _genreRepository;
+
         public GenreService(IGenreRepository genreRepository)
         {
             _genreRepository = genreRepository;
         }
+
         public IEnumerable<Genre> GetAll()
         {
             return _genreRepository.GetAll();

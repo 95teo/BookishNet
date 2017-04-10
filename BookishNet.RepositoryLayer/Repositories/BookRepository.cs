@@ -41,7 +41,8 @@ namespace BookishNet.RepositoryLayer.Repositories
         {
             var myBook = _context.Books.FirstOrDefault(book => book.Id == id);
             if (myBook == null) return;
-            _context.Books.Remove(myBook);
+            myBook.IsDeleted = true;
+            _context.Books.Update(myBook);
             _context.SaveChanges();
         }
 

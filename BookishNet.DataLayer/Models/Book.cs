@@ -27,6 +27,8 @@ namespace BookishNet.DataLayer.Models
 
         public bool IsBorrowed { get; set; }
 
+        [Required]
+        public bool IsDeleted { get; set; }
 
         public int LoanerId { get; set; }
 

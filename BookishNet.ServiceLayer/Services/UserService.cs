@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using BookishNet.DataLayer.Models;
 using BookishNet.RepositoryLayer.Interfaces;
 using BookishNet.ServiceLayer.Interfaces;
@@ -15,6 +13,7 @@ namespace BookishNet.ServiceLayer.Services
         {
             _userRepository = userRepository;
         }
+
         public IEnumerable<User> GetAll()
         {
             return _userRepository.GetAll();
@@ -42,7 +41,7 @@ namespace BookishNet.ServiceLayer.Services
 
         public bool CheckUserCredentials(string username, string password)
         {
-            return _userRepository.CheckUserCredentials(username,password);
+            return _userRepository.CheckUserCredentials(username, password);
         }
 
         public User GetUserByUsername(string username)

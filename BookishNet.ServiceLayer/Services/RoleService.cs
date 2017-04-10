@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using BookishNet.DataLayer.Models;
 using BookishNet.RepositoryLayer.Interfaces;
 using BookishNet.ServiceLayer.Interfaces;
@@ -15,6 +13,7 @@ namespace BookishNet.ServiceLayer.Services
         {
             _roleRepository = roleRepository;
         }
+
         public IEnumerable<Role> GetAll()
         {
             return _roleRepository.GetAll();
@@ -40,14 +39,9 @@ namespace BookishNet.ServiceLayer.Services
             _roleRepository.Delete(id);
         }
 
-        public string GetRoleOfUser(Author user)
+        public string GetRoleOfUser(int userId)
         {
-            return _roleRepository.GetRoleOfUser(user);
-        }
-
-        public string GetRoleOfUser(User user)
-        {
-            return _roleRepository.GetRoleOfUser(user);
+            return _roleRepository.GetRoleOfUser(userId);
         }
     }
 }

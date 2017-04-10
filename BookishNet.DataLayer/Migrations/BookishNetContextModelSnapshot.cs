@@ -28,6 +28,8 @@ namespace BookishNet.DataLayer.Migrations
 
                 b.Property<string>("FirstName");
 
+                b.Property<bool>("IsDeleted");
+
                 b.Property<string>("Password")
                     .IsRequired();
 
@@ -64,6 +66,8 @@ namespace BookishNet.DataLayer.Migrations
                 b.Property<int?>("GenreId");
 
                 b.Property<bool>("IsBorrowed");
+
+                b.Property<bool>("IsDeleted");
 
                 b.Property<int>("LoanerId");
 
@@ -105,6 +109,8 @@ namespace BookishNet.DataLayer.Migrations
 
                 b.Property<string>("Description");
 
+                b.Property<bool>("IsDeleted");
+
                 b.Property<string>("Name")
                     .IsRequired();
 
@@ -121,6 +127,8 @@ namespace BookishNet.DataLayer.Migrations
 
                 b.Property<string>("Content");
 
+                b.Property<bool>("IsDeleted");
+
                 b.HasKey("SenderId", "ReceiverId");
 
                 b.HasIndex("ReceiverId");
@@ -134,6 +142,8 @@ namespace BookishNet.DataLayer.Migrations
                     .ValueGeneratedOnAdd();
 
                 b.Property<int>("BookId");
+
+                b.Property<bool>("IsDeleted");
 
                 b.Property<string>("ReviewText");
 
@@ -152,6 +162,8 @@ namespace BookishNet.DataLayer.Migrations
             {
                 b.Property<int>("Id")
                     .ValueGeneratedOnAdd();
+
+                b.Property<bool>("IsDeleted");
 
                 b.Property<string>("RoleName")
                     .IsRequired();
@@ -174,6 +186,8 @@ namespace BookishNet.DataLayer.Migrations
                     .IsRequired();
 
                 b.Property<string>("FirstName");
+
+                b.Property<bool>("IsDeleted");
 
                 b.Property<string>("Password")
                     .IsRequired();

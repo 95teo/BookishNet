@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BookishNet.DataLayer.Models
 {
@@ -16,5 +17,8 @@ namespace BookishNet.DataLayer.Models
         public User User1 { get; set; }
 
         public string Content { get; set; }
+
+        [Required]
+        public bool IsDeleted { get; set; }
     }
 }

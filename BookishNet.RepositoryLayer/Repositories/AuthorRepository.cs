@@ -41,7 +41,8 @@ namespace BookishNet.RepositoryLayer.Repositories
         {
             var myAuthor = _context.Authors.FirstOrDefault(author => author.Id == id);
             if (myAuthor == null) return;
-            _context.Authors.Remove(myAuthor);
+            myAuthor.IsDeleted = true;
+            _context.Authors.Update(myAuthor);
             _context.SaveChanges();
         }
 

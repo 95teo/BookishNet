@@ -8,5 +8,8 @@ namespace BookishNet.DataLayer.Models
 
         [Required]
         public string RoleName { get; set; }
+
+        [Required]
+        public bool IsDeleted { get; set; }
     }
 }

@@ -19,5 +19,8 @@ namespace BookishNet.DataLayer.Models
         public string ReviewText { get; set; }
 
         public double Stars { get; set; }
+
+        [Required]
+        public bool IsDeleted { get; set; }
     }
 }

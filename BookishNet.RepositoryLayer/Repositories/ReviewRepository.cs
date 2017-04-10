@@ -41,7 +41,8 @@ namespace BookishNet.RepositoryLayer.Repositories
         {
             var myReview = _context.Reviews.FirstOrDefault(author => author.Id == id);
             if (myReview == null) return;
-            _context.Reviews.Remove(myReview);
+            myReview.IsDeleted = true;
+            _context.Reviews.Update(myReview);
             _context.SaveChanges();
         }
     }

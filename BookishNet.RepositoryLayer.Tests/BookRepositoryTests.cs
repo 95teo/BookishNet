@@ -10,7 +10,6 @@ using Microsoft.EntityFrameworkCore;
 using Moq;
 using NUnit.Framework;
 
-
 namespace BookishNet.RepositoryLayer.Tests
 {
     [TestFixture]
@@ -29,7 +28,7 @@ namespace BookishNet.RepositoryLayer.Tests
                     PublishingYear = 2000,
                     Description = "Very good book",
                     Timestamp = DateTime.Now,
-                    GenreId =  0,
+                    GenreId = 0,
                     IsBorrowed = false,
                     LoanerId = 1,
                     BorrowerId = 2
@@ -42,7 +41,7 @@ namespace BookishNet.RepositoryLayer.Tests
                     PublishingYear = 2000,
                     Description = "Very good book",
                     Timestamp = DateTime.Now,
-                    GenreId =  0,
+                    GenreId = 0,
                     IsBorrowed = false,
                     LoanerId = 1,
                     BorrowerId = 2
@@ -55,7 +54,7 @@ namespace BookishNet.RepositoryLayer.Tests
                     PublishingYear = 2000,
                     Description = "Very good book",
                     Timestamp = DateTime.Now,
-                    GenreId =  0,
+                    GenreId = 0,
                     IsBorrowed = false,
                     LoanerId = 2,
                     BorrowerId = 3
