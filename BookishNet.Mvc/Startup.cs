@@ -5,6 +5,7 @@ using BookishNet.ServiceLayer.Interfaces;
 using BookishNet.ServiceLayer.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -14,8 +15,11 @@ namespace BookishNet.Mvc
 {
     public class Startup
     {
+        private readonly IHostingEnvironment _env;
+
         public Startup(IHostingEnvironment env)
         {
+            //_env = env;
             var builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)
                 .AddJsonFile("appsettings.json", false, true)
@@ -29,6 +33,10 @@ namespace BookishNet.Mvc
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            /*if (!_env.IsDevelopment())
+            {
+                services.Configure<MvcOptions>(o => o.Filters.Add(new RequireHttpsAttribute()));
+            }*/
             services.AddTransient<IAuthorService, AuthorService>();
             services.AddTransient<IAuthorRepository, AuthorRepository>();
             services.AddTransient<IBookService, BookService>();
@@ -47,7 +55,8 @@ namespace BookishNet.Mvc
             services.AddDbContext<BookishNetContext>();
             // Add framework services.
             services.AddMvc();
-            services.AddSwaggerGen(c => { c.SwaggerDoc("v1", new Info {Title = "My API", Version = "v1"}); });
+
+            services.AddSwaggerGen(c => { c.SwaggerDoc("v1", new Info {Title = "BookishNet API", Version = "v1"}); });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -55,6 +64,9 @@ namespace BookishNet.Mvc
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
+
+            //app.UseCsp(options => options.DefaultSources(s => s.Self()));
+            //app.UseHsts(h => h.MaxAge(days: 365));
 
             if (env.IsDevelopment())
             {
@@ -66,6 +78,17 @@ namespace BookishNet.Mvc
                 app.UseExceptionHandler("/Home/Error");
             }
 
+            var cookieOptions = new CookieAuthenticationOptions
+            {
+                AuthenticationScheme = "BookishNetCookie",
+                LoginPath = new PathString("/account/login"),
+                AccessDeniedPath = new PathString("/Account/Forbidden/"),
+                AutomaticAuthenticate = true,
+                AutomaticChallenge = true
+            };
+
+            app.UseCookieAuthentication(cookieOptions);
+
             app.UseStaticFiles();
 
             app.UseMvc(routes =>
@@ -75,7 +98,7 @@ namespace BookishNet.Mvc
                     "{controller=Home}/{action=Index}/{id?}");
             });
             app.UseSwagger();
-            app.UseSwaggerUI(c => { c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1"); });
+            app.UseSwaggerUI(c => { c.SwaggerEndpoint("/swagger/v1/swagger.json", "BookishNet API V1"); });
         }
     }
 }

@@ -39,9 +39,9 @@ namespace BookishNet.ServiceLayer.Services
             _roleRepository.Delete(id);
         }
 
-        public string GetRoleOfUser(int userId)
+        public string GetRoleOfUser(User user)
         {
-            return _roleRepository.GetRoleOfUser(userId);
+            return _roleRepository.GetRoleOfUser(user);
         }
     }
 }

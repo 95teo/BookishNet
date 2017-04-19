@@ -46,9 +46,9 @@ namespace BookishNet.RepositoryLayer.Repositories
             _context.SaveChanges();
         }
 
-        public string GetRoleOfUser(int userId)
+        public string GetRoleOfUser(User user)
         {
-            var x = _context.Roles.Single(role => userId == role.Id);
+            var x = _context.Roles.Single(role => user.Id == role.Id);
             return x.RoleName;
         }
     }

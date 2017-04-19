@@ -13,14 +13,7 @@
     <Content Include="wwwroot\app\appRoute.js" />
     <Content Include="wwwroot\app\controllers\homeController.js" />
     <Content Include="wwwroot\app\controllers\loginController.js" />
-    <Content Include="wwwroot\app\controllers\profController.js" />
-    <Content Include="wwwroot\app\controllers\questionController.js" />
-    <Content Include="wwwroot\app\controllers\submittedController.js" />
-    <Content Include="wwwroot\app\controllers\userController.js" />
-    <Content Include="wwwroot\app\directives\userItemDirective.js" />
     <Content Include="wwwroot\app\services\loginService.js" />
-    <Content Include="wwwroot\app\services\scoreService.js" />
-    <Content Include="wwwroot\app\services\testService.js" />
     <Content Include="wwwroot\assets\css\animations.css" />
     <Content Include="wwwroot\assets\css\jumbotron-narrow.css" />
     <Content Include="wwwroot\assets\css\login.css" />
@@ -34,15 +27,16 @@
     <Content Include="wwwroot\favicon.ico" />
     <Content Include="wwwroot\views\home.html" />
     <Content Include="wwwroot\views\login.html" />
-    <Content Include="wwwroot\views\question.html" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.1.0-beta1" />
     <PackageReference Include="Microsoft.AspNetCore" Version="1.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.Cookies" Version="1.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="1.1.2" />
     <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="1.1.1" />
     <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="1.1.1" />
     <PackageReference Include="Microsoft.VisualStudio.Web.BrowserLink" Version="1.1.0" />
+    <PackageReference Include="NWebsec.AspNetCore.Middleware" Version="1.1.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="1.0.0-rc3" />
   </ItemGroup>
   <ItemGroup>
@@ -50,6 +44,10 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BookishNet.ServiceLayer\BookishNet.ServiceLayer.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Models\" />
+    <Folder Include="wwwroot\app\directives\" />
   </ItemGroup>
 
 </Project>

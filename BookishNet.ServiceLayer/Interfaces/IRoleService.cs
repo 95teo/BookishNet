@@ -4,6 +4,6 @@ namespace BookishNet.ServiceLayer.Interfaces
 {
     public interface IRoleService : IGenericService<Role>
     {
-        string GetRoleOfUser(int userId);
+        string GetRoleOfUser(User user);
     }
 }

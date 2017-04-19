@@ -1,12 +1,14 @@
 ﻿using System.Collections.Generic;
 using BookishNet.DataLayer.Models;
 using BookishNet.ServiceLayer.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace BookishNet.Mvc.Controllers.Api
 {
+    [Authorize]
     [Route("api/[controller]")]
     public class RoleController : Controller
     {
@@ -52,10 +54,10 @@ namespace BookishNet.Mvc.Controllers.Api
             _roleService.Delete(id);
         }
 
-        [HttpGet("{user}/{userId}")]
+        /*[HttpGet("{user}/{userId}")]
         public string GetRoleOfUser(int userId)
         {
             return _roleService.GetRoleOfUser(userId);
-        }
+        }*/
     }
 }
