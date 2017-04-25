@@ -33,7 +33,7 @@
         <link rel="stylesheet" type="text/css" href="~/assets/css/login.css"/>
     </environment>
 </head>
-<body>
+<body >
 <nav class="navbar navbar-fixed-top navbar-info">
     <div class="container">
         <div class="navbar-header">
@@ -42,6 +42,9 @@
         <ul class="nav navbar-nav navbar-right">
             <li>
                 <a href="/views/Home.html"><i class="fa fa-home"></i> Home</a>
+            </li>
+            <li ng-if="sessionData.isLoggedIn" ng-controller="loginController">
+                <a href="/Logout" ng-click="logout()"><i class="fa fa-sign-out"></i> Logout </a>
             </li>
         </ul>
     </div>

@@ -28,7 +28,7 @@ namespace BookishNet.Mvc.Controllers.Api
         }
 
         [HttpPost]
-        [Route("api/account/login")]
+        [Route("login")]
         public async Task<IActionResult> Login([FromBody] LoginCredentialsDTO loginCredentials, string returnUrl = null)
         {
             var claims = new List<Claim>();
@@ -59,7 +59,7 @@ namespace BookishNet.Mvc.Controllers.Api
 
         [Authorize]
         [HttpGet]
-        [Route("account/logout")]
+        [Route("logout")]
         public IActionResult LogOff()
         {
             HttpContext.Authentication.SignOutAsync("BookishNetCookie");

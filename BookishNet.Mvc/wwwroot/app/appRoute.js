@@ -8,13 +8,13 @@
                         {
                             controller: "loginController",
                             controllerAs: "log",
-                            templateUrl: "views/login.html"
+                            templateUrl: "views/Login.html"
                         })
                     .when("/Home",
                         {
                             controller: "homeController",
                             controllerAs: "home",
-                            templateUrl: "views/home.html"
+                            templateUrl: "views/Home.html"
                         })
                     .otherwise({
                         redirectTo: "/"

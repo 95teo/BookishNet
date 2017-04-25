@@ -13,7 +13,7 @@
             var deferred = $q.defer();
             $http({
                     method: "POST",
-                    url: "http://localhost:64910/api/account/login",
+                    url: "http://localhost:45719/api/account/login",
                     data: JSON.stringify(loginDetails),
                     headers: {
                         'Content-Type': "application/json"
@@ -31,7 +31,7 @@
             var deferred = $q.defer();
             $http({
                     method: "GET",
-                    url: "http://localhost:64910/api/account/logout"
+                    url: "http://localhost:45719/api/account/logout"
                 })
                 .then(function successCallback(response) {
                     return deferred.resolve(response);

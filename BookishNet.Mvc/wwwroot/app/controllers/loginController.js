@@ -5,9 +5,9 @@
         .module("BookishNet")
         .controller("loginController", loginController);
 
-    loginController.$inject = ["$rootScope", "$location", "loginService"];
+    loginController.$inject = ["$rootScope", "$scope", "$location", "loginService"];
 
-    function loginController($rootScope, $location, loginService) {
+    function loginController($rootScope, $scope, $location, loginService) {
         if (localStorage.getItem("session") === null) {
 
             var emptySession = {
@@ -36,7 +36,7 @@
                 .then(function(response) {
                     if (response.data !== null) {
                         log.username = dto.Username;
-                        var responseJson = JSON.parse(response.data);
+                        var responseJson = JSON.parse(JSON.stringify(response.data));
                         if (responseJson[0] === "authenticated") {
                             log.isLoggedIn = true;
                             log.role = responseJson[1];
@@ -47,6 +47,7 @@
                             };
                             localStorage.removeItem("session");
                             localStorage.setItem("session", JSON.stringify(session));
+                            $rootScope.sessionData = JSON.parse(localStorage.getItem("session"));
                             $location.path("/Home");
                         } else {
                             log.error = "Username or password incorrect";
@@ -54,12 +55,12 @@
                     }
                 });
         };
-        log.logout = function() {
+        $scope.logout = function() {
             loginService.logout()
                 .then(function(response) {
                     if (response.data !== null) {
-                        var responseJson = JSON.parse(response.data);
-                        if (responseJson[0] === "logged off") {
+                        var responseJson = JSON.parse(JSON.stringify(response.data));
+                        if (responseJson === "logged off") {
                             log.username = "";
                             log.isLoggedIn = false;
                             log.role = "";
@@ -70,6 +71,7 @@
                             };
                             localStorage.removeItem("session");
                             localStorage.setItem("session", JSON.stringify(newEmptySession));
+                            $rootScope.sessionData = JSON.parse(localStorage.getItem("session"));
                             $location.path("/Home");
                         }
                     }

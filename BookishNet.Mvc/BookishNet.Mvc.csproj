@@ -25,6 +25,9 @@
     <Content Include="wwwroot\assets\js\material-kit.js" />
     <Content Include="wwwroot\assets\js\material.min.js" />
     <Content Include="wwwroot\favicon.ico" />
+    <Content Include="wwwroot\views\Logout.html">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
     <Content Include="wwwroot\views\home.html" />
     <Content Include="wwwroot\views\login.html" />
   </ItemGroup>
