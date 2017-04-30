@@ -13,7 +13,9 @@
     <Content Include="wwwroot\app\appRoute.js" />
     <Content Include="wwwroot\app\controllers\homeController.js" />
     <Content Include="wwwroot\app\controllers\loginController.js" />
+    <Content Include="wwwroot\app\controllers\registerController.js" />
     <Content Include="wwwroot\app\services\loginService.js" />
+    <Content Include="wwwroot\app\services\userService.js" />
     <Content Include="wwwroot\assets\css\animations.css" />
     <Content Include="wwwroot\assets\css\jumbotron-narrow.css" />
     <Content Include="wwwroot\assets\css\login.css" />
@@ -25,11 +27,9 @@
     <Content Include="wwwroot\assets\js\material-kit.js" />
     <Content Include="wwwroot\assets\js\material.min.js" />
     <Content Include="wwwroot\favicon.ico" />
-    <Content Include="wwwroot\views\Logout.html">
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
     <Content Include="wwwroot\views\home.html" />
     <Content Include="wwwroot\views\login.html" />
+    <Content Include="wwwroot\views\Register.html" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.1.0-beta1" />
@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
+    <Folder Include="Views\Register\" />
     <Folder Include="wwwroot\app\directives\" />
   </ItemGroup>
 

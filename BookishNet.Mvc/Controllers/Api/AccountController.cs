@@ -57,6 +57,13 @@ namespace BookishNet.Mvc.Controllers.Api
             return RedirectToLocal(returnUrl, role);
         }
 
+        [HttpPost]
+        [Route("register")]
+        public void Register([FromBody] User user)
+        {
+            _userService.Add(user);
+        }
+
         [Authorize]
         [HttpGet]
         [Route("logout")]

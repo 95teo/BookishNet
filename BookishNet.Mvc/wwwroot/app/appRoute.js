@@ -16,6 +16,12 @@
                             controllerAs: "home",
                             templateUrl: "views/Home.html"
                         })
+                    .when("/Register",
+                        {
+                            controller: "registerController",
+                            controllerAs: "reg",
+                            templateUrl: "views/Register.html"
+                        })
                     .otherwise({
                         redirectTo: "/"
                     });

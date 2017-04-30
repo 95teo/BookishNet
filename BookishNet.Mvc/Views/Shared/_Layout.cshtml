@@ -41,7 +41,10 @@
         </div>
         <ul class="nav navbar-nav navbar-right">
             <li>
-                <a href="/views/Home.html"><i class="fa fa-home"></i> Home</a>
+                <a href="Home"><i class="fa fa-home"></i> Home</a>
+            </li>
+            <li>
+                <a href="Register"><i class="fa fa-plus"></i> Register</a>
             </li>
             <li ng-if="sessionData.isLoggedIn" ng-controller="loginController">
                 <a href="/Logout" ng-click="logout()"><i class="fa fa-sign-out"></i> Logout </a>
@@ -69,8 +72,10 @@
     <!--Directives-->
     <!--Services-->
     <script type="text/javascript" src="~/app/services/loginService.js"></script>
+    <script type="text/javascript" src="~/app/services/userService.js"></script>
     <!--Controllers-->
     <script type="text/javascript" src="~/app/controllers/loginController.js"></script>
+    <script type="text/javascript" src="~/app/controllers/registerController.js"></script>
     <script type="text/javascript" src="~/app/controllers/homeController.js"></script>
     <!--Routing-->
     <script type="text/javascript" src="~/app/appRoute.js"></script>

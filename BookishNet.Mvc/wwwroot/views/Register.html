@@ -1,0 +1,24 @@
+﻿<div class="container">
+    <div class="text-danger" ng-show="reg.error">
+        <h3>{{reg.error}}</h3>
+    </div>
+    <div class="login-container">
+        <div id="output"></div>
+        <div class="avatar"></div>
+        <div class="form-box">
+            <form ng-submit="reg.register()">
+                <input name="user" type="text" placeholder="username" ng-model="reg.username">
+                <input name="email" type="text" placeholder="email" ng-model="reg.email">
+                <input type="password" placeholder="password" ng-model="reg.password">
+                <input type="password" placeholder="confirm password" ng-model="reg.confirmPassword">
+                <input class="datepicker" type="date" placeholder="birthdate" ng-model="reg.birthdate"/>
+                <input class="radio-element" ng-model="reg.roleSignup" type="radio" name="role" value="author" id="signup-as-user-btn" required>
+                <label class="radio-element" for="signup-as-user-btn">Sign up as author</label>
+                <input class="radio-element" ng-model="reg.roleSignup" type="radio" name="role" value="user" id="signup-as-company-btn" required>
+                <label class="radio-element" for="signup-as-company-btn">Sign up as user</label>
+                <button type="submit" class="btn btn-info btn-block login">Register</button>
+            </form>
+        </div>
+    </div>
+    <h3>{{message}}</h3>
+</div>
