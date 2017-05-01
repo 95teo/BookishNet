@@ -1,10 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using BookishNet.DataLayer;
+using BookishNet.DataLayer.Interfaces;
 using BookishNet.DataLayer.Models;
-using BookishNet.RepositoryLayer.Interfaces;
 
-namespace BookishNet.RepositoryLayer.Repositories
+namespace BookishNet.DataLayer.Repositories
 {
     public class BookRepository : IBookRepository
     {

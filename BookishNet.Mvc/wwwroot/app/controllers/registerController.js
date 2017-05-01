@@ -1,4 +1,4 @@
-﻿(function () {
+﻿(function() {
     "use strict";
 
     angular
@@ -15,7 +15,9 @@
         this.role = "";
         this.isLoggedIn = false;
         reg.title = "registerController";
-        reg.register = function () {
+        $scope.emailFormat = /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/;
+        $scope.passwordFormat = /^((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20})$/;
+        reg.register = function() {
             var username = reg.username;
             var email = reg.email;
             var password = reg.password;

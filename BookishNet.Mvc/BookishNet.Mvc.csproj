@@ -14,6 +14,7 @@
     <Content Include="wwwroot\app\controllers\homeController.js" />
     <Content Include="wwwroot\app\controllers\loginController.js" />
     <Content Include="wwwroot\app\controllers\registerController.js" />
+    <Content Include="wwwroot\app\directives\passwordMatchDirective.js" />
     <Content Include="wwwroot\app\services\loginService.js" />
     <Content Include="wwwroot\app\services\userService.js" />
     <Content Include="wwwroot\assets\css\animations.css" />
@@ -52,7 +53,6 @@
   <ItemGroup>
     <Folder Include="Models\" />
     <Folder Include="Views\Register\" />
-    <Folder Include="wwwroot\app\directives\" />
   </ItemGroup>
 
 </Project>

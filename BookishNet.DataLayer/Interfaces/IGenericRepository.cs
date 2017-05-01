@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace BookishNet.RepositoryLayer.Interfaces
+namespace BookishNet.DataLayer.Interfaces
 {
     public interface IGenericRepository<T>
     {

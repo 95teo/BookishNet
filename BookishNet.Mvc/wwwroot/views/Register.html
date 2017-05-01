@@ -14,22 +14,22 @@
                     <span ng-show="register.user.$error.minlength || register.user.$error.maxlength" class="help-block">Numele de utilizator trebuie sa aiba intre 3 si 8 caractere.</span>
                 </div>
                 <label for="email">Email</label>
-                <input name="email" type="email" id="email" placeholder="Email" ng-model="reg.email" required="">
+                <input name="email" type="email" id="email" placeholder="Email" ng-model="reg.email" ng-pattern="emailFormat" required="">
                 <div ng-show="register.$submitted || register.email.$touched">
                     <span ng-show="register.email.$error.required" class="help-block">Email-ul nu poate fi null.</span>
-                    <span ng-show="register.email.$error.email" class="help-block">Introduceti un email valid(sa fie de forma: example@example.com).</span>
+                    <span ng-show="register.email.$error.pattern" class="help-block">Introduceti un email valid(sa fie de forma: example@example.com).</span>
                 </div>
                 <label for="password">Parola</label>
-                <input name="password" type="password" id="password" placeholder="Parola" ng-model="reg.password" required="">
+                <input name="password" type="password" id="password" placeholder="Parola" ng-model="reg.password" ng-pattern="passwordFormat" required="">
                 <div ng-show="register.$submitted || register.password.$touched">
                     <span ng-show="register.password.$error.required" class="help-block">Parola nu poate fi nula.</span>
-                    <!--<span ng-show="register.password.$error" class="help-block">Parola trebuie sa contina...</span>-->
+                    <span ng-show="register.password.$error.pattern" class="help-block">Parola trebuie sa aiba intre 6 si 20 caractere lungime, trebuie sa contina cel putin un caracter cu majuscula, unul fara majuscula si o cifra de la 0 la 9.</span>
                 </div>
                 <label for="confirmPassword">Confirma parola</label>
-                <input name="confirmPassword" type="password" id="confirmPassword" placeholder="Confirmare parola" ng-model="reg.confirmPassword" required="">
-                <div ng-show="register.$submitted || register.password.$touched">
+                <input name="confirmPassword" type="password" id="confirmPassword" placeholder="Confirmare parola" ng-model="reg.confirmPassword" required="" password-Match-Directive="reg.password">
+                <div ng-show="register.$submitted || register.confirmPassword.$touched">
                     <span ng-show="register.confirmPassword.$error.required" class="help-block">Confirmarea parolei nu poate fi nula.</span>
-                    <!--<span ng-show="register.confirmPassword.$error" class="help-block">Confirmare eronata a parolei. Introduceti aceeasi parola ca mai sus.</span>-->
+                    <span ng-show="register.confirmPassword.$error.match" class="help-block">Confirmare eronata a parolei. Introduceti aceeasi parola ca mai sus.</span>
                 </div>
                 <label class="datepicker" for="birthday">Zi de nastere</label>
                 <input class="datepicker" type="date" placeholder="Zi de nastere" id="birthday" ng-model="reg.birthdate" required=""/>

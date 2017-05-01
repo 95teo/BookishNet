@@ -1,4 +1,4 @@
-﻿(function () {
+﻿(function() {
     "use strict";
 
     angular
@@ -9,7 +9,7 @@
 
     function userService($http, $location, $q) {
         this.Error = "";
-        this.register = function (registerDetails) {
+        this.register = function(registerDetails) {
             var deferred = $q.defer();
             $http({
                     method: "POST",

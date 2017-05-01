@@ -1,6 +1,6 @@
 ﻿using BookishNet.DataLayer;
-using BookishNet.RepositoryLayer.Interfaces;
-using BookishNet.RepositoryLayer.Repositories;
+using BookishNet.DataLayer.Interfaces;
+using BookishNet.DataLayer.Repositories;
 using BookishNet.ServiceLayer.Interfaces;
 using BookishNet.ServiceLayer.Services;
 using Microsoft.AspNetCore.Builder;

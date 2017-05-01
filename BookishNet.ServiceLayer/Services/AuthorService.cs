@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
+using BookishNet.DataLayer.Interfaces;
 using BookishNet.DataLayer.Models;
-using BookishNet.RepositoryLayer.Interfaces;
 using BookishNet.ServiceLayer.Interfaces;
 
 namespace BookishNet.ServiceLayer.Services

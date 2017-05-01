@@ -17,7 +17,7 @@
         <link href="assets/css/animations.css" rel="stylesheet"/>
         <link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
         <link rel="stylesheet" type="text/css" href="~/assets/css/login.css"/>
-        <link rel="stylesheet" type="text/css" href="~/assets/css/register.css" />
+        <link rel="stylesheet" type="text/css" href="~/assets/css/register.css"/>
     </environment>
     <environment names="Staging,Production">
         <title>BookishNet</title>
@@ -32,7 +32,7 @@
         <link href="assets/css/animations.css" rel="stylesheet"/>
         <link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
         <link rel="stylesheet" type="text/css" href="~/assets/css/login.css"/>
-        <link rel="stylesheet" type="text/css" href="~/assets/css/register.css" />
+        <link rel="stylesheet" type="text/css" href="~/assets/css/register.css"/>
     </environment>
 </head>
 <body >
@@ -45,7 +45,7 @@
             <li>
                 <a href="Home"><i class="fa fa-home"></i> Home</a>
             </li>
-            <li>
+            <li ng-if="!sessionData.isLoggedIn">
                 <a href="Register"><i class="fa fa-plus"></i> Register</a>
             </li>
             <li ng-if="sessionData.isLoggedIn" ng-controller="loginController">
@@ -72,6 +72,7 @@
     <script type="text/javascript" src="~/app/app.js"></script>
 
     <!--Directives-->
+    <script type="text/javascript" src="~/app/directives/passwordMatchDirective.js"></script>
     <!--Services-->
     <script type="text/javascript" src="~/app/services/loginService.js"></script>
     <script type="text/javascript" src="~/app/services/userService.js"></script>

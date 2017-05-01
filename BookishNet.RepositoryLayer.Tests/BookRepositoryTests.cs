@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using BookishNet.DataLayer;
+using BookishNet.DataLayer.Interfaces;
 using BookishNet.DataLayer.Models;
-using BookishNet.RepositoryLayer.Interfaces;
-using BookishNet.RepositoryLayer.Repositories;
+using BookishNet.DataLayer.Repositories;
 using Castle.Core.Internal;
 using Microsoft.EntityFrameworkCore;
 using Moq;

@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BookishNet.RepositoryLayer\BookishNet.RepositoryLayer.csproj" />
+    <ProjectReference Include="..\BookishNet.DataLayer\BookishNet.DataLayer.csproj" />
   </ItemGroup>
 
 </Project>

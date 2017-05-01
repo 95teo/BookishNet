@@ -12,7 +12,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BookishNet.DataLayer\BookishNet.DataLayer.csproj" />
-    <ProjectReference Include="..\BookishNet.RepositoryLayer\BookishNet.RepositoryLayer.csproj" />
   </ItemGroup>
 
 </Project>
