@@ -22,6 +22,7 @@
     <Content Include="wwwroot\assets\css\material-kit.css" />
     <Content Include="wwwroot\assets\css\material-kit.css.map" />
     <Content Include="wwwroot\assets\css\prof.css" />
+    <Content Include="wwwroot\assets\css\register.css" />
     <Content Include="wwwroot\assets\img\apple-icon.png" />
     <Content Include="wwwroot\assets\img\test1.jpg" />
     <Content Include="wwwroot\assets\js\material-kit.js" />

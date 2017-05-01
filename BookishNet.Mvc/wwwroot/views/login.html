@@ -6,10 +6,18 @@
         <div id="output"></div>
         <div class="avatar"></div>
         <div class="form-box">
-            <form ng-submit="log.login()">
-                <input name="user" type="text" placeholder="username" ng-model="log.username">
-                <input type="password" placeholder="password" ng-model="log.password">
-                <button type="submit" class="btn btn-info btn-block login">Login</button>
+            <form ng-submit="log.login()" class="css-form" name="login" novalidate>
+                <label for="user">Nume utilizator</label>
+                <input name="user" type="text" id="user" placeholder="Nume utilizator" ng-model="log.username" required="">
+                <div ng-show="login.$submitted || login.user.$touched">
+                    <span ng-show="login.user.$error.required" class="help-block">Numele de utilizator nu poate fi null.</span>
+                </div>
+                <label for="password">Parola</label>
+                <input name="password" type="password" id="password" placeholder="Parola" ng-model="log.password" required="">
+                <div ng-show="login.$submitted || login.password.$touched">
+                    <span ng-show="login.password.$error.required" class="help-block">Parola nu poate fi nula.</span>
+                </div>
+                <button type="submit" class="btn btn-info btn-block login" ng-disabled="login.$invalid">Login</button>
             </form>
         </div>
     </div>
