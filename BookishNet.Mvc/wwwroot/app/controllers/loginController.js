@@ -24,6 +24,7 @@
         this.username = "";
         this.role = "";
         this.isLoggedIn = false;
+        log.show = false;
         log.title = "loginController";
         log.login = function() {
             var username = log.username;
@@ -45,12 +46,14 @@
                                 'role': log.role,
                                 'isLoggedIn': log.isLoggedIn
                             };
+                            log.show = false;
                             localStorage.removeItem("session");
                             localStorage.setItem("session", JSON.stringify(session));
                             $rootScope.sessionData = JSON.parse(localStorage.getItem("session"));
                             $location.path("/Home");
                         } else {
-                            log.error = "Username or password incorrect";
+                            log.show = true;
+                            log.error = "Combinatia nume utilizator/parola este eronata. Va rugam reincercati.";
                         }
                     }
                 });

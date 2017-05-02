@@ -1,7 +1,4 @@
 ﻿<div class="container">
-    <div class="text-danger" ng-show="log.error">
-        <h3>{{log.error}}</h3>
-    </div>
     <div class="login-container">
         <div id="output"></div>
         <div class="avatar"></div>
@@ -16,6 +13,9 @@
                 <input name="password" type="password" id="password" placeholder="Parola" ng-model="log.password" required="">
                 <div ng-show="login.$submitted || login.password.$touched">
                     <span ng-show="login.password.$error.required" class="help-block">Parola nu poate fi nula.</span>
+                </div>
+                <div class="text-danger" ng-show="log.show">
+                    <p>{{log.error}}</p>
                 </div>
                 <button type="submit" class="btn btn-info btn-block login" ng-disabled="login.$invalid">Login</button>
             </form>

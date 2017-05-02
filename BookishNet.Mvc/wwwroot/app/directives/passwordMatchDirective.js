@@ -1,4 +1,4 @@
-﻿(function () {
+﻿(function() {
     "use strict";
 
     angular
@@ -20,16 +20,17 @@
         return directive;
 
         function link(scope, element, attrs, ctrl) {
-            scope.$watch(attrs["passwordMatchDirective"], function (newVal, oldVal) {               
-                ctrl.$validators.match = function (modelValue, viewValue) {
-                    if (newVal === modelValue) {
-                        return true;
-                    } else {
-                        return false;
-                    }
-                }
-                ctrl.$validate();
-            });
+            scope.$watch(attrs["passwordMatchDirective"],
+                function(newVal, oldVal) {
+                    ctrl.$validators.match = function(modelValue, viewValue) {
+                        if (newVal === modelValue) {
+                            return true;
+                        } else {
+                            return false;
+                        }
+                    };
+                    ctrl.$validate();
+                });
         }
     }
 

@@ -6,6 +6,7 @@
 
   <PropertyGroup>
     <PackageTargetFallback>$(PackageTargetFallback);portable-net45+win8+wp8+wpa81;</PackageTargetFallback>
+    <UserSecretsId>599d95e9-5fcd-4d7e-97e7-c22b623ff70c</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -34,6 +35,7 @@
     <Content Include="wwwroot\views\Register.html" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="BCrypt.Net-Core" Version="1.4.0" />
     <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.1.0-beta1" />
     <PackageReference Include="Microsoft.AspNetCore" Version="1.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.Cookies" Version="1.1.1" />

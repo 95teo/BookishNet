@@ -24,6 +24,8 @@
             var confirmPassword = reg.confirmPassword;
             var role = reg.roleSignup;
             var birthdate = reg.birthdate;
+            /*var salt = CryptoJS.lib.WordArray.random(128 / 8);
+            var key512Bits = CryptoJS.PBKDF2(password, salt, { keySize: 512 / 32, iterations: 1 });*/
             var user = {
                 "Username": username,
                 "Email": email,

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using BookishNet.DataLayer.Models;
+using BookishNet.Mvc.Utilities;
 using BookishNet.ServiceLayer.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http.Authentication;
@@ -33,8 +34,9 @@ namespace BookishNet.Mvc.Controllers.Api
         {
             var claims = new List<Claim>();
 
-            if (!_userService.CheckUserCredentials(loginCredentials.Username, loginCredentials.Password))
-                return NotFound();
+            if (!_userService.CheckUserCredentials(loginCredentials.Username,
+                Utility.Encryptpassword(loginCredentials.Password)))
+                return UserNotFound();
             claims.Add(new Claim(ClaimTypes.Name, loginCredentials.Username, ClaimValueTypes.String));
 
             var role = _roleService.GetRoleOfUser(_userService.GetUserByUsername(loginCredentials.Username));
@@ -61,6 +63,7 @@ namespace BookishNet.Mvc.Controllers.Api
         [Route("register")]
         public void Register([FromBody] User user)
         {
+            user.Password = Utility.Encryptpassword(user.Password);
             _userService.Add(user);
         }
 
@@ -87,6 +90,13 @@ namespace BookishNet.Mvc.Controllers.Api
 
             if (Url.IsLocalUrl(returnUrl))
                 return Redirect(returnUrl);
+            return Ok(jsonResponse);
+        }
+
+        private IActionResult UserNotFound()
+        {
+            string[] response = {"failed"};
+            var jsonResponse = JsonConvert.SerializeObject(response);
             return Ok(jsonResponse);
         }
     }
