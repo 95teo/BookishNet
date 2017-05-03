@@ -23,18 +23,30 @@
             var password = reg.password;
             var confirmPassword = reg.confirmPassword;
             var role = reg.roleSignup;
-            var birthdate = reg.birthdate;
+            var birthday = new Date(reg.birthdate);
+            var timestamp = new Date();
             /*var salt = CryptoJS.lib.WordArray.random(128 / 8);
             var key512Bits = CryptoJS.PBKDF2(password, salt, { keySize: 512 / 32, iterations: 1 });*/
+            var roleId = 0;
+            if (role === "author") {
+                roleId = 3;
+            } else {
+                roleId = 2;
+            }
             var user = {
                 "Username": username,
                 "Email": email,
-                "Password": password
+                "Password": password,
+                "DateOfBirth": birthday,
+                "Timestamp": timestamp,
+                "RoleId": roleId,
+                "IsDeleted": false,
+                "Stars": 0
             };
-            /*userService.register(user)
-                .then(function (response) {
-                            $location.path("/Home");
-                });*/
+            userService.register(user)
+                .then(function(response) {
+                    $location.path("/Home");
+                });
         };
     }
 })();

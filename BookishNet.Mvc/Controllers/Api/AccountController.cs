@@ -33,13 +33,12 @@ namespace BookishNet.Mvc.Controllers.Api
         public async Task<IActionResult> Login([FromBody] LoginCredentialsDTO loginCredentials, string returnUrl = null)
         {
             var claims = new List<Claim>();
-
-            if (!_userService.CheckUserCredentials(loginCredentials.Username,
-                Utility.Encryptpassword(loginCredentials.Password)))
+            var user = _userService.GetUserByUsername(loginCredentials.Username);
+            if (!Utility.CheckPassword(loginCredentials.Password, user.Password))
                 return UserNotFound();
             claims.Add(new Claim(ClaimTypes.Name, loginCredentials.Username, ClaimValueTypes.String));
 
-            var role = _roleService.GetRoleOfUser(_userService.GetUserByUsername(loginCredentials.Username));
+            var role = _roleService.GetRoleOfUser(user);
 
             //Added Claim.Role 
             claims.Add(new Claim(ClaimTypes.Role, role, ClaimValueTypes.String));
@@ -61,10 +60,11 @@ namespace BookishNet.Mvc.Controllers.Api
 
         [HttpPost]
         [Route("register")]
-        public void Register([FromBody] User user)
+        public IActionResult Register([FromBody] User user)
         {
             user.Password = Utility.Encryptpassword(user.Password);
             _userService.Add(user);
+            return Ok("register succesfull");
         }
 
         [Authorize]

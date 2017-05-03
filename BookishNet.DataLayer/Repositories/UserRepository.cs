@@ -26,12 +26,14 @@ namespace BookishNet.DataLayer.Repositories
 
         public void Add(User obj)
         {
+            //obj.Password = Encryptpassword(obj.Password);
             _context.Users.Add(obj);
             _context.SaveChanges();
         }
 
         public void Update(User obj)
         {
+            //obj.Password = Encryptpassword(obj.Password);
             _context.Users.Update(obj);
             _context.SaveChanges();
         }
@@ -48,12 +50,27 @@ namespace BookishNet.DataLayer.Repositories
         public bool CheckUserCredentials(string username, string password)
         {
             var user = GetUserByUsername(username);
-            return user != null && user.Password == password;
+            /*var areEqual = CheckPassword(password, user.Password);
+            return user != null && areEqual;*/
+            return user != null && password == user.Password;
         }
 
         public User GetUserByUsername(string username)
         {
             return _context.Users.FirstOrDefault(user => user.Username == username);
         }
+
+        /*
+        public string Encryptpassword(string password)
+        {
+            var hashedPassword = BCrypt.Net.BCrypt.HashPassword(password, BCrypt.Net.BCrypt.GenerateSalt(12));
+            return hashedPassword;
+        }
+
+        public bool CheckPassword(string enteredPassword, string hashedPassword)
+        {
+            var pwdHash = BCrypt.Net.BCrypt.Verify(enteredPassword, hashedPassword);
+            return pwdHash;
+        }*/
     }
 }
