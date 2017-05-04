@@ -12,10 +12,13 @@
   <ItemGroup>
     <Content Include="wwwroot\app\app.js" />
     <Content Include="wwwroot\app\appRoute.js" />
+    <Content Include="wwwroot\app\controllers\booksController.js" />
     <Content Include="wwwroot\app\controllers\homeController.js" />
     <Content Include="wwwroot\app\controllers\loginController.js" />
     <Content Include="wwwroot\app\controllers\registerController.js" />
+    <Content Include="wwwroot\app\directives\bookItemDirective.js" />
     <Content Include="wwwroot\app\directives\passwordMatchDirective.js" />
+    <Content Include="wwwroot\app\services\bookService.js" />
     <Content Include="wwwroot\app\services\loginService.js" />
     <Content Include="wwwroot\app\services\userService.js" />
     <Content Include="wwwroot\assets\css\animations.css" />
@@ -30,6 +33,8 @@
     <Content Include="wwwroot\assets\js\material-kit.js" />
     <Content Include="wwwroot\assets\js\material.min.js" />
     <Content Include="wwwroot\favicon.ico" />
+    <Content Include="wwwroot\views\Books.html" />
+    <Content Include="wwwroot\views\BookView.html" />
     <Content Include="wwwroot\views\home.html" />
     <Content Include="wwwroot\views\login.html" />
     <Content Include="wwwroot\views\Register.html" />
@@ -54,6 +59,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
+    <Folder Include="Views\Book\" />
     <Folder Include="Views\Register\" />
   </ItemGroup>
 

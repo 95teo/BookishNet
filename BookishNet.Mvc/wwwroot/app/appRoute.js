@@ -22,6 +22,12 @@
                             controllerAs: "reg",
                             templateUrl: "views/Register.html"
                         })
+                    .when("/Book",
+                        {
+                            controller: "booksController",
+                            controllerAs: "books",
+                            templateUrl: "views/Books.html"
+                        })
                     .otherwise({
                         redirectTo: "/"
                     });
