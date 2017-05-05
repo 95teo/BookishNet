@@ -32,6 +32,8 @@ namespace BookishNet.DataLayer.Repositories
 
         public void Update(Genre obj)
         {
+            var myGenre = _context.Genres.FirstOrDefault(genre => genre.Id == obj.Id);
+            if (myGenre == null) return;
             _context.Genres.Update(obj);
             _context.SaveChanges();
         }

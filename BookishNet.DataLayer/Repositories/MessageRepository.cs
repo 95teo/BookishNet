@@ -32,6 +32,8 @@ namespace BookishNet.DataLayer.Repositories
 
         public void Update(Message obj)
         {
+            var myMessage = _context.Messages.FirstOrDefault(message => message.SenderId == obj.SenderId);
+            if (myMessage == null) return;
             _context.Messages.Update(obj);
             _context.SaveChanges();
         }

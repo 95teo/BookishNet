@@ -10,19 +10,19 @@ namespace BookishNet.DataLayer
              Database=BookishNet;
              Trusted_Connection=True";
 
-        public DbSet<Author> Authors { get; set; }
+        public virtual DbSet<Author> Authors { get; set; }
 
-        public DbSet<Book> Books { get; set; }
+        public virtual DbSet<Book> Books { get; set; }
 
-        public DbSet<Genre> Genres { get; set; }
+        public virtual DbSet<Genre> Genres { get; set; }
 
-        public DbSet<Message> Messages { get; set; }
+        public virtual DbSet<Message> Messages { get; set; }
 
-        public DbSet<Review> Reviews { get; set; }
+        public virtual DbSet<Review> Reviews { get; set; }
 
-        public DbSet<Role> Roles { get; set; }
+        public virtual DbSet<Role> Roles { get; set; }
 
-        public DbSet<User> Users { get; set; }
+        public virtual DbSet<User> Users { get; set; }
 
         protected override void OnConfiguring(
             DbContextOptionsBuilder optionsBuilder)

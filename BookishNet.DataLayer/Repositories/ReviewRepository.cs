@@ -32,6 +32,8 @@ namespace BookishNet.DataLayer.Repositories
 
         public void Update(Review obj)
         {
+            var myReview = _context.Reviews.FirstOrDefault(author => author.Id == obj.Id);
+            if (myReview == null) return;
             _context.Reviews.Update(obj);
             _context.SaveChanges();
         }

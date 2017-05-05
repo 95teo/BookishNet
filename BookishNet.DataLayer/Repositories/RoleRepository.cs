@@ -32,6 +32,8 @@ namespace BookishNet.DataLayer.Repositories
 
         public void Update(Role obj)
         {
+            var myRole = _context.Roles.FirstOrDefault(role => role.Id == obj.Id);
+            if (myRole == null) return;
             _context.Roles.Update(obj);
             _context.SaveChanges();
         }
@@ -47,8 +49,8 @@ namespace BookishNet.DataLayer.Repositories
 
         public string GetRoleOfUser(User user)
         {
-            var x = _context.Roles.Single(role => user.RoleId == role.Id);
-            return x.RoleName;
+            var x = _context.Roles.SingleOrDefault(role => user.RoleId == role.Id);
+            return x?.RoleName;
         }
     }
 }

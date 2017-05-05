@@ -34,6 +34,8 @@ namespace BookishNet.DataLayer.Repositories
         public void Update(User obj)
         {
             //obj.Password = Encryptpassword(obj.Password);
+            var myUser = _context.Users.FirstOrDefault(user => user.Id == obj.Id);
+            if (myUser == null) return;
             _context.Users.Update(obj);
             _context.SaveChanges();
         }
