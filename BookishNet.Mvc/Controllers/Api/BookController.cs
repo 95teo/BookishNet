@@ -19,6 +19,7 @@ namespace BookishNet.Mvc.Controllers.Api
             _bookService = bookService;
         }
 
+        [AllowAnonymous]
         // GET: api/values
         [HttpGet]
         public IEnumerable<Book> Get()

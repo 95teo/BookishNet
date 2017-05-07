@@ -17,6 +17,9 @@
     <Content Include="wwwroot\app\controllers\loginController.js" />
     <Content Include="wwwroot\app\controllers\registerController.js" />
     <Content Include="wwwroot\app\directives\bookItemDirective.js" />
+    <Content Include="wwwroot\app\directives\loaderSpinner.js" />
+    <Content Include="wwwroot\app\directives\loaderSpinnerDirective.js" />
+    <Content Include="wwwroot\app\directives\loadingRequestDirective.js" />
     <Content Include="wwwroot\app\directives\passwordMatchDirective.js" />
     <Content Include="wwwroot\app\services\bookService.js" />
     <Content Include="wwwroot\app\services\loginService.js" />
@@ -24,12 +27,13 @@
     <Content Include="wwwroot\assets\css\animations.css" />
     <Content Include="wwwroot\assets\css\jumbotron-narrow.css" />
     <Content Include="wwwroot\assets\css\login.css" />
+    <Content Include="wwwroot\assets\css\main.css" />
     <Content Include="wwwroot\assets\css\material-kit.css" />
     <Content Include="wwwroot\assets\css\material-kit.css.map" />
-    <Content Include="wwwroot\assets\css\prof.css" />
     <Content Include="wwwroot\assets\css\register.css" />
     <Content Include="wwwroot\assets\img\apple-icon.png" />
     <Content Include="wwwroot\assets\img\test1.jpg" />
+    <Content Include="wwwroot\assets\js\main.js" />
     <Content Include="wwwroot\assets\js\material-kit.js" />
     <Content Include="wwwroot\assets\js\material.min.js" />
     <Content Include="wwwroot\favicon.ico" />
@@ -41,7 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="BCrypt.Net-Core" Version="1.4.0" />
-    <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.1.0-beta1" />
+    <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.1.0-beta2" />
     <PackageReference Include="Microsoft.AspNetCore" Version="1.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.Cookies" Version="1.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="1.1.2" />
@@ -49,7 +53,7 @@
     <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="1.1.1" />
     <PackageReference Include="Microsoft.VisualStudio.Web.BrowserLink" Version="1.1.0" />
     <PackageReference Include="NWebsec.AspNetCore.Middleware" Version="1.1.0" />
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="1.0.0-rc3" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="1.0.0" />
   </ItemGroup>
   <ItemGroup>
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="1.0.0" />

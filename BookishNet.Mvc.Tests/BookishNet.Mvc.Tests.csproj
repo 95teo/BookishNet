@@ -5,17 +5,20 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="CoreCompat.Selenium.WebDriver" Version="3.4.0-beta001" />
     <PackageReference Include="dotnet-test-nunit" Version="3.4.0-beta-3" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="1.1.1" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.3.0-preview-20170502-03" />
-    <PackageReference Include="Moq" Version="4.7.10" />
     <PackageReference Include="MSTest.TestAdapter" Version="1.1.17" />
     <PackageReference Include="MSTest.TestFramework" Version="1.1.17" />
+    <PackageReference Include="NUnit" Version="3.6.1" />
     <PackageReference Include="NUnit3TestAdapter" Version="3.8.0-alpha1" />
+    <PackageReference Include="Selenium.WebDriver.ChromeDriver" Version="2.29.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BookishNet.DataLayer\BookishNet.DataLayer.csproj" />
+    <Reference Include="Microsoft.DotNet.InternalAbstractions">
+      <HintPath>..\..\..\..\..\.nuget\packages\microsoft.dotnet.internalabstractions\1.0.0\lib\netstandard1.3\Microsoft.DotNet.InternalAbstractions.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
   <ItemGroup>

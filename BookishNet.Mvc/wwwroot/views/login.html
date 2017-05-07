@@ -17,7 +17,13 @@
                 <div class="text-danger" ng-show="log.show">
                     <p>{{log.error}}</p>
                 </div>
-                <button type="submit" class="btn btn-info btn-block login" ng-disabled="login.$invalid">Login</button>
+                <p class="text-center text-muted" loading-request-directive ng-if="log.logging">
+                    <br/>
+                    <span class="fa fa-spinner fa-spin fa-4x"></span>
+                    <br /><br />
+                    {{log.loadingLogin}}
+                </p>
+                <button type="submit" class="btn btn-info btn-block login" ng-disabled="login.$invalid || log.logging">Login</button>
             </form>
         </div>
     </div>

@@ -25,8 +25,11 @@
         this.role = "";
         this.isLoggedIn = false;
         log.show = false;
+        log.logging = false;
         log.title = "loginController";
-        log.login = function() {
+        log.login = function () {
+            log.logging = true;
+            log.loadingLogin = "Incercam autentificarea. Va rugam asteptati";
             var username = log.username;
             var password = log.password;
             var dto = {
@@ -47,12 +50,14 @@
                                 'isLoggedIn': log.isLoggedIn
                             };
                             log.show = false;
+                            log.logging = false;
                             localStorage.removeItem("session");
                             localStorage.setItem("session", JSON.stringify(session));
                             $rootScope.sessionData = JSON.parse(localStorage.getItem("session"));
                             $location.path("/Home");
                         } else {
                             log.show = true;
+                            log.logging = false;
                             log.error = "Combinatia nume utilizator/parola este eronata. Va rugam reincercati.";
                         }
                     }
