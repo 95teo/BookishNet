@@ -45,7 +45,7 @@
             };
             userService.register(user)
                 .then(function(response) {
-                    $location.path("/Home");
+                    $location.path("/home");
                 });
         };
     }

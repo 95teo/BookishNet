@@ -5,12 +5,13 @@
         .module("BookishNet")
         .controller("loginController", loginController);
 
-    loginController.$inject = ["$rootScope", "$scope", "$location", "loginService"];
+    loginController.$inject = ["$rootScope", "$scope", "$location", "loginService", "userService"];
 
-    function loginController($rootScope, $scope, $location, loginService) {
+    function loginController($rootScope, $scope, $location, loginService, userService) {
         if (localStorage.getItem("session") === null) {
 
             var emptySession = {
+                'id': "",
                 'username': "",
                 'role': "",
                 'isLoggedIn': false
@@ -27,7 +28,7 @@
         log.show = false;
         log.logging = false;
         log.title = "loginController";
-        log.login = function () {
+        log.login = function() {
             log.logging = true;
             log.loadingLogin = "Incercam autentificarea. Va rugam asteptati";
             var username = log.username;
@@ -44,17 +45,22 @@
                         if (responseJson[0] === "authenticated") {
                             log.isLoggedIn = true;
                             log.role = responseJson[1];
-                            var session = {
-                                'username': log.username,
-                                'role': log.role,
-                                'isLoggedIn': log.isLoggedIn
-                            };
-                            log.show = false;
-                            log.logging = false;
-                            localStorage.removeItem("session");
-                            localStorage.setItem("session", JSON.stringify(session));
-                            $rootScope.sessionData = JSON.parse(localStorage.getItem("session"));
-                            $location.path("/Home");
+                            userService.getUserDetails(log.username)
+                                .then(function(user) {
+                                    log.id = user.data.id;
+                                    var session = {
+                                        'id': log.id,
+                                        'username': log.username,
+                                        'role': log.role,
+                                        'isLoggedIn': log.isLoggedIn
+                                    };
+                                    log.show = false;
+                                    log.logging = false;
+                                    localStorage.removeItem("session");
+                                    localStorage.setItem("session", JSON.stringify(session));
+                                    $rootScope.sessionData = JSON.parse(localStorage.getItem("session"));
+                                    $location.path("/home");
+                                });
                         } else {
                             log.show = true;
                             log.logging = false;
@@ -69,10 +75,12 @@
                     if (response.data !== null) {
                         var responseJson = JSON.parse(JSON.stringify(response.data));
                         if (responseJson === "logged off") {
+                            log.id = "";
                             log.username = "";
                             log.isLoggedIn = false;
                             log.role = "";
                             var newEmptySession = {
+                                'id': log.id,
                                 'username': log.username,
                                 'role': log.role,
                                 'isLoggedIn': log.isLoggedIn
@@ -80,7 +88,7 @@
                             localStorage.removeItem("session");
                             localStorage.setItem("session", JSON.stringify(newEmptySession));
                             $rootScope.sessionData = JSON.parse(localStorage.getItem("session"));
-                            $location.path("/Home");
+                            $location.path("/home");
                         }
                     }
                 });

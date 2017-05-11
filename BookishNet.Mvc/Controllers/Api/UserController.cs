@@ -1,12 +1,14 @@
 ﻿using System.Collections.Generic;
 using BookishNet.DataLayer.Models;
 using BookishNet.ServiceLayer.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace BookishNet.Mvc.Controllers.Api
 {
+    [Authorize]
     [Route("api/[controller]")]
     public class UserController : Controller
     {
@@ -58,6 +60,7 @@ namespace BookishNet.Mvc.Controllers.Api
             return _userService.CheckUserCredentials(username, password);
         }
 
+        [AllowAnonymous]
         [HttpGet("{users}/{user}/{username}")]
         public User GetUserByUsername(string username)
         {

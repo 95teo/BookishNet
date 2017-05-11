@@ -1,4 +1,4 @@
-﻿(function () {
+﻿(function() {
     "use strict";
 
     angular
@@ -10,7 +10,7 @@
     function loadingRequestDirective($http) {
         return {
             restrict: "A",
-            link: function (scope, elem) {
+            link: function(scope, elem) {
                 scope.isLoading = isLoading;
 
                 scope.$watch(scope.isLoading, toggleElement);

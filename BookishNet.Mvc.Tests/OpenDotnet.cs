@@ -2,7 +2,6 @@ using System;
 using System.Diagnostics;
 using System.IO;
 using Microsoft.DotNet.InternalAbstractions;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NUnit.Framework;
 using OpenQA.Selenium.Chrome;
 

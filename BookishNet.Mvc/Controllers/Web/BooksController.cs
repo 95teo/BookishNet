@@ -4,7 +4,7 @@
 
 namespace BookishNet.Mvc.Controllers.Web
 {
-    public class BookController : Controller
+    public class BooksController : Controller
     {
         // GET: /<controller>/
         public IActionResult Index()

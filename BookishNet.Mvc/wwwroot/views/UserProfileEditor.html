@@ -1,0 +1,47 @@
+﻿<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+    <h4 class="modal-title" id="editUserDataModalLabel">Editeaza informatiile despre profilul tau</h4>
+</div>
+
+<div class="modal-body">
+    <form role="form" name="edit" ng-submit="user.updateUserProfile()" novalidate>
+        <div class="row">
+            <div class="form-group col-xs-6">
+                <label for="secondName">Nume: </label>
+                <input type="text" class="form-control" placeholder="Nume" name="secondName" ng-model="user.secondName" id="secondName" required="">
+                <span class="help-block" ng-show="edit.secondName.$touched && edit.secondName.$error.required">The name is required.</span>
+            </div>
+            <div class="form-group col-xs-6">
+                <label for="firstName">Prenume: </label>
+                <input type="text" class="form-control" placeholder="Prenume" name="firstName" ng-model="user.firstName" id="firstName" required="">
+                <span class="help-block" ng-show="edit.firstName.$touched && edit.firstName.$error.required">The name is required.</span>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-xs-6">
+                <label for="address-edit">Adresa: </label>
+                <input type="text" class="form-control" placeholder="Adresa" name="address" ng-model="user.address" id="address-edit">
+            </div>
+            <div class="form-group col-xs-6">
+                <label for="email">Email: </label>
+                <input type="text" class="form-control" placeholder="Email" name="email" ng-model="user.email" id="email">
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-xs-6">
+                <label for="username">Nume utilizator: </label>
+                <input type="text" class="form-control" placeholder="Nume utilizator" name="username" ng-model="user.username" id="username">
+            </div>
+            <div class="form-group col-xs-6">
+                <label class="datepicker" for="birthday">Zi de nastere</label>
+                <input class="datepicker" type="date" placeholder="Zi de nastere" id="birthday" required=""/>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-success" ng-disabled="edit.$invalid">Salveaza modificarile</button>
+        <button class="btn btn-default" class="close" data-dismiss="modal" aria-label="Close" ng-click="cancelGeneralData()">Anuleaza editarea</button>
+    </form>
+</div>

@@ -32,8 +32,8 @@ namespace BookishNet.DataLayer.Repositories
 
         public void Update(Book obj)
         {
-            var myBook = _context.Books.FirstOrDefault(book => book.Id == obj.Id);
-            if (myBook == null) return;
+            /*var myBook = _context.Books.FirstOrDefault(book => book.Id == obj.Id);
+            if (myBook == null) return;*/
             _context.Books.Update(obj);
             _context.SaveChanges();
         }

@@ -10,32 +10,44 @@
                             controllerAs: "log",
                             templateUrl: "views/Login.html"
                         })
-                    .when("/Home",
+                    .when("/home",
                         {
                             controller: "homeController",
                             controllerAs: "home",
                             templateUrl: "views/Home.html"
                         })
-                    .when("/Register",
+                    .when("/register",
                         {
                             controller: "registerController",
                             controllerAs: "reg",
                             templateUrl: "views/Register.html"
                         })
-                    .when("/Book",
+                    .when("/books",
                         {
                             controller: "booksController",
                             controllerAs: "books",
                             templateUrl: "views/Books.html"
                         })
+                    .when("/books:bookId",
+                        {
+                            controller: "bookController",
+                            controllerAs: "book",
+                            templateUrl: "views/Book.html"
+                        })
+                    .when("/users:userId",
+                        {
+                            controller: "userController",
+                            controllerAs: "user",
+                            templateUrl: "views/UserProfile.html"
+                        })
                     .otherwise({
                         redirectTo: "/"
                     });
-                $locationProvider.html5Mode({
+                /*$locationProvider.html5Mode({
                     enabled: true,
                     requireBase: false,
                     rewriteLinks: true
-                });
+                });*/
             }
         ]);
 })();

@@ -12,13 +12,16 @@
   <ItemGroup>
     <Content Include="wwwroot\app\app.js" />
     <Content Include="wwwroot\app\appRoute.js" />
+    <Content Include="wwwroot\app\controllers\bookController.js" />
     <Content Include="wwwroot\app\controllers\booksController.js" />
     <Content Include="wwwroot\app\controllers\homeController.js" />
     <Content Include="wwwroot\app\controllers\loginController.js" />
     <Content Include="wwwroot\app\controllers\registerController.js" />
+    <Content Include="wwwroot\app\controllers\userController.js" />
     <Content Include="wwwroot\app\directives\bookItemDirective.js" />
-    <Content Include="wwwroot\app\directives\loaderSpinner.js" />
-    <Content Include="wwwroot\app\directives\loaderSpinnerDirective.js" />
+    <Content Include="wwwroot\app\directives\editBookDirective.js" />
+    <Content Include="wwwroot\app\directives\editUserDirective.js" />
+    <Content Include="wwwroot\app\directives\edtiBookDirective.js" />
     <Content Include="wwwroot\app\directives\loadingRequestDirective.js" />
     <Content Include="wwwroot\app\directives\passwordMatchDirective.js" />
     <Content Include="wwwroot\app\services\bookService.js" />
@@ -37,11 +40,15 @@
     <Content Include="wwwroot\assets\js\material-kit.js" />
     <Content Include="wwwroot\assets\js\material.min.js" />
     <Content Include="wwwroot\favicon.ico" />
+    <Content Include="wwwroot\views\Book.html" />
+    <Content Include="wwwroot\views\BookEditor.html" />
     <Content Include="wwwroot\views\Books.html" />
     <Content Include="wwwroot\views\BookView.html" />
     <Content Include="wwwroot\views\home.html" />
     <Content Include="wwwroot\views\login.html" />
     <Content Include="wwwroot\views\Register.html" />
+    <Content Include="wwwroot\views\UserProfile.html" />
+    <Content Include="wwwroot\views\UserProfileEditor.html" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="BCrypt.Net-Core" Version="1.4.0" />
@@ -63,7 +70,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
-    <Folder Include="Views\Book\" />
+    <Folder Include="Views\Books\" />
     <Folder Include="Views\Register\" />
   </ItemGroup>
 
