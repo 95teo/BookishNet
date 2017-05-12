@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using BookishNet.DataLayer.Models;
+using BookishNet.Mvc.Utilities;
 using BookishNet.ServiceLayer.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -37,6 +38,7 @@ namespace BookishNet.Mvc.Controllers.Api
         [HttpPost]
         public void Post([FromBody] User user)
         {
+            user.Password = Utility.Encryptpassword(user.Password);
             _userService.Add(user);
         }
 
@@ -44,6 +46,7 @@ namespace BookishNet.Mvc.Controllers.Api
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] User user)
         {
+            //user.Password = Utility.Encryptpassword(user.Password);
             _userService.Update(user);
         }
 

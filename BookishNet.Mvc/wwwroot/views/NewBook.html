@@ -1,0 +1,44 @@
+﻿<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+    <h4 class="modal-title" id="addBookModalLabel">Adauga o noua carte</h4>
+</div>
+
+<div class="modal-body">
+    <form role="form" name="add" ng-submit="addBook()" novalidate>
+        <div class="row">
+            <div class="form-group col-xs-6">
+                <label for="bookTitle">Titlu carte: </label>
+                <input type="text" class="form-control" placeholder="Titlu carte" name="title" ng-model="books.title" id="bookTitle" required="">
+                <span class="help-block" ng-show="add.title.$touched && add.title.$error.required">Titlul nu poate fi null.</span>
+            </div>
+            <div class="form-group col-xs-6">
+                <label for="genre">Alegeti genul cartii: </label>
+                <select ng-model="addFieldOfInterest" class="form-control" ng-options="field for field in fields" name="genre" id="genre"></select>
+                <!--<span class="help-block" ng-show="edit.genre.$touched && edit.genre.$error.required">Genul cartii este necesar.</span>-->
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-xs-12">
+                <label for="description">Descriere: </label>
+                <textarea class="form-control" placeholder="Descriere" name="details" id="description" ng-model="books.description"></textarea>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-xs-6">
+                <label for="author">Nume autor: </label>
+                <input type="text" class="form-control" placeholder="Nume autor" name="authorName" ng-model="books.authorName" id="author" required="">
+                <span class="help-block" ng-show="add.authorName.$touched && add.authorName.$error.required">Numele autorului este necesar.</span>
+            </div>
+            <div class="form-group col-xs-6">
+                <label for="year">Anul publicarii: </label>
+                <input type="number" class="form-control" name="publishingYear" min="1" max="2017" ng-model="books.publishingYear" id="year" required="">
+                <span class="help-block" ng-show="add.publishingYear.$touched && add.publishingYear.$error.required">Anul publicarii este necesar.</span>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-success" ng-disabled="add.$invalid">Adauga</button>
+        <button class="btn btn-default" class="close" data-dismiss="modal" aria-label="Close" ng-click="cancelAdd()">Anuleaza adaugarea</button>
+    </form>
+</div>

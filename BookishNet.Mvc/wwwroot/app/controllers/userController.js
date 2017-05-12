@@ -18,7 +18,7 @@
                 user.userEntity = response.data;
                 user.id = user.userEntity.id;
                 user.address = user.userEntity.address;
-                user.dateOfBirth = user.userEntity.dateOfBirth;
+                user.dateOfBirth = new Date(user.userEntity.dateOfBirth);
                 user.email = user.userEntity.email;
                 user.firstName = user.userEntity.firstName;
                 user.password = user.userEntity.password;
@@ -29,5 +29,37 @@
                 user.username = user.userEntity.username;
                 user.isDeleted = user.userEntity.isDeleted;
             });
+        user.updateUserProfile = function() {
+            var updateObj = {
+                "Id": userId,
+                "FirstName": user.firstName,
+                "SecondName": user.secondName,
+                "RoleId": user.roleId,
+                "Username": user.username,
+                "Password": user.password,
+                "Address": user.address,
+                "DateOfBirth": user.dateOfBirth,
+                "IsDeleted": user.isDeleted,
+                "Timestamp": user.timestamp,
+                "Email": user.email,
+                "Stars": user.stars
+            };
+            userService.updateUser(updateObj).then(function() {
+                userService.getUser(userId).then(function(response) {
+                    user.userEntity = response.data;
+                    $("#editUserDataModal").modal("toggle");
+                });
+            });
+        };
+        user.cancelEdit = function() {
+            user.address = user.userEntity.address;
+            user.dateOfBirth = new Date(user.userEntity.dateOfBirth);
+            user.email = user.userEntity.email;
+            user.firstName = user.userEntity.firstName;
+            user.password = user.userEntity.password;
+            user.secondName = user.userEntity.secondName;
+            user.username = user.userEntity.username;
+        };
+
     }
 })();

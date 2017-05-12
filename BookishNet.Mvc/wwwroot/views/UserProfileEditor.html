@@ -37,11 +37,11 @@
             </div>
             <div class="form-group col-xs-6">
                 <label class="datepicker" for="birthday">Zi de nastere</label>
-                <input class="datepicker" type="date" placeholder="Zi de nastere" id="birthday" required=""/>
+                <input class="datepicker" type="date" placeholder="Zi de nastere" id="birthday" ng-model="user.dateOfBirth" required=""/>
             </div>
         </div>
 
         <button type="submit" class="btn btn-success" ng-disabled="edit.$invalid">Salveaza modificarile</button>
-        <button class="btn btn-default" class="close" data-dismiss="modal" aria-label="Close" ng-click="cancelGeneralData()">Anuleaza editarea</button>
+        <button class="btn btn-default" class="close" data-dismiss="modal" aria-label="Close" ng-click="user.cancelEdit()">Anuleaza editarea</button>
     </form>
 </div>

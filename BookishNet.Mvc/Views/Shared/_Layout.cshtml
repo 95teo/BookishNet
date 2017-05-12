@@ -90,13 +90,23 @@
 <div>
     @RenderBody()
 </div>
+<div id="container">
+    <div ng-view></div>
+    <!--<div class="col-xs-6 col-lg-4 text-lg-right">
+        <button type="button" class="btn-info btn pull-right">Login</button>
+    </div>
+    -->
+</div>
+<footer class="text-center">
+    <p> ★ BookishNet te aduce la un click distanta/mai aproape de cartile tale preferate. ★</p>
+</footer>
 <environment names="Development">
     <!--Libraries-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.0/angular.min.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.0/angular-route.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0/angular-route.js"></script>
     <script src="https://code.angularjs.org/1.3.0/angular-animate.min.js"></script>
     <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/pbkdf2.min.js"></script>-->
     <script src="assets/js/material.min.js"></script>
@@ -110,6 +120,7 @@
     <script type="text/javascript" src="~/app/directives/loadingRequestDirective.js"></script>
     <script type="text/javascript" src="~/app/directives/passwordMatchDirective.js"></script>
     <script type="text/javascript" src="~/app/directives/bookItemDirective.js"></script>
+    <script type="text/javascript" src="~/app/directives/addBookDirective.js"></script>
     <script type="text/javascript" src="~/app/directives/editBookDirective.js"></script>
     <script type="text/javascript" src="~/app/directives/editUserDirective.js"></script>
     <!--Services-->

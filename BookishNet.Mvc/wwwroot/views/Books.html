@@ -13,6 +13,21 @@
             <li class="filter-item panel">
                 <input ng-model="book.publishingYear" class="form-control" type="text" placeholder="Anul publicarii">
             </li>
+            <li ng-if="sessionData.isLoggedIn">
+                <div class="row">
+                    <button type="button" class="add-job-btn pull-right btn btn-default btn-sm " data-toggle="modal" data-target="#addBookModal" data-backdrop="static" data-keyboard="false">
+                        <span class="glyphicon glyphicon-plus"></span>
+                        Adauga o carte
+                    </button>
+                </div>
+
+                <div class="modal fade" id="addBookModal" tabindex="-1" role="dialog" aria-labelledby="addBookModalLabel">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content" add-book-directive>
+                        </div>
+                    </div>
+                </div>
+            </li>
         </ul>
     </div>
 

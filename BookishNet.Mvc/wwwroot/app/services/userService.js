@@ -55,5 +55,23 @@
             };
             return deferred.promise;
         };
+        this.updateUser = function(user) {
+            var deferred = $q.defer();
+            var userId = $location.url().split(":")[1];
+            $http({
+                    method: "PUT",
+                    url: "http://localhost:45719/api/user/" + userId,
+                    data: JSON.stringify(user),
+                    headers: {
+                        'Content-Type': "application/json"
+                    }
+                })
+                .then(function successCallback(response) {
+                    return deferred.resolve(response);
+                }), function failCallback(response) {
+                return deferred.reject(response.data);
+            };
+            return deferred.promise;
+        };
     }
 })();
