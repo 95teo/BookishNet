@@ -34,6 +34,12 @@
                             controllerAs: "book",
                             templateUrl: "views/Book.html"
                         })
+                    .when("/users",
+                        {
+                            controller: "usersController",
+                            controllerAs: "users",
+                            templateUrl: "views/Users.html"
+                        })
                     .when("/users:userId",
                         {
                             controller: "userController",

@@ -1,4 +1,4 @@
-﻿<div class="col-lg-offset-3 col-lg-6 col-md-10 col-md-offset-1 col-xs-12">
+﻿<div class="col-lg-offset-3 col-lg-6 col-md-10 col-md-offset-1 col-xs-12" ng-if="sessionData.isLoggedIn">
     <div class="single-view-page-heading">
         <div class="single-view-page-picture-wrapper col-xs-4">
             <img class="single-view-page-picture" ng-src="">
@@ -71,4 +71,17 @@
             </div>
         </li>
     </ul>
+</div>
+<div ng-if="!sessionData.isLoggedIn" class="text-center">
+    <p>
+        <h3>Pentru a vedea mai multe detalii despre cartea dorita este necesara logarea.</h3>
+    </p>
+    <p>
+        <h3>Daca aveti un cont, logati-va <a href="#/home">aici</a>
+        </h3>
+    </p>
+    <p>
+        <h3>Daca nu aveti un cont, creati-va unul nou <a href="#/register">aici</a>
+        </h3>
+    </p>
 </div>

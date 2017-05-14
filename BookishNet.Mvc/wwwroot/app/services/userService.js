@@ -27,6 +27,21 @@
             };
             return deferred.promise;
         };
+
+        this.getUsers = function() {
+            var deferred = $q.defer();
+            $http({
+                    method: "GET",
+                    url: "http://localhost:45719/api/user"
+                })
+                .then(function successCallback(response) {
+                    return deferred.resolve(response);
+
+                }), function failCallback(response) {
+                return deferred.reject(response.data);
+            };
+            return deferred.promise;
+        };
         this.getUserDetails = function(username) {
             var deferred = $q.defer();
             $http({

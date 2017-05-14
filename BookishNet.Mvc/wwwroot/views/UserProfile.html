@@ -1,4 +1,4 @@
-﻿<div class="col-lg-offset-3 col-lg-6 col-md-10 col-md-offset-1 col-xs-12">
+﻿<div class="col-lg-offset-3 col-lg-6 col-md-10 col-md-offset-1 col-xs-12" ng-if="sessionData.isLoggedIn">
     <div class="single-view-page-heading">
         <div class="single-view-page-picture-wrapper col-xs-4">
             <img class="single-view-page-picture" ng-src="">
@@ -35,11 +35,11 @@
 
         <ul class="single-view-page-heading-details col-xs-7" style="padding-left: 30px;">
             <li>
-                <span class="details-glyph glyphicon glyphicon-duplicate"></span>
+                <span class="details-glyph glyphicon glyphicon-user"></span>
                 <p>{{ user.firstName }}</p>
             </li>
             <li>
-                <span class="details-glyph glyphicon glyphicon-map-marker"></span>
+                <span class="details-glyph glyphicon glyphicon-user"></span>
                 <p>{{ user.secondName }}</p>
             </li>
             <li>
@@ -59,7 +59,7 @@
                 <p> Data nasterii: {{ user.dateOfBirth | date:"dd/MM/yyyy"}}</p>
             </li>
             <li>
-                <span class="details-glyph glyphicon glyphicon-home"></span>
+                <span class="details-glyph glyphicon glyphicon-map-marker"></span>
                 <p>{{ user.address }}</p>
             </li>
         </ul>
@@ -136,4 +136,17 @@
         </li>
 
     </ul>
+</div>
+<div ng-if="!sessionData.isLoggedIn" class="text-center">
+    <p>
+        <h3>Ne pare rau, dar pentru aceasta actiune este necesara logarea.</h3>
+    </p>
+    <p>
+        <h3>Daca aveti un cont, logati-va <a href="#/home">aici</a>
+        </h3>
+    </p>
+    <p>
+        <h3>Daca nu aveti un cont, creati-va unul nou <a href="#/register">aici</a>
+        </h3>
+    </p>
 </div>

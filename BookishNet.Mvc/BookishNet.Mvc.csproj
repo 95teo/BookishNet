@@ -18,12 +18,14 @@
     <Content Include="wwwroot\app\controllers\loginController.js" />
     <Content Include="wwwroot\app\controllers\registerController.js" />
     <Content Include="wwwroot\app\controllers\userController.js" />
+    <Content Include="wwwroot\app\controllers\usersController.js" />
     <Content Include="wwwroot\app\directives\addBookDirective.js" />
     <Content Include="wwwroot\app\directives\bookItemDirective.js" />
     <Content Include="wwwroot\app\directives\editBookDirective.js" />
     <Content Include="wwwroot\app\directives\editUserDirective.js" />
     <Content Include="wwwroot\app\directives\loadingRequestDirective.js" />
     <Content Include="wwwroot\app\directives\passwordMatchDirective.js" />
+    <Content Include="wwwroot\app\directives\userItemDirective.js" />
     <Content Include="wwwroot\app\services\bookService.js" />
     <Content Include="wwwroot\app\services\loginService.js" />
     <Content Include="wwwroot\app\services\userService.js" />
@@ -50,6 +52,8 @@
     <Content Include="wwwroot\views\Register.html" />
     <Content Include="wwwroot\views\UserProfile.html" />
     <Content Include="wwwroot\views\UserProfileEditor.html" />
+    <Content Include="wwwroot\views\Users.html" />
+    <Content Include="wwwroot\views\UserView.html" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="BCrypt.Net-Core" Version="1.4.0" />

@@ -52,13 +52,16 @@
         </div>
         <ul class="nav navbar-nav navbar-right">
             <li ng-if="!sessionData.isLoggedIn">
-                <a href="#/home"><i class="fa fa-home"></i>Home</a>
+                <a href="#/home"><i class="fa fa-home"></i>Acasa</a>
             </li>
             <li>
-                <a href="#/books"><i class="fa fa-book"></i>Books</a>
+                <a href="#/books"><i class="fa fa-book"></i>Carti</a>
+            </li>
+            <li>
+                <a href="#/users"><i class="fa fa-book"></i>Utilizatori</a>
             </li>
             <li ng-if="!sessionData.isLoggedIn">
-                <a href="#/register"><i class="fa fa-plus"></i>Register</a>
+                <a href="#/register"><i class="fa fa-plus"></i>Inregistreaza-te</a>
             </li>
             <li ng-if="sessionData.isLoggedIn">
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -69,15 +72,15 @@
                             </button>
                             <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
                                 <li role="menuitem">
-                                    <a href="#/home"><i class="fa fa-home"></i> Home</a>
+                                    <a href="#/home"><i class="fa fa-home"></i>Acasa</a>
                                 </li>
 
                                 <li role="menuitem">
-                                    <a ng-if="sessionData.role === 'User'" ng-href="#/users:{{sessionData.id }}">Profile</a>
+                                    <a ng-if="sessionData.role === 'User'" ng-href="#/users:{{sessionData.id }}">Profil</a>
                                 </li>
                                 <li class="divider"></li>
                                 <li ng-if="sessionData.isLoggedIn" ng-controller="loginController">
-                                    <a href="#/logout" ng-click="logout()"><i class="fa fa-sign-out"></i> Logout </a>
+                                    <a href="#/logout" ng-click="logout()"><i class="fa fa-sign-out"></i> Delogheaza-te </a>
                                 </li>
                             </ul>
                         </li>
@@ -122,6 +125,7 @@
     <script type="text/javascript" src="~/app/directives/bookItemDirective.js"></script>
     <script type="text/javascript" src="~/app/directives/addBookDirective.js"></script>
     <script type="text/javascript" src="~/app/directives/editBookDirective.js"></script>
+    <script type="text/javascript" src="~/app/directives/userItemDirective.js"></script>
     <script type="text/javascript" src="~/app/directives/editUserDirective.js"></script>
     <!--Services-->
     <script type="text/javascript" src="~/app/services/loginService.js"></script>
@@ -133,6 +137,7 @@
     <script type="text/javascript" src="~/app/controllers/homeController.js"></script>
     <script type="text/javascript" src="~/app/controllers/booksController.js"></script>
     <script type="text/javascript" src="~/app/controllers/bookController.js"></script>
+    <script type="text/javascript" src="~/app/controllers/usersController.js"></script>
     <script type="text/javascript" src="~/app/controllers/userController.js"></script>
     <!--Routing-->
     <script type="text/javascript" src="~/app/appRoute.js"></script>

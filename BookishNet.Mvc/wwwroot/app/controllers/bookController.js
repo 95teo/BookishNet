@@ -13,18 +13,20 @@
         var bookId = $location.url().split(":")[1];
         var book = this;
         book.ctrlTitle = "bookController";
-        bookService.getBook(bookId)
-            .then(function(response) {
-                book.bookEntity = response.data;
-                book.title = book.bookEntity.title;
-                book.authorName = book.bookEntity.authorName;
-                book.publishingYear = book.bookEntity.publishingYear;
-                book.description = book.bookEntity.description;
-                book.genreId = book.bookEntity.genreId;
-                book.loanerId = book.bookEntity.loanerId;
-                book.isDeleted = book.bookEntity.isDeleted;
-                book.IsBorrowed = book.bookEntity.IsBorrowed;
-            });
+        if ($rootScope.sessionData.isLoggedIn) {
+            bookService.getBook(bookId)
+                .then(function(response) {
+                    book.bookEntity = response.data;
+                    book.title = book.bookEntity.title;
+                    book.authorName = book.bookEntity.authorName;
+                    book.publishingYear = book.bookEntity.publishingYear;
+                    book.description = book.bookEntity.description;
+                    book.genreId = book.bookEntity.genreId;
+                    book.loanerId = book.bookEntity.loanerId;
+                    book.isDeleted = book.bookEntity.isDeleted;
+                    book.IsBorrowed = book.bookEntity.IsBorrowed;
+                });
+        }
         book.removeBook = function() {
             bookService.deleteBook(bookId)
                 .then(function(response) {
