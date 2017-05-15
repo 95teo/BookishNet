@@ -21,6 +21,7 @@
     <Content Include="wwwroot\app\controllers\usersController.js" />
     <Content Include="wwwroot\app\directives\addBookDirective.js" />
     <Content Include="wwwroot\app\directives\bookItemDirective.js" />
+    <Content Include="wwwroot\app\directives\contactUserDirective.js" />
     <Content Include="wwwroot\app\directives\editBookDirective.js" />
     <Content Include="wwwroot\app\directives\editUserDirective.js" />
     <Content Include="wwwroot\app\directives\loadingRequestDirective.js" />
@@ -50,6 +51,7 @@
     <Content Include="wwwroot\views\login.html" />
     <Content Include="wwwroot\views\NewBook.html" />
     <Content Include="wwwroot\views\Register.html" />
+    <Content Include="wwwroot\views\UserContact.html" />
     <Content Include="wwwroot\views\UserProfile.html" />
     <Content Include="wwwroot\views\UserProfileEditor.html" />
     <Content Include="wwwroot\views\Users.html" />

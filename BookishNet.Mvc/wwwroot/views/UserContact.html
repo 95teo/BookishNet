@@ -1,0 +1,41 @@
+﻿<div>
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="contactUserModalLabel">Contacteaza utilizatorul</h4>
+    </div>
+
+    <div class="modal-body">
+        <form role="form" class="css-form" name="contact" ng-submit="sendContact()" novalidate>
+            <div class="form-group">
+                <label for="subject">Subiect email: </label>
+                <input type="text" class="form-control" placeholder="Subiect email" name="subject" id="subject" ng-model="email.subject" required="">
+                <div ng-show="contact.$submitted || contact.subject.$touched">
+                    <span ng-show="contact.subject.$error.required" class="help-block">Email-ul are nevoie de un subiect.</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="receiver">Email destinatar: </label>
+                <input type="email" class="form-control" placeholder="Email destinatar" name="receiver" id="receiver" ng-model="email.receiver" required="">
+                <div ng-show="contact.$submitted || contact.receiver.$touched">
+                    <span ng-show="contact.receiver.$error.required" class="help-block">Email-ul destinatarului trebuie sa existe.</span>
+                    <span ng-show="contact.receiver.$error.pattern" class="help-block">Introduceti un email valid(sa fie de forma: example@example.com).</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="sender">Email expeditor: </label>
+                <input type="email" class="form-control" placeholder="Email expeditor" name="sender" id="sender" ng-model="email.sender" required="">
+                <div ng-show="contact.$submitted || contact.sender.$touched">
+                    <span ng-show="contact.sender.$error.required" class="help-block">Email-ul expeditorului trebuie sa aiba o valoare valida.</span>
+                    <span ng-show="contact.sender.$error.pattern" class="help-block">Introduceti un email valid(sa fie de forma: example@example.com).</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="details">Continut mail</label>
+                <textarea class="form-control" name="details" ng-model="contactMotivation" id="details"></textarea>
+                <span ng-show="contact.details.$touched && contact.details.$error.required" class="help-block">Continutul email-ului aici.</span>
+            </div>
+            <button type="submit" class="btn btn-success" ng-disabled="contact.$invalid">Trimite email</button>
+            <button class="btn btn-default" class="close" data-dismiss="modal" aria-label="Close" ng-click="cancelContact()">Anuleaza</button>
+        </form>
+    </div>
+</div>
