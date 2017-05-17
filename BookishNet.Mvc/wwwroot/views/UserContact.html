@@ -1,11 +1,13 @@
-﻿<div>
+﻿<div ng-controller="emailController as email">
     <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
         <h4 class="modal-title" id="contactUserModalLabel">Contacteaza utilizatorul</h4>
     </div>
 
     <div class="modal-body">
-        <form role="form" class="css-form" name="contact" ng-submit="sendContact()" novalidate>
+        <form role="form" class="css-form" name="contact" ng-submit="sendEmail(contact)" novalidate>
             <div class="form-group">
                 <label for="subject">Subiect email: </label>
                 <input type="text" class="form-control" placeholder="Subiect email" name="subject" id="subject" ng-model="email.subject" required="">
@@ -31,11 +33,11 @@
             </div>
             <div class="form-group">
                 <label for="details">Continut mail</label>
-                <textarea class="form-control" name="details" ng-model="contactMotivation" id="details"></textarea>
+                <textarea class="form-control" name="details" ng-model="email.body" id="details"></textarea>
                 <span ng-show="contact.details.$touched && contact.details.$error.required" class="help-block">Continutul email-ului aici.</span>
             </div>
             <button type="submit" class="btn btn-success" ng-disabled="contact.$invalid">Trimite email</button>
-            <button class="btn btn-default" class="close" data-dismiss="modal" aria-label="Close" ng-click="cancelContact()">Anuleaza</button>
+            <button class="btn btn-default" class="close" data-dismiss="modal" aria-label="Close" ng-click="cancelSending(contact)">Anuleaza</button>
         </form>
     </div>
 </div>

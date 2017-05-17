@@ -155,3 +155,9 @@ h1 { color: #EEEEEE; }
     padding-bottom: 50px;
     width: 80%;
 }
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
