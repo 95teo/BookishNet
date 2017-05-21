@@ -8,7 +8,7 @@
     emailController.$inject = ["$location", "$rootScope", "$scope", "emailService"];
 
     function emailController($location, $rootScope, $scope, emailService) {
-        $rootScope.sessionData = JSON.parse(localStorage.getItem("session"));
+        $rootScope.sessionData = JSON.parse(sessionStorage.getItem("session"));
         /* jshint validthis:true */
         var email = this;
         email.title = "emailController";

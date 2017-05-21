@@ -8,7 +8,7 @@
     bookController.$inject = ["$rootScope", "$location", "bookService"];
 
     function bookController($rootScope, $location, bookService, $routeParams) {
-        $rootScope.sessionData = JSON.parse(localStorage.getItem("session"));
+        $rootScope.sessionData = JSON.parse(sessionStorage.getItem("session"));
         /* jshint validthis:true */
         var bookId = $location.url().split(":")[1];
         var book = this;

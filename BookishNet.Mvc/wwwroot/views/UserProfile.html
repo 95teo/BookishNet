@@ -67,22 +67,23 @@
 
     <ul class="single-view-page-details panel-body">
 
-        <li class="col-xs-12" ng-if="sessionData.role === 'candidate' && sessionData.id === user.id">
+        <li class="col-xs-12" ng-if="sessionData.role === 'User' || sessionData.role === 'Author' && sessionData.id === user.id">
             <div class="row">
-                <h3 class="profile-h3 inline-block">Jobs I applied for on this site</h3>
-                <h6 class="profile-h6 inline-block">(Visible only to you)</h6>
+                <h3 class="profile-h3 inline-block">Carti pe care le-am imprumutat pe acest site</h3>
+                <h6 class="profile-h6 inline-block">(Doar tu poti vedea asta)</h6>
                 <hr class="single-view-page-hr profile-hr">
                 <ul class="profile-ul">
-                    <li ng-repeat="userHistory in userHistories">
-                        <a ng-href="{{'#/job:' + userHistory.jobId}}">{{userHistory.jobName}}</a>
+                    <li ng-repeat="book in user.bookList| filter:book" ng-if="sessionData.id === book.loanerId  && book.isBorrowed">
+                        <a ng-href="#/books:{{book.id}}">{{book.title}}</a> de catre <a ng-href="#/users:{{book.borrowerId}}">{{user.borrowerUsername}}</a>
                     </li>
                 </ul>
+
             </div>
         </li>
 
         <li class="col-xs-12">
             <div class="row">
-                <h3 class="profile-h3 inline-block">Carti imprumutate</h3>
+                <h3 class="profile-h3 inline-block">Carti imprumutate de la alti utilizatori</h3>
                 <button type="button" class="add-job-btn pull-right btn btn-default btn-sm" data-toggle="modal" data-target="#addJobHistoryModal" data-backdrop="static" data-keyboard="false" ng-if="sessionData.role === 'candidate' && sessionData.id === user.id">
                     <span class="glyphicon glyphicon-plus"></span>
                     Add job
@@ -132,6 +133,18 @@
                     <div class="modal-content" edit-user-job-history-directive>
                     </div>
                 </div>
+            </div>
+        </li>
+        <li class="col-xs-12" ng-if="sessionData.role === 'User' || sessionData.role === 'Author' && sessionData.id === user.id">
+            <div class="row">
+                <h3 class="profile-h3 inline-block">Carti pe care nu le-am imprumutat inca</h3>
+                <hr class="single-view-page-hr profile-hr">
+                <ul class="profile-ul">
+                    <li ng-repeat="book in user.bookList| filter:book" ng-if="sessionData.id === book.loanerId && !book.isBorrowed">
+                        <a ng-href="#/books:{{book.id}}">{{book.title}}</a>
+                    </li>
+                </ul>
+
             </div>
         </li>
 

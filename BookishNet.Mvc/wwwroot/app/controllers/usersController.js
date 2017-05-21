@@ -8,7 +8,7 @@
     usersController.$inject = ["$rootScope", "$location", "userService"];
 
     function usersController($rootScope, $location, userService) {
-        $rootScope.sessionData = JSON.parse(localStorage.getItem("session"));
+        $rootScope.sessionData = JSON.parse(sessionStorage.getItem("session"));
         /* jshint validthis:true */
         var users = this;
         users.title = "usersController";

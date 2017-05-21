@@ -8,7 +8,7 @@
     booksController.$inject = ["$rootScope", "$scope", "$location", "bookService"];
 
     function booksController($rootScope, $scope, $location, bookService) {
-        $rootScope.sessionData = JSON.parse(localStorage.getItem("session"));
+        $rootScope.sessionData = JSON.parse(sessionStorage.getItem("session"));
         /* jshint validthis:true */
         var books = this;
         books.ctrlTitle = "booksController";

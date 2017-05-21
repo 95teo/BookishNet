@@ -8,7 +8,7 @@
     loginController.$inject = ["$rootScope", "$scope", "$location", "loginService", "userService"];
 
     function loginController($rootScope, $scope, $location, loginService, userService) {
-        if (localStorage.getItem("session") === null) {
+        if (sessionStorage.getItem("session") === null) {
 
             var emptySession = {
                 'id': "",
@@ -16,10 +16,10 @@
                 'role': "",
                 'isLoggedIn': false
             };
-            localStorage.removeItem("session");
-            localStorage.setItem("session", JSON.stringify(emptySession));
+            sessionStorage.removeItem("session");
+            sessionStorage.setItem("session", JSON.stringify(emptySession));
         }
-        $rootScope.sessionData = JSON.parse(localStorage.getItem("session"));
+        $rootScope.sessionData = JSON.parse(sessionStorage.getItem("session"));
         /* jshint validthis:true */
         var log = this;
         this.username = "";
@@ -56,9 +56,9 @@
                                     };
                                     log.show = false;
                                     log.logging = false;
-                                    localStorage.removeItem("session");
-                                    localStorage.setItem("session", JSON.stringify(session));
-                                    $rootScope.sessionData = JSON.parse(localStorage.getItem("session"));
+                                    sessionStorage.removeItem("session");
+                                    sessionStorage.setItem("session", JSON.stringify(session));
+                                    $rootScope.sessionData = JSON.parse(sessionStorage.getItem("session"));
                                     $location.path("/home");
                                 });
                         } else {
@@ -85,9 +85,9 @@
                                 'role': log.role,
                                 'isLoggedIn': log.isLoggedIn
                             };
-                            localStorage.removeItem("session");
-                            localStorage.setItem("session", JSON.stringify(newEmptySession));
-                            $rootScope.sessionData = JSON.parse(localStorage.getItem("session"));
+                            sessionStorage.removeItem("session");
+                            sessionStorage.setItem("session", JSON.stringify(newEmptySession));
+                            $rootScope.sessionData = JSON.parse(sessionStorage.getItem("session"));
                             $location.path("/home");
                         }
                     }

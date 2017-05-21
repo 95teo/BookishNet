@@ -8,7 +8,7 @@
     registerController.$inject = ["$rootScope", "$scope", "$location", "userService"];
 
     function registerController($rootScope, $scope, $location, userService) {
-        $rootScope.sessionData = JSON.parse(localStorage.getItem("session"));
+        $rootScope.sessionData = JSON.parse(sessionStorage.getItem("session"));
         /* jshint validthis:true */
         var reg = this;
         this.username = "";
