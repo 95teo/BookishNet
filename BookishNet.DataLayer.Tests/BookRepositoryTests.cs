@@ -152,6 +152,22 @@ namespace BookishNet.DataLayer.Tests
         }
 
         [TestMethod]
+        public void When_GetBooksByBorrowerIsCalledWithId1_Then_ShouldReturnAListOf2Books()
+        {
+            var publisherBooks = _bookRepository.GetByBorrowerId(2);
+
+            Assert.AreEqual(2, publisherBooks.Count());
+        }
+
+        [TestMethod]
+        public void When_GetBooksByBorrowerIsCalledWithInexistentId_Then_ShouldReturnAnEmptyList()
+        {
+            var publisherBooks = _bookRepository.GetByBorrowerId(4);
+
+            Assert.IsTrue(publisherBooks.IsNullOrEmpty());
+        }
+
+        [TestMethod]
         public void When_GetByAuthorIsCalledWithAlexandreDumas_Then_ShouldReturnAListOf3Books()
         {
             var books = _bookRepository.GetByAuthor(DummyAuthor);

@@ -53,5 +53,10 @@ namespace BookishNet.ServiceLayer.Services
         {
             return _bookRepository.GetByLoanerId(id);
         }
+
+        public IEnumerable<Book> GetByBorrowerId(int id)
+        {
+            return _bookRepository.GetByBorrowerId(id);
+        }
     }
 }

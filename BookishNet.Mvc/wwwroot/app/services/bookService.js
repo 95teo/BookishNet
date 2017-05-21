@@ -131,5 +131,19 @@
             };
             return deferred.promise;
         };
+        this.getBooksByBorrowerId = function(borrowerId) {
+            var deferred = $q.defer();
+            $http({
+                    method: "GET",
+                    url: "http://localhost:45719/api/book/book/books/user/loanerId/" + borrowerId
+                })
+                .then(function successCallback(response) {
+                    return deferred.resolve(response);
+
+                }), function failCallback(response) {
+                return deferred.reject(response.data);
+            };
+            return deferred.promise;
+        };
     }
 })();

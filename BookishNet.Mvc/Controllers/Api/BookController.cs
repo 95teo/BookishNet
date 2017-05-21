@@ -72,5 +72,11 @@ namespace BookishNet.Mvc.Controllers.Api
         {
             return _bookService.GetByLoanerId(loanerId);
         }
+
+        [HttpGet("{book}/{books}/{user}/{loanerId}/{borrowerId}")]
+        public IEnumerable<Book> GetByBorrowerId(int borrowerId)
+        {
+            return _bookService.GetByBorrowerId(borrowerId);
+        }
     }
 }

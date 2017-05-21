@@ -61,5 +61,10 @@ namespace BookishNet.DataLayer.Repositories
         {
             return _context.Books.Where(book => book.LoanerId == id).ToList();
         }
+
+        public IEnumerable<Book> GetByBorrowerId(int id)
+        {
+            return _context.Books.Where(book => book.BorrowerId == id).ToList();
+        }
     }
 }

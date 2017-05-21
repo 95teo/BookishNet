@@ -67,75 +67,32 @@
 
     <ul class="single-view-page-details panel-body">
 
-        <li class="col-xs-12" ng-if="sessionData.role === 'User' || sessionData.role === 'Author' && sessionData.id === user.id">
+        <li class="col-xs-12" ng-if="(sessionData.role === 'User' || sessionData.role === 'Author') && sessionData.id === user.id">
             <div class="row">
                 <h3 class="profile-h3 inline-block">Carti pe care le-am imprumutat pe acest site</h3>
                 <h6 class="profile-h6 inline-block">(Doar tu poti vedea asta)</h6>
                 <hr class="single-view-page-hr profile-hr">
                 <ul class="profile-ul">
                     <li ng-repeat="book in user.bookList| filter:book" ng-if="sessionData.id === book.loanerId  && book.isBorrowed">
-                        <a ng-href="#/books:{{book.id}}">{{book.title}}</a> de catre <a ng-href="#/users:{{book.borrowerId}}">{{user.borrowerUsername}}</a>
+                        <a ng-href="#/books:{{book.id}}">{{book.title}}</a> de catre <a ng-href="#/users:{{book.borrowerId}}">{{book.username}}</a>
                     </li>
                 </ul>
 
             </div>
         </li>
 
-        <li class="col-xs-12">
+        <li class="col-xs-12" ng-if="(sessionData.role === 'User' || sessionData.role === 'Author') && sessionData.id === user.id">
             <div class="row">
                 <h3 class="profile-h3 inline-block">Carti imprumutate de la alti utilizatori</h3>
-                <button type="button" class="add-job-btn pull-right btn btn-default btn-sm" data-toggle="modal" data-target="#addJobHistoryModal" data-backdrop="static" data-keyboard="false" ng-if="sessionData.role === 'candidate' && sessionData.id === user.id">
-                    <span class="glyphicon glyphicon-plus"></span>
-                    Add job
-                </button>
-            </div>
-
-            <div class="modal fade" id="addJobHistoryModal" tabindex="-1" role="dialog" aria-labelledby="addJobHistoryModalLabel">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content" add-user-job-history-directive>
-                    </div>
-                </div>
-            </div>
-
-            <hr class="user-profile-hr">
-
-            <ul>
-                <li ng-repeat="userJobHistory in userJobsHistory">
-                    <div class="panel panel-default">
-                        <div class="panel-heading user-jobs-heading">
-                            <h2 class="panel-title inline-block">{{ userJobHistory.jobName }}</h2> at {{ userJobHistory.companyName }} <br>
-                            <h6 class="inline-block">{{ userJobHistory.dateStarted | date:"dd/MM/yyyy"}} - {{ userJobHistory.dateFinished | date:"dd/MM/yyyy" }}</h6>
-                            <button data-jobId="{{userJobHistory.jobId}}" type="button" class="pull-right btn btn-default btn-sm " data-toggle="modal" data-target="#editJobHistoryModal" data-backdrop="static" data-keyboard="false" ng-attr-id="{{userJobHistory.jobId}}" ng-if="sessionData.role === 'candidate' && sessionData.id === user.id">
-                                <span class="glyphicon glyphicon-pencil"></span>
-                                Edit job
-                            </button>
-                        </div>
-                        <div class="panel-body user-jobs-body ">
-                            <h4>What I did there</h4>
-                            <p>{{ userJobHistory.responsibilities }}</p>
-                            <h4>Skills used/acquired</h4>
-                            <p>{{ userJobHistory.skills }}</p>
-
-                        </div>
-                        <div class="user-jobs-footer panel-footer">
-                            <h6>
-                                {{ userJobHistory.majorField }}
-                                |
-                                {{ userJobHistory.typeOfJob }}
-                            </h6>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-
-            <div class="modal fade" id="editJobHistoryModal" tabindex="-1" role="dialog" aria-labelledby="editJobHistoryModalLabel">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content" edit-user-job-history-directive>
-                    </div>
-                </div>
+                <hr class="single-view-page-hr profile-hr">
+                <ul class="profile-ul">
+                    <li ng-repeat="borrowedBook in user.borrowedBookList| filter:borrowedBook" ng-if="sessionData.id === borrowedBook.borrowerId  && borrowedBook.isBorrowed">
+                        <a ng-href="#/books:{{borrowedBook.id}}">{{borrowedBook.title}}</a> de la <a ng-href="#/users:{{borrowedBook.loanerId}}">{{borrowedBook.username}}</a>
+                    </li>
+                </ul>
             </div>
         </li>
-        <li class="col-xs-12" ng-if="sessionData.role === 'User' || sessionData.role === 'Author' && sessionData.id === user.id">
+        <li class="col-xs-12" ng-if="(sessionData.role === 'User' || sessionData.role === 'Author') && sessionData.id === user.id">
             <div class="row">
                 <h3 class="profile-h3 inline-block">Carti pe care nu le-am imprumutat inca</h3>
                 <hr class="single-view-page-hr profile-hr">
