@@ -1,124 +1,126 @@
-﻿<div class="col-lg-offset-3 col-lg-6 col-md-10 col-md-offset-1 col-xs-12" ng-if="sessionData.isLoggedIn">
-    <div class="single-view-page-heading">
-        <div class="single-view-page-picture-wrapper col-xs-4">
-            <img class="single-view-page-picture" ng-src="">
-        </div>
-        <div class="col-xs-8">
-            <h1 class="inline-block" style="padding-left: 15px;">{{ user.username }}</h1>
-            <button style="margin-top: 7.5px;" type="button" class="btn btn-sm btn-default inline-block pull-right" data-toggle="modal" data-target="#editUserDataModal" data-backdrop="static" data-keyboard="false" ng-if="sessionData.id === user.id">
-                <span class="glyphicon glyphicon-pencil"></span>
-                Editeaza profilul
-            </button>
-            <button style="margin-top: 7.5px;" type="button" class="btn btn-sm btn-default inline-block pull-right" data-toggle="modal" data-target="#contactUserModal" data-backdrop="static" data-keyboard="false" ng-if="sessionData.id !== user.id">
-                <span class="glyphicon glyphicon-pencil"></span>
-                Contacteaza utilizatorul
-            </button>
-        </div>
+﻿<div class="container">
+    <div class="col-lg-offset-3 col-lg-6 col-md-10 col-md-offset-1 col-xs-12" ng-if="sessionData.isLoggedIn">
+        <div class="single-view-page-heading">
+            <div class="single-view-page-picture-wrapper col-xs-4">
+                <img class="single-view-page-picture" ng-src="">
+            </div>
+            <div class="col-xs-8">
+                <h1 class="inline-block" style="padding-left: 15px;">{{ user.username }}</h1>
+                <button style="margin-top: 7.5px;" type="button" class="btn btn-sm btn-default inline-block pull-right" data-toggle="modal" data-target="#editUserDataModal" data-backdrop="static" data-keyboard="false" ng-if="sessionData.id === user.id">
+                    <span class="glyphicon glyphicon-pencil"></span>
+                    Editeaza profilul
+                </button>
+                <button style="margin-top: 7.5px;" type="button" class="btn btn-sm btn-default inline-block pull-right" data-toggle="modal" data-target="#contactUserModal" data-backdrop="static" data-keyboard="false" ng-if="sessionData.id !== user.id">
+                    <span class="glyphicon glyphicon-envelope"></span>
+                    Contacteaza utilizatorul
+                </button>
+            </div>
 
-        <div class="col-xs-8">
-            <hr style="margin-left: 15px;" class="single-view-page-hr">
-        </div>
+            <div class="col-xs-8">
+                <hr style="margin-left: 15px;" class="single-view-page-hr">
+            </div>
 
-        <div class="modal fade" id="editUserDataModal" tabindex="-1" role="dialog" aria-labelledby="editUserDataModalLabel">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content" edit-user-directive>
+            <div class="modal fade" id="editUserDataModal" tabindex="-1" role="dialog" aria-labelledby="editUserDataModalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content" edit-user-directive>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="modal fade" id="contactUserModal" tabindex="-1" role="dialog" aria-labelledby="contactUserModalLabel">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content" contact-user-directive>
+            <div class="modal fade" id="contactUserModal" tabindex="-1" role="dialog" aria-labelledby="contactUserModalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content" contact-user-directive>
+                    </div>
                 </div>
             </div>
+
+            <ul class="single-view-page-heading-details col-xs-7" style="padding-left: 30px;">
+                <li>
+                    <span class="details-glyph glyphicon glyphicon-user"></span>
+                    <p>{{ user.firstName }}</p>
+                </li>
+                <li>
+                    <span class="details-glyph glyphicon glyphicon-user"></span>
+                    <p>{{ user.secondName }}</p>
+                </li>
+                <li>
+                    <span class="details-glyph glyphicon glyphicon-time"></span>
+                    <p> Data primului login: {{ user.timestamp | date:"dd/MM/yyyy"}}</p>
+                </li>
+                <li>
+                    <span class="details-glyph glyphicon glyphicon-envelope"></span>
+                    <p>{{ user.email }}</p>
+                </li>
+                <li>
+                    <span class="details-glyph glyphicon glyphicon-earphone"></span>
+                    <p>{{ user.phone }}</p>
+                </li>
+                <li>
+                    <span class="details-glyph glyphicon glyphicon-time"></span>
+                    <p> Data nasterii: {{ user.dateOfBirth | date:"dd/MM/yyyy"}}</p>
+                </li>
+                <li>
+                    <span class="details-glyph glyphicon glyphicon-map-marker"></span>
+                    <p>{{ user.address }}</p>
+                </li>
+            </ul>
         </div>
 
-        <ul class="single-view-page-heading-details col-xs-7" style="padding-left: 30px;">
-            <li>
-                <span class="details-glyph glyphicon glyphicon-user"></span>
-                <p>{{ user.firstName }}</p>
+        <ul class="single-view-page-details panel-body">
+
+            <li class="col-xs-12" ng-if="(sessionData.role === 'User' || sessionData.role === 'Author') && sessionData.id === user.id">
+                <div class="row">
+                    <h3 class="profile-h3 inline-block">Carti pe care le-am imprumutat pe acest site</h3>
+                    <h6 class="profile-h6 inline-block">(Doar tu poti vedea asta)</h6>
+                    <hr class="single-view-page-hr profile-hr">
+                    <ul class="profile-ul">
+                        <li ng-repeat="book in user.bookList| filter:book" ng-if="sessionData.id === book.loanerId  && book.isBorrowed">
+                            <a ng-href="#/books:{{book.id}}">{{book.title}}</a> de catre <a ng-href="#/users:{{book.borrowerId}}">{{book.username}}</a>
+                        </li>
+                    </ul>
+
+                </div>
             </li>
-            <li>
-                <span class="details-glyph glyphicon glyphicon-user"></span>
-                <p>{{ user.secondName }}</p>
+
+            <li class="col-xs-12" ng-if="(sessionData.role === 'User' || sessionData.role === 'Author') && sessionData.id === user.id">
+                <div class="row">
+                    <h3 class="profile-h3 inline-block">Carti imprumutate de la alti utilizatori</h3>
+                    <hr class="single-view-page-hr profile-hr">
+                    <ul class="profile-ul">
+                        <li ng-repeat="borrowedBook in user.borrowedBookList| filter:borrowedBook" ng-if="sessionData.id === borrowedBook.borrowerId  && borrowedBook.isBorrowed">
+                            <a ng-href="#/books:{{borrowedBook.id}}">{{borrowedBook.title}}</a> de la <a ng-href="#/users:{{borrowedBook.loanerId}}">{{borrowedBook.username}}</a>
+                        </li>
+                    </ul>
+                </div>
             </li>
-            <li>
-                <span class="details-glyph glyphicon glyphicon-time"></span>
-                <p> Data primului login: {{ user.timestamp | date:"dd/MM/yyyy"}}</p>
+            <li class="col-xs-12" ng-if="(sessionData.role === 'User' || sessionData.role === 'Author') && sessionData.id === user.id">
+                <div class="row">
+                    <h3 class="profile-h3 inline-block">Carti pe care nu le-am imprumutat inca</h3>
+                    <hr class="single-view-page-hr profile-hr">
+                    <ul class="profile-ul">
+                        <li ng-repeat="book in user.bookList| filter:book" ng-if="sessionData.id === book.loanerId && !book.isBorrowed">
+                            <a ng-href="#/books:{{book.id}}">{{book.title}}</a>
+                        </li>
+                    </ul>
+
+                </div>
             </li>
-            <li>
-                <span class="details-glyph glyphicon glyphicon-envelope"></span>
-                <p>{{ user.email }}</p>
-            </li>
-            <li>
-                <span class="details-glyph glyphicon glyphicon-earphone"></span>
-                <p>{{ user.phone }}</p>
-            </li>
-            <li>
-                <span class="details-glyph glyphicon glyphicon-time"></span>
-                <p> Data nasterii: {{ user.dateOfBirth | date:"dd/MM/yyyy"}}</p>
-            </li>
-            <li>
-                <span class="details-glyph glyphicon glyphicon-map-marker"></span>
-                <p>{{ user.address }}</p>
-            </li>
+
         </ul>
     </div>
-
-    <ul class="single-view-page-details panel-body">
-
-        <li class="col-xs-12" ng-if="(sessionData.role === 'User' || sessionData.role === 'Author') && sessionData.id === user.id">
-            <div class="row">
-                <h3 class="profile-h3 inline-block">Carti pe care le-am imprumutat pe acest site</h3>
-                <h6 class="profile-h6 inline-block">(Doar tu poti vedea asta)</h6>
-                <hr class="single-view-page-hr profile-hr">
-                <ul class="profile-ul">
-                    <li ng-repeat="book in user.bookList| filter:book" ng-if="sessionData.id === book.loanerId  && book.isBorrowed">
-                        <a ng-href="#/books:{{book.id}}">{{book.title}}</a> de catre <a ng-href="#/users:{{book.borrowerId}}">{{book.username}}</a>
-                    </li>
-                </ul>
-
-            </div>
-        </li>
-
-        <li class="col-xs-12" ng-if="(sessionData.role === 'User' || sessionData.role === 'Author') && sessionData.id === user.id">
-            <div class="row">
-                <h3 class="profile-h3 inline-block">Carti imprumutate de la alti utilizatori</h3>
-                <hr class="single-view-page-hr profile-hr">
-                <ul class="profile-ul">
-                    <li ng-repeat="borrowedBook in user.borrowedBookList| filter:borrowedBook" ng-if="sessionData.id === borrowedBook.borrowerId  && borrowedBook.isBorrowed">
-                        <a ng-href="#/books:{{borrowedBook.id}}">{{borrowedBook.title}}</a> de la <a ng-href="#/users:{{borrowedBook.loanerId}}">{{borrowedBook.username}}</a>
-                    </li>
-                </ul>
-            </div>
-        </li>
-        <li class="col-xs-12" ng-if="(sessionData.role === 'User' || sessionData.role === 'Author') && sessionData.id === user.id">
-            <div class="row">
-                <h3 class="profile-h3 inline-block">Carti pe care nu le-am imprumutat inca</h3>
-                <hr class="single-view-page-hr profile-hr">
-                <ul class="profile-ul">
-                    <li ng-repeat="book in user.bookList| filter:book" ng-if="sessionData.id === book.loanerId && !book.isBorrowed">
-                        <a ng-href="#/books:{{book.id}}">{{book.title}}</a>
-                    </li>
-                </ul>
-
-            </div>
-        </li>
-
-    </ul>
-</div>
-<div ng-if="!sessionData.isLoggedIn" class="text-center">
-    <p>
-        <h3>Ne pare rau, dar pentru aceasta actiune este necesara logarea.</h3>
-    </p>
-    <p>
-        <h3>
-            Daca aveti un cont, logati-va <a href="#/home">aici</a>
-        </h3>
-    </p>
-    <p>
-        <h3>
-            Daca nu aveti un cont, creati-va unul nou <a href="#/register">aici</a>
-        </h3>
-    </p>
+    <div ng-if="!sessionData.isLoggedIn" class="text-center">
+        <p>
+            <h3>Ne pare rau, dar pentru aceasta actiune este necesara logarea.</h3>
+        </p>
+        <p>
+            <h3>
+                Daca aveti un cont, logati-va <a href="#/home">aici</a>
+            </h3>
+        </p>
+        <p>
+            <h3>
+                Daca nu aveti un cont, creati-va unul nou <a href="#/register">aici</a>
+            </h3>
+        </p>
+    </div>
 </div>

@@ -30,6 +30,7 @@
     <Content Include="wwwroot\app\directives\userItemDirective.js" />
     <Content Include="wwwroot\app\services\bookService.js" />
     <Content Include="wwwroot\app\services\emailService.js" />
+    <Content Include="wwwroot\app\services\genreService.js" />
     <Content Include="wwwroot\app\services\loginService.js" />
     <Content Include="wwwroot\app\services\userService.js" />
     <Content Include="wwwroot\assets\css\animations.css" />

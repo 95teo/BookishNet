@@ -15,10 +15,12 @@
             </div>
             <div class="form-group col-xs-6">
                 <label for="genre">Alegeti genul cartii: </label>
-                <select ng-model="editFieldOfInterest" class="form-control" ng-options="field for field in fields" name="genre" id="genre">
-                </select>
-                <!--<span class="help-block" ng-show="edit.genre.$touched && edit.genre.$error.required">Genul cartii este necesar.</span>-->
+                <input type="text" class="form-control" ng-model="book.genre" name="genre" placeholder="Introduceti genul aici" list="genres" required="">
+                <span class="help-block" ng-show="edit.genre.$touched && edit.genre.$error.required">Genul cartii este necesar.</span>
             </div>
+            <datalist id="genres">
+                <option ng-repeat="genre in book.genreList|filter:genre.id" value="{{genre.name}}">
+            </datalist>
         </div>
         <div class="row">
             <div class="form-group col-xs-12">

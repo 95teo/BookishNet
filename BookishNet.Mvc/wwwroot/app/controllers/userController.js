@@ -33,13 +33,11 @@
             bookService.getBooksByLoanerId(userId)
                 .then(function(response) {
                     user.bookList = response.data;
-                    //user.bookList["username"] = "";
                     for (var i = 0; i < user.bookList.length; i++) {
                         if (user.bookList[i].borrowerId != null) {
                             angular.extend(user.bookList[i], { "username": "" });
                             userService.getUser(user.bookList[i].borrowerId)
                                 .then(function(userObj) {
-                                    //user.bookList[i].username = "";
                                     i--;
                                     user.bookList[i].username = userObj.data.username;
                                 });
@@ -49,13 +47,11 @@
             bookService.getBooksByBorrowerId(userId)
                 .then(function(response) {
                     user.borrowedBookList = response.data;
-                    //user.bookList["username"] = "";
                     for (var i = 0; i < user.borrowedBookList.length; i++) {
                         if (user.borrowedBookList[i].loanerId != null) {
                             angular.extend(user.borrowedBookList[i], { "username": "" });
                             userService.getUser(user.borrowedBookList[i].loanerId)
                                 .then(function(userObj) {
-                                    //user.bookList[i].username = "";
                                     i--;
                                     user.borrowedBookList[i].username = userObj.data.username;
                                 });

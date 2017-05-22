@@ -15,8 +15,8 @@
             </div>
             <div class="form-group col-xs-6">
                 <label for="genre">Alegeti genul cartii: </label>
-                <select ng-model="addFieldOfInterest" class="form-control" ng-options="field for field in fields" name="genre" id="genre"></select>
-                <!--<span class="help-block" ng-show="edit.genre.$touched && edit.genre.$error.required">Genul cartii este necesar.</span>-->
+                <select ng-model="books.genre" class="form-control" ng-options="genre.name for genre in books.genreList" name="genre" id="genre" required=""></select>
+                <span class="help-block" ng-show="add.genre.$touched && add.genre.$error.required">Genul cartii este necesar.</span>
             </div>
         </div>
         <div class="row">

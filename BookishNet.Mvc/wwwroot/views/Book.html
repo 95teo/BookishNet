@@ -1,89 +1,116 @@
-﻿<div class="col-lg-offset-3 col-lg-6 col-md-10 col-md-offset-1 col-xs-12" ng-if="sessionData.isLoggedIn">
-    <div class="single-view-page-heading">
-        <div class="single-view-page-picture-wrapper col-xs-4">
-            <img class="single-view-page-picture" ng-src="">
-        </div>
-        <div class="col-xs-8">
-            <h1 class="inline-block" style="padding-left: 15px;">{{ book.title }}</h1>
-            <button style="margin-top: 7.5px;" type="button" class="btn btn-default btn-sm inline-block pull-right" data-toggle="modal" data-target="#editBookModal" data-backdrop="static" data-keyboard="false" ng-if="sessionData.role === 'User' && sessionData.id === book.loanerId">
-                <span class="glyphicon glyphicon-pencil"></span>
-                Editeaza detalii despre carte
-            </button>
-            <button style="margin-top: 7.5px;" type="button" class="btn btn-default btn-sm inline-block pull-right" ng-if="sessionData.role === 'User' && sessionData.id === book.loanerId" ng-click="book.removeBook()">
-                <span class="glyphicon glyphicon-remove"></span>
-                Sterge cartea
-            </button>
-        </div>
-
-        <div class="col-xs-8">
-            <hr style="margin-left: 15px;" class="single-view-page-hr">
-        </div>
-
-        <div class="modal fade" id="editBookModal" tabindex="-1" role="dialog" aria-labelledby="editBookModalLabel">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content" edit-book-directive>
-                </div>
+﻿<div class="container">
+    <div class="col-lg-offset-3 col-lg-6 col-md-10 col-md-offset-1 col-xs-12" ng-if="sessionData.isLoggedIn">
+        <div class="single-view-page-heading">
+            <div class="single-view-page-picture-wrapper col-xs-4">
+                <img class="single-view-page-picture" ng-src="">
             </div>
-        </div>
+            <div class="col-xs-8">
+                <h1 class="inline-block" style="padding-left: 15px;">{{ book.title }}</h1>
+                <button style="margin-top: 7.5px;" type="button" class="btn btn-info btn-sm inline-block pull-right" data-toggle="modal" data-target="#editBookModal" data-backdrop="static" data-keyboard="false" ng-if="sessionData.role === 'User' && sessionData.id === book.loanerId">
+                    <span class="glyphicon glyphicon-pencil"></span>
+                    Editeaza detalii despre carte
+                </button>
+                <button style="margin-top: 7.5px;" type="button" class="btn btn-danger btn-sm inline-block pull-right" ng-if="sessionData.role === 'User' && sessionData.id === book.loanerId" ng-click="book.removeBook()">
+                    <span class="glyphicon glyphicon-remove"></span>
+                    Sterge cartea
+                </button>
+                <button style="margin-top: 7.5px;" type="button" class="btn btn-success btn-sm inline-block pull-right" ng-if="sessionData.role === 'User' && sessionData.id === book.loanerId && !book.isBorrowed && book.canAddBorrower" ng-click="book.preAddBorrower()">
+                    <span class="glyphicon glyphicon-plus"></span>
+                    Adauga la carti imprumutate
+                </button>
+                <button style="margin-top: 7.5px;" type="button" class="btn btn-danger btn-sm inline-block pull-right" ng-if="sessionData.role === 'User' && sessionData.id === book.loanerId && book.isBorrowed" ng-click="book.removeBorrower()">
+                    <span class="glyphicon glyphicon-remove"></span>
+                    Inlatura cartea din lista de carti imprumutate
+                </button>
 
-        <ul class="single-view-page-heading-details col-xs-7" style="padding-left: 30px;">
-            <li>
-                <span class="details-glyph glyphicon glyphicon-briefcase"></span>
-                <p>{{ book.authorName }}</p>
-            </li>
-            <li>
-                <span class="details-glyph glyphicon glyphicon-map-marker"></span>
-                <p>{{ book.description }}</p>
-            </li>
-            <li>
-                <span class="details-glyph glyphicon glyphicon-time"></span>
-                <p>{{ book.publishingYear }}</p>
-            </li>
-            <li>
-                <span class="details-glyph glyphicon glyphicon-duplicate"></span>
-                <p>{{ book.description }}</p>
-            </li>
-        </ul>
-    </div>
+            </div>
+            <div class="col-xs-8" ng-if="!book.canAddBorrower">
+                <input type="text" class="form-control" ng-model="book.user.username" name="genre" placeholder="Introduceti numele utilizatorului aici..." list="users" required="">
+                <datalist id="users">
+                    <option ng-repeat="user in book.userList|filter:user.id" value="{{user.username}}">
+                </datalist>
+                <button style="margin-top: 7.5px;" type="button" class="btn btn-success btn-sm inline-block pull-right" ng-if="sessionData.role === 'User' && sessionData.id === book.loanerId && !book.isBorrowed" ng-click="book.addBorrower()">
+                    <span class="glyphicon glyphicon-plus"></span>
+                    Adauga la carti imprumutate
+                </button>
 
-    <ul class="single-view-page-details panel-body">
-        <li class="col-xs-12">
-            <h3>Description</h3>
-            <hr class="single-view-page-hr">
-            <p class="job-descr-p">{{book.description}}</p>
-        </li>
-        <li class="col-xs-12">
-            <h3>Requirements</h3>
-            <hr class="single-view-page-hr">
-            <p class="job-descr-p">{{job.criteria}}</p>
-        </li>
-        <li class="col-xs-12">
-            <h6>Apply until {{job.deadline | date:"dd MMMM yyyy" }} | {{job.available}} available positions</h6>
-        </li>
-        <li>
-            <button class="apply-button btn btn-primary" data-toggle="modal" data-target="#applyModal" data-backdrop="static" data-keyboard="false" ng-if="sessionData.role === 'User'">Apply now >></button>
+                <button style="margin-top: 7.5px;" type="button" class="btn btn-danger btn-sm inline-block pull-right" ng-if="sessionData.role === 'User' && sessionData.id === book.loanerId && !book.isBorrowed" ng-click="book.abordAddBorrower()">
+                    <span class="glyphicon glyphicon-remove"></span>
+                    Anuleaza operatia
+                </button>
 
-            <div class="modal fade" id="applyModal" tabindex="-1" role="dialog" aria-labelledby="applyModalLabel">
+            </div>
+
+            <div class="col-xs-8">
+                <hr style="margin-left: 15px;" class="single-view-page-hr">
+            </div>
+
+            <div class="modal fade" id="editBookModal" tabindex="-1" role="dialog" aria-labelledby="editBookModalLabel">
                 <div class="modal-dialog" role="document">
-                    <div class="modal-content" apply-form-directive>
+                    <div class="modal-content" edit-book-directive>
                     </div>
                 </div>
             </div>
-        </li>
-    </ul>
-</div>
-<div ng-if="!sessionData.isLoggedIn" class="text-center">
-    <p>
-        <h3>Pentru a vedea mai multe detalii despre cartea dorita este necesara logarea.</h3>
-    </p>
-    <p>
-        <h3>
-            Daca aveti un cont, logati-va <a href="#/home">aici</a>
-        </h3>
-    </p>
-    <p>
-        <h3>
-            Daca nu aveti un cont, creati-va unul nou <a href="#/register">aici</a>
-        </h3>
-    </p>
+
+            <ul class="single-view-page-heading-details col-xs-7" style="padding-left: 30px;">
+                <li>
+                    <span class="details-glyph glyphicon glyphicon-briefcase"></span>
+                    <p>{{ book.authorName }}</p>
+                </li>
+                <li>
+                    <span class="details-glyph glyphicon glyphicon-map-marker"></span>
+                    <p>{{ book.description }}</p>
+                </li>
+                <li>
+                    <span class="details-glyph glyphicon glyphicon-time"></span>
+                    <p>{{ book.publishingYear }}</p>
+                </li>
+                <li>
+                    <span class="details-glyph glyphicon glyphicon-duplicate"></span>
+                    <p>{{ book.description }}</p>
+                </li>
+            </ul>
+        </div>
+
+        <ul class="single-view-page-details panel-body">
+            <li class="col-xs-12">
+                <h3>Description</h3>
+                <hr class="single-view-page-hr">
+                <p class="job-descr-p">{{book.description}}</p>
+            </li>
+            <li class="col-xs-12">
+                <h3>Requirements</h3>
+                <hr class="single-view-page-hr">
+                <p class="job-descr-p">{{job.criteria}}</p>
+            </li>
+            <li class="col-xs-12">
+                <h6>Apply until {{job.deadline | date:"dd MMMM yyyy" }} | {{job.available}} available positions</h6>
+            </li>
+            <li class="col-xs-12">
+                <button class="apply-button btn btn-primary" data-toggle="modal" data-target="#contactUserModal" data-backdrop="static" data-keyboard="false" ng-if="sessionData.id !== book.loanerId">Contacteaza utilizatorul >></button>
+
+                <div class="modal fade" id="contactUserModal" tabindex="-1" role="dialog" aria-labelledby="contactUserModalLabel">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content" contact-user-directive>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div ng-if="!sessionData.isLoggedIn" class="text-center">
+        <p>
+            <h3>Pentru a vedea mai multe detalii despre cartea dorita este necesara logarea.</h3>
+        </p>
+        <p>
+            <h3>
+                Daca aveti un cont, logati-va <a href="#/home">aici</a>
+            </h3>
+        </p>
+        <p>
+            <h3>
+                Daca nu aveti un cont, creati-va unul nou <a href="#/register">aici</a>
+            </h3>
+        </p>
+    </div>
 </div>
