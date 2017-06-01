@@ -25,6 +25,7 @@
             var role = reg.roleSignup;
             var birthday = new Date(reg.birthdate);
             var timestamp = new Date();
+            var penName = reg.penName;
             /*var salt = CryptoJS.lib.WordArray.random(128 / 8);
             var key512Bits = CryptoJS.PBKDF2(password, salt, { keySize: 512 / 32, iterations: 1 });*/
             var roleId = 0;
@@ -41,7 +42,8 @@
                 "Timestamp": timestamp,
                 "RoleId": roleId,
                 "IsDeleted": false,
-                "Stars": 0
+                "Stars": 0,
+                "PenName": penName
             };
             userService.register(user)
                 .then(function(response) {

@@ -16,6 +16,8 @@ namespace BookishNet.DataLayer.GenericModels
 
         public string Address { get; set; }
 
+        public string Phone { get; set; }
+
         [Required]
         public DateTime DateOfBirth { get; set; }
 

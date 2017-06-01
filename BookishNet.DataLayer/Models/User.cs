@@ -14,7 +14,11 @@ namespace BookishNet.DataLayer.Models
 
         public double Stars { get; set; }
 
+        public string PenName { get; set; }
+
         public IEnumerable<Book> LoanedBooks { get; set; }
         public IEnumerable<Book> BorrowedBooks { get; set; }
+
+        public IEnumerable<BookAuthor> Books { get; set; }
     }
 }

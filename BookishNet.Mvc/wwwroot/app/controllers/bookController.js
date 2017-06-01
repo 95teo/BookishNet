@@ -47,7 +47,7 @@
                     $location.path("/books");
                 });
         };
-        book.updateBook = function() {
+        book.updateBook = function(edit) {
             for (var i = 0; i < book.genreList.length; i++) {
                 if (book.genre === book.genreList[i].name) {
                     book.genreId = i + 1;
@@ -72,17 +72,19 @@
                         .then(function(responseObj) {
                             book.genre = responseObj.data.name;
                         });
+                    edit.$setUntouched();
                     $("#editBookModal").modal("toggle");
                 });
             });
         };
-        book.cancelEdit = function() {
+        book.cancelEdit = function(edit) {
             book.title = book.bookEntity.title;
             book.authorName = book.bookEntity.authorName;
             book.publishingYear = book.bookEntity.publishingYear;
             book.description = book.bookEntity.description;
             book.loanerId = book.bookEntity.loanerId;
             book.isDeleted = book.bookEntity.isDeleted;
+            edit.$setUntouched();
             genreService.getGenre(book.genreId)
                 .then(function(response) {
                     book.genre = response.data.name;

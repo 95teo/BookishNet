@@ -29,6 +29,8 @@
                     user.timestamp = user.userEntity.timestamp;
                     user.username = user.userEntity.username;
                     user.isDeleted = user.userEntity.isDeleted;
+                    user.penName = user.userEntity.penName;
+                    user.phone = user.userEntity.phone;
                 });
             bookService.getBooksByLoanerId(userId)
                 .then(function(response) {
@@ -59,7 +61,7 @@
                     }
                 });
         }
-        user.updateUserProfile = function() {
+        user.updateUserProfile = function(edit) {
             var updateObj = {
                 "Id": userId,
                 "FirstName": user.firstName,
@@ -72,16 +74,19 @@
                 "IsDeleted": user.isDeleted,
                 "Timestamp": user.timestamp,
                 "Email": user.email,
-                "Stars": user.stars
+                "Stars": user.stars,
+                "PenName": user.penName,
+                "Phone": user.phone
             };
             userService.updateUser(updateObj).then(function() {
                 userService.getUser(userId).then(function(response) {
                     user.userEntity = response.data;
+                    edit.$setUntouched();
                     $("#editUserDataModal").modal("toggle");
                 });
             });
         };
-        user.cancelEdit = function() {
+        user.cancelEdit = function(edit) {
             user.address = user.userEntity.address;
             user.dateOfBirth = new Date(user.userEntity.dateOfBirth);
             user.email = user.userEntity.email;
@@ -89,6 +94,9 @@
             user.password = user.userEntity.password;
             user.secondName = user.userEntity.secondName;
             user.username = user.userEntity.username;
+            user.penName = user.userEntity.penName;
+            user.phone = user.userEntity.phone;
+            edit.$setUntouched();
         };
 
     }

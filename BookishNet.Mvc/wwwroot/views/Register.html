@@ -37,6 +37,11 @@
                 <input class="radio-element" ng-model="reg.roleSignup" type="radio" name="role" value="author" id="signup-as-author-btn" required>
                 <label class="radio-element" for="signup-as-user-btn">Inregistrare ca utilizator</label>
                 <input class="radio-element" ng-model="reg.roleSignup" type="radio" name="role" value="user" id="signup-as-user-btn" required>
+                <label for="penName" ng-if="reg.roleSignup==='author'">Pseudonim</label>
+                <input name="penName" type="text" id="penName" placeholder="Pseudonim" ng-model="reg.penName" ng-minlength="3" ng-maxlength="8" ng-if="reg.roleSignup==='author'">
+                <div ng-show="register.$submitted || register.penName.$touched">
+                    <span ng-show="register.penName.$error.minlength || register.penName.$error.maxlength" class="help-block">Pseudonimul trebuie sa aiba intre 3 si 8 caractere.</span>
+                </div>
                 <button type="submit" class="btn btn-info btn-block login" ng-disabled="register.$invalid">Register</button>
             </form>
         </div>

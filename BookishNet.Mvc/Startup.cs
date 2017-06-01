@@ -37,8 +37,6 @@ namespace BookishNet.Mvc
             {
                 services.Configure<MvcOptions>(o => o.Filters.Add(new RequireHttpsAttribute()));
             }*/
-            services.AddTransient<IAuthorService, AuthorService>();
-            services.AddTransient<IAuthorRepository, AuthorRepository>();
             services.AddTransient<IBookService, BookService>();
             services.AddTransient<IBookRepository, BookRepository>();
             services.AddTransient<IGenreService, GenreService>();

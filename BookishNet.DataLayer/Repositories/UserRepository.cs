@@ -62,6 +62,11 @@ namespace BookishNet.DataLayer.Repositories
             return _context.Users.FirstOrDefault(user => user.Username == username);
         }
 
+        public User GetByPenName(string penName)
+        {
+            return _context.Users.FirstOrDefault(user => user.PenName == penName);
+        }
+
         /*
         public string Encryptpassword(string password)
         {

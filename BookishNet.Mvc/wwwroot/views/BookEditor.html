@@ -6,7 +6,7 @@
 </div>
 
 <div class="modal-body">
-    <form role="form" class="css-form" name="edit" ng-submit="book.updateBook()" novalidate>
+    <form role="form" class="css-form" name="edit" ng-submit="book.updateBook(edit)" novalidate>
         <div class="row">
             <div class="form-group col-xs-6">
                 <label for="bookTitle">Titlu carte: </label>
@@ -41,6 +41,6 @@
             </div>
         </div>
         <button type="submit" class="btn btn-success" ng-disabled="edit.$invalid">Salveaza modificarile</button>
-        <button class="btn btn-default" class="close" data-dismiss="modal" aria-label="Close" ng-click="book.cancelEdit()">Anuleaza editarea</button>
+        <button class="btn btn-default" class="close" data-dismiss="modal" aria-label="Close" ng-click="book.cancelEdit(edit)">Anuleaza editarea</button>
     </form>
 </div>

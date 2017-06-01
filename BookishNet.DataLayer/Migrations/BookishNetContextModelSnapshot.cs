@@ -14,43 +14,6 @@ namespace BookishNet.DataLayer.Migrations
                 .HasAnnotation("ProductVersion", "1.1.1")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("BookishNet.DataLayer.Models.Author", b =>
-            {
-                b.Property<int>("Id")
-                    .ValueGeneratedOnAdd();
-
-                b.Property<string>("Address");
-
-                b.Property<DateTime>("DateOfBirth");
-
-                b.Property<string>("Email")
-                    .IsRequired();
-
-                b.Property<string>("FirstName");
-
-                b.Property<bool>("IsDeleted");
-
-                b.Property<string>("Password")
-                    .IsRequired();
-
-                b.Property<string>("PenName");
-
-                b.Property<int>("RoleId");
-
-                b.Property<string>("SecondName");
-
-                b.Property<DateTime>("Timestamp");
-
-                b.Property<string>("Username")
-                    .IsRequired();
-
-                b.HasKey("Id");
-
-                b.HasIndex("RoleId");
-
-                b.ToTable("Authors");
-            });
-
             modelBuilder.Entity("BookishNet.DataLayer.Models.Book", b =>
             {
                 b.Property<int>("Id")
@@ -192,6 +155,10 @@ namespace BookishNet.DataLayer.Migrations
                 b.Property<string>("Password")
                     .IsRequired();
 
+                b.Property<string>("PenName");
+
+                b.Property<string>("Phone");
+
                 b.Property<int>("RoleId");
 
                 b.Property<string>("SecondName");
@@ -208,14 +175,6 @@ namespace BookishNet.DataLayer.Migrations
                 b.HasIndex("RoleId");
 
                 b.ToTable("Users");
-            });
-
-            modelBuilder.Entity("BookishNet.DataLayer.Models.Author", b =>
-            {
-                b.HasOne("BookishNet.DataLayer.Models.Role", "Role")
-                    .WithMany()
-                    .HasForeignKey("RoleId")
-                    .OnDelete(DeleteBehavior.Cascade);
             });
 
             modelBuilder.Entity("BookishNet.DataLayer.Models.Book", b =>
@@ -236,7 +195,7 @@ namespace BookishNet.DataLayer.Migrations
 
             modelBuilder.Entity("BookishNet.DataLayer.Models.BookAuthor", b =>
             {
-                b.HasOne("BookishNet.DataLayer.Models.Author", "Author")
+                b.HasOne("BookishNet.DataLayer.Models.User", "Author")
                     .WithMany("Books")
                     .HasForeignKey("AuthorId")
                     .OnDelete(DeleteBehavior.Cascade);

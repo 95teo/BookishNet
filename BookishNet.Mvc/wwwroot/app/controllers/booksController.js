@@ -20,7 +20,7 @@
             .then(function(response) {
                 books.genreList = response.data;
             });
-        $scope.addBook = function() {
+        $scope.addBook = function(add) {
             for (var i = 0; i < books.genreList.length; i++) {
                 if (books.genre === books.genreList[i].name) {
                     books.genreId = i + 1;
@@ -44,19 +44,21 @@
                 books.description = "";
                 books.genreId = "";
                 books.genre = "";
+                add.$setUntouched();
                 $("#addBookModal").modal("toggle");
                 bookService.getBooks().then(function(response) {
                     books.bookList = response.data;
                 });
             });
         };
-        $scope.cancelAdd = function() {
+        $scope.cancelAdd = function(add) {
             books.title = "";
             books.authorName = "";
             books.publishingYear = "";
             books.description = "";
             books.genreId = "";
             books.genre = "";
+            add.$setUntouched();
         };
     };
 })();

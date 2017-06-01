@@ -48,5 +48,10 @@ namespace BookishNet.ServiceLayer.Services
         {
             return _userRepository.GetUserByUsername(username);
         }
+
+        public User GetByPenName(string penName)
+        {
+            return _userRepository.GetByPenName(penName);
+        }
     }
 }

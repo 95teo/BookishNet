@@ -10,7 +10,6 @@ namespace BookishNet.DataLayer
              Database=BookishNet;
              Trusted_Connection=True";
 
-        public virtual DbSet<Author> Authors { get; set; }
 
         public virtual DbSet<Book> Books { get; set; }
 

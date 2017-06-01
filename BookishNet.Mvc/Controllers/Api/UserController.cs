@@ -70,5 +70,11 @@ namespace BookishNet.Mvc.Controllers.Api
         {
             return _userService.GetUserByUsername(username);
         }
+
+        [HttpGet("{users}/{user}/{author}/{penName}")]
+        public User GetByPenName(string penName)
+        {
+            return _userService.GetByPenName(penName);
+        }
     }
 }

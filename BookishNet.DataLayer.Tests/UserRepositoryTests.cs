@@ -18,6 +18,8 @@ namespace BookishNet.DataLayer.Tests
         private const string DummyFirstName = "Test1";
         private const string DummyPassword = "Test";
         private const string AnotherDummyPassword = "Anonymous";
+        private const string DummyPenName = "Test2";
+        private const string AnotherDummyPenName = "Test3";
         private Mock<BookishNetContext> _mockContext;
         private Mock<DbSet<User>> _mockSet;
 
@@ -43,7 +45,8 @@ namespace BookishNet.DataLayer.Tests
                     DateOfBirth = DateTime.Now,
                     Stars = 0,
                     IsDeleted = false,
-                    RoleId = 1
+                    RoleId = 1,
+                    Phone = ""
                 },
                 new User
                 {
@@ -58,7 +61,8 @@ namespace BookishNet.DataLayer.Tests
                     DateOfBirth = DateTime.Now,
                     Stars = 0,
                     IsDeleted = false,
-                    RoleId = 1
+                    RoleId = 1,
+                    PenName = "Test2"
                 },
                 new User
                 {
@@ -205,6 +209,22 @@ namespace BookishNet.DataLayer.Tests
         public void When_GetUserByUsernameIsCalledWithInexistingUsername_Then_ShouldReturnDefaultValue_NULL()
         {
             var user = _userRepository.GetUserByUsername(AnotherDummyUsername);
+
+            Assert.AreEqual(null, user);
+        }
+
+        [TestMethod]
+        public void When_GetByPenNameIsCalledWithExistingPenName_Then_ShouldReturnUserWithDesiredPenName()
+        {
+            var user = _userRepository.GetByPenName(DummyPenName);
+
+            Assert.AreEqual(DummyPenName, user.PenName);
+        }
+
+        [TestMethod]
+        public void When_GetByPenNameIsCalledWithInexistingPenName_Then_ShouldReturnDefaultValue_NULL()
+        {
+            var user = _userRepository.GetByPenName(AnotherDummyPenName);
 
             Assert.AreEqual(null, user);
         }
