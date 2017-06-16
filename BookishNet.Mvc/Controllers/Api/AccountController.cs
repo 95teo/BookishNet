@@ -51,8 +51,8 @@ namespace BookishNet.Mvc.Controllers.Api
                 new AuthenticationProperties
                 {
                     ExpiresUtc = DateTime.UtcNow.AddMinutes(5),
-                    IsPersistent = false,
-                    AllowRefresh = false
+                    IsPersistent = true,
+                    AllowRefresh = true
                 });
 
             return RedirectToLocal(returnUrl, role);
