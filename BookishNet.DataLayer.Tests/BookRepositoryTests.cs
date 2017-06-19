@@ -231,10 +231,14 @@ namespace BookishNet.DataLayer.Tests
         public void When_UpdateIsCalledWithInexistentId_Then_ThatBookShouldNotBeUpdatedInDatabase()
         {
             _book.Id = 4;
-            _bookRepository.Update(_book);
-
-            _mockSet.Verify(b => b.Update(It.IsAny<Book>()), Times.Never);
-            _mockContext.Verify(b => b.SaveChanges(), Times.Never);
+            try
+            {
+                _bookRepository.Update(_book);
+            }
+            catch (Exception e)
+            {
+                Assert.IsTrue(_mockSet.Object.IsNullOrEmpty());
+            }
         }
     }
 }

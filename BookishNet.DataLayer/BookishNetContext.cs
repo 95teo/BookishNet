@@ -6,7 +6,8 @@ namespace BookishNet.DataLayer
     public class BookishNetContext : DbContext
     {
         private const string ConnectionString =
-            @"Server=tcp:bookishsnet.database.windows.net,1433;Initial Catalog=BookishNet;Persist Security Info=False;User ID=teo;Password=Informatica1;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+                @"Server=tcp:bookishsnet.database.windows.net,1433;Initial Catalog=BookishNet;Persist Security Info=False;User ID=teo;Password=Informatica1;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"
+            ;
 
 
         public virtual DbSet<Book> Books { get; set; }

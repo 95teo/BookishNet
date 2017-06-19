@@ -1,5 +1,15 @@
 ﻿<div class="jumbotron text-center" style="background: white;">
     <h1>BookishNet - Aplicatia care te aduce mai aproape de cartile tale preferate!</h1>
     <h3>{{ message }}</h3>
-    <button class="btn btn-danger" ng-show="isAdministrator" ng-click="navigateToDashboard()">Administrator page</button>
+    <div ng-controller="chatController">
+        <ul>
+            <li ng-repeat="m in messages">{{m.Username}}: {{m.Message}}</li>
+        </ul>
+        <div class="row">
+            <div class=" form-group col-xs-12">
+                <input class="form-control" type="text" id="MessageField" ng-model="message" placeholder="Apasă enter sau butonul de trimitere..."/>
+                <button class="btn btn-success" ng-click="send()">Trimite</button>
+            </div>
+        </div>
+    </div>
 </div>

@@ -1,6 +1,7 @@
 ﻿using BookishNet.DataLayer;
 using BookishNet.DataLayer.Interfaces;
 using BookishNet.DataLayer.Repositories;
+using BookishNet.Mvc.Utilities;
 using BookishNet.ServiceLayer.Interfaces;
 using BookishNet.ServiceLayer.Services;
 using Microsoft.AspNetCore.Builder;
@@ -103,7 +104,8 @@ namespace BookishNet.Mvc
             app.UseCookieAuthentication(cookieOptions);
 
             app.UseStaticFiles();
-
+            app.UseWebSockets();
+            app.UseMiddleware<ChatWebSocketMiddleware>();
             app.UseMvc(routes =>
             {
                 routes.MapRoute(

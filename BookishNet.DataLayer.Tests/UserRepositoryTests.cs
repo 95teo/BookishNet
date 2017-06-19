@@ -4,6 +4,7 @@ using System.Linq;
 using BookishNet.DataLayer.Interfaces;
 using BookishNet.DataLayer.Models;
 using BookishNet.DataLayer.Repositories;
+using Castle.Core.Internal;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
@@ -243,10 +244,14 @@ namespace BookishNet.DataLayer.Tests
         public void When_UpdateIsCalledWithInexistentId_Then_ThatUserShouldNotBeUpdatedInDatabase()
         {
             _user.Id = 4;
-            _userRepository.Update(_user);
-
-            _mockSet.Verify(b => b.Update(It.IsAny<User>()), Times.Never);
-            _mockContext.Verify(b => b.SaveChanges(), Times.Never);
+            try
+            {
+                _userRepository.Update(_user);
+            }
+            catch (Exception e)
+            {
+                Assert.IsTrue(_mockSet.Object.IsNullOrEmpty());
+            }
         }
     }
 }
