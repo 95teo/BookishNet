@@ -12,7 +12,7 @@
             var deferred = $q.defer();
             $http({
                     method: "GET",
-                    url: "http://localhost:45719/api/genre"
+                    url: "http://bookishnet.azurewebsites.net:80/api/genre"
                 })
                 .then(function successCallback(response) {
                     return deferred.resolve(response);
@@ -26,7 +26,7 @@
             var deferred = $q.defer();
             $http({
                     method: "GET",
-                    url: "http://localhost:45719/api/genre/" + genreId
+                    url: "http://bookishnet.azurewebsites.net:80/api/genre/" + genreId
                 })
                 .then(function successCallback(response) {
                     return deferred.resolve(response);

@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@inject Microsoft.ApplicationInsights.AspNetCore.JavaScriptSnippet JavaScriptSnippet
+<!DOCTYPE html>
 
 <html ng-app="BookishNet">
 <head>
@@ -36,6 +37,7 @@
         <link rel="stylesheet" type="text/css" href="~/assets/css/login.css"/>
         <link rel="stylesheet" type="text/css" href="~/assets/css/register.css"/>
     </environment>
+    @Html.Raw(JavaScriptSnippet.FullScript)
 </head>
 <body >
 <div id="loader-wrapper">

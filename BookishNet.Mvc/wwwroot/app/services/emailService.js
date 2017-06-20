@@ -12,7 +12,7 @@
             var deferred = $q.defer();
             $http({
                     method: "POST",
-                    url: "http://localhost:45719/api/email",
+                    url: "http://bookishnet.azurewebsites.net:80/api/email",
                     data: JSON.stringify(emailObj),
                     headers: {
                         'Content-Type': "application/json"

@@ -7,7 +7,13 @@
   <PropertyGroup>
     <PackageTargetFallback>$(PackageTargetFallback);portable-net45+win8+wp8+wpa81;</PackageTargetFallback>
     <UserSecretsId>599d95e9-5fcd-4d7e-97e7-c22b623ff70c</UserSecretsId>
+    <ApplicationInsightsResourceId>/subscriptions/18e2d7b2-9b5c-440a-8dd3-13836cab1bff/resourcegroups/Default-ApplicationInsights-EastUS/providers/microsoft.insights/components/BookishNet.Mvc</ApplicationInsightsResourceId>
+    <ApplicationInsightsAnnotationResourceId>/subscriptions/18e2d7b2-9b5c-440a-8dd3-13836cab1bff/resourcegroups/Default-ApplicationInsights-EastUS/providers/microsoft.insights/components/BookishNet.Mvc</ApplicationInsightsAnnotationResourceId>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Properties\PublishProfiles\BookishNet - Web Deploy.pubxml" />
+  </ItemGroup>
 
   <ItemGroup>
     <Content Include="wwwroot\app\app.js" />
@@ -81,6 +87,12 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BookishNet.ServiceLayer\BookishNet.ServiceLayer.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\PublishProfiles\" />
   </ItemGroup>
 
 </Project>

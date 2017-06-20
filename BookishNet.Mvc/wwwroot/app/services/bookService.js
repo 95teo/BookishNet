@@ -12,7 +12,7 @@
             var deferred = $q.defer();
             $http({
                     method: "GET",
-                    url: "http://localhost:45719/api/book"
+                    url: "http://bookishnet.azurewebsites.net:80/api/book"
                 })
                 .then(function successCallback(response) {
                     return deferred.resolve(response);
@@ -28,7 +28,7 @@
             //jobId = $location.url().split(":")[1];
             $http({
                     method: "GET",
-                    url: "http://localhost:45719/api/book/" + bookId
+                    url: "http://bookishnet.azurewebsites.net:80/api/book/" + bookId
                 })
                 .then(function successCallback(response) {
                     return deferred.resolve(response);
@@ -42,7 +42,7 @@
             var deferred = $q.defer();
             $http({
                     method: "POST",
-                    url: "http://localhost:45719/api/book",
+                    url: "http://bookishnet.azurewebsites.net:80/api/book",
                     data: JSON.stringify(book),
                     headers: {
                         'Content-Type': "application/json"
@@ -62,7 +62,7 @@
             var bookId = $location.url().split(":")[1];
             $http({
                     method: "PUT",
-                    url: "http://localhost:45719/api/book/" + bookId,
+                    url: "http://bookishnet.azurewebsites.net:80/api/book/" + bookId,
                     data: JSON.stringify(book),
                     headers: {
                         'Content-Type': "application/json"
@@ -79,7 +79,7 @@
             var deferred = $q.defer();
             $http({
                     method: "DELETE",
-                    url: "http://localhost:45719/api/book/" + bookId
+                    url: "http://bookishnet.azurewebsites.net:80/api/book/" + bookId
                 })
                 .then(function successCallback(response) {
                     return deferred.resolve(response);
@@ -93,7 +93,7 @@
             var deferred = $q.defer();
             $http({
                     method: "GET",
-                    url: "http://localhost:45719/api/book/book" + bookTitle
+                    url: "http://bookishnet.azurewebsites.net:80/api/book/book" + bookTitle
                 })
                 .then(function successCallback(response) {
                     return deferred.resolve(response);
@@ -107,7 +107,7 @@
             var deferred = $q.defer();
             $http({
                     method: "GET",
-                    url: "http://localhost:45719/api/book/book/author/" + authorName
+                    url: "http://bookishnet.azurewebsites.net:80/api/book/book/author/" + authorName
                 })
                 .then(function successCallback(response) {
                     return deferred.resolve(response);
@@ -121,7 +121,7 @@
             var deferred = $q.defer();
             $http({
                     method: "GET",
-                    url: "http://localhost:45719/api/book/book/books/user/" + loanerId
+                    url: "http://bookishnet.azurewebsites.net:80/api/book/book/books/user/" + loanerId
                 })
                 .then(function successCallback(response) {
                     return deferred.resolve(response);
@@ -135,7 +135,7 @@
             var deferred = $q.defer();
             $http({
                     method: "GET",
-                    url: "http://localhost:45719/api/book/book/books/user/loanerId/" + borrowerId
+                    url: "http://bookishnet.azurewebsites.net:80/api/book/book/books/user/loanerId/" + borrowerId
                 })
                 .then(function successCallback(response) {
                     return deferred.resolve(response);

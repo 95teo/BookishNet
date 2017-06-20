@@ -13,7 +13,7 @@
             var deferred = $q.defer();
             $http({
                     method: "POST",
-                    url: "http://localhost:45719/api/account/register",
+                    url: "http://bookishnet.azurewebsites.net:80/api/account/register",
                     data: JSON.stringify(registerDetails),
                     headers: {
                         'Content-Type': "application/json"
@@ -32,7 +32,7 @@
             var deferred = $q.defer();
             $http({
                     method: "GET",
-                    url: "http://localhost:45719/api/user"
+                    url: "http://bookishnet.azurewebsites.net:80/api/user"
                 })
                 .then(function successCallback(response) {
                     return deferred.resolve(response);
@@ -46,7 +46,7 @@
             var deferred = $q.defer();
             $http({
                     method: "GET",
-                    url: "http://localhost:45719/api/user/users/user/" + username
+                    url: "http://bookishnet.azurewebsites.net:80/api/user/users/user/" + username
                 })
                 .then(function successCallback(response) {
                     return deferred.resolve(response);
@@ -60,7 +60,7 @@
             var deferred = $q.defer();
             $http({
                     method: "GET",
-                    url: "http://localhost:45719/api/user/" + userId
+                    url: "http://bookishnet.azurewebsites.net:80/api/user/" + userId
                 })
                 .then(function successCallback(response) {
                     return deferred.resolve(response);
@@ -75,7 +75,7 @@
             var userId = $location.url().split(":")[1];
             $http({
                     method: "PUT",
-                    url: "http://localhost:45719/api/user/" + userId,
+                    url: "http://bookishnet.azurewebsites.net:80/api/user/" + userId,
                     data: JSON.stringify(user),
                     headers: {
                         'Content-Type': "application/json"
