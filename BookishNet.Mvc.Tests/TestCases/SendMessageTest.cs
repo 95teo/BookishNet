@@ -5,16 +5,22 @@ using OpenQA.Selenium.Support.PageObjects;
 
 namespace BookishNet.Mvc.Tests.TestCases
 {
-    internal class LogInTest : OpenCloseSelenium
+    internal class SendMessageTest : OpenCloseSelenium
     {
         [Test]
-        public void Login()
+        public void SendMessage()
         {
+            /*var loginTest = new LogInTest();
+            loginTest.Login();*/
             Thread.Sleep(2000);
             var loginPage = new LoginPage();
             PageFactory.InitElements(Driver, loginPage);
             loginPage.Login("teo", "teo");
-            //Assert.IsTrue(homePage.loginButton.Displayed);
+
+            Thread.Sleep(3000);
+            var homePage = new HomePage();
+            PageFactory.InitElements(Driver, homePage);
+            homePage.SendMessage("Hello");
         }
     }
 }

@@ -1,16 +1,11 @@
-﻿using BookishNet.Mvc.Tests.PagePartials;
+﻿using System.Threading;
+using BookishNet.Mvc.Tests.PagePartials;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace BookishNet.Mvc.Tests.PageObjects
 {
-    class BooksPage: NavbarContent
+    internal class BooksPage : NavbarContent
     {
         [FindsBy(How = How.Id, Using = "user")]
         public IWebElement FilterByTitleInput { get; set; }

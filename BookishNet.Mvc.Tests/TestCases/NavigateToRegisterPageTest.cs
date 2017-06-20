@@ -5,20 +5,19 @@ using OpenQA.Selenium.Support.PageObjects;
 
 namespace BookishNet.Mvc.Tests.TestCases
 {
-    internal class NavigateToBookPageTest : OpenCloseSelenium
+    internal class NavigateToRegisterPageTest : OpenCloseSelenium
     {
         [Test]
-        public void GoToBookPage()
+        public void GoToRegisterPage()
         {
             Thread.Sleep(2000);
             var homePage = new LoginPage();
             PageFactory.InitElements(Driver, homePage);
-            homePage.FollowBooksLink();
+            homePage.FollowRegisterLink();
 
             Thread.Sleep(5000);
-            var booksPage = new BooksPage();
-            PageFactory.InitElements(Driver, booksPage);
-            booksPage.FollowFirstBookLink();
+            var registerPage = new RegisterPage();
+            PageFactory.InitElements(Driver, registerPage);
         }
     }
 }

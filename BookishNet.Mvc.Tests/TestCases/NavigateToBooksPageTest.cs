@@ -1,29 +1,24 @@
-﻿using BookishNet.Mvc.Tests.PageObjects;
+﻿using System.Threading;
+using BookishNet.Mvc.Tests.PageObjects;
 using NUnit.Framework;
 using OpenQA.Selenium.Support.PageObjects;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace BookishNet.Mvc.Tests.TestCases
 {
-    class NavigateToBooksPageTest : OpenCloseSelenium
+    internal class NavigateToBooksPageTest : OpenCloseSelenium
     {
         [Test]
         public void GoToBooksPage()
         {
             Thread.Sleep(2000);
-            var homePage = new HomePage();
+            var homePage = new LoginPage();
             PageFactory.InitElements(Driver, homePage);
             homePage.FollowBooksLink();
 
             Thread.Sleep(5000);
             var booksPage = new BooksPage();
             PageFactory.InitElements(Driver, booksPage);
-            Assert.AreEqual("Find job by", booksPage.PermanentText.Text.ToString());
+            Assert.AreEqual("Cauta cartea preferata", booksPage.PermanentText.Text);
         }
     }
 }

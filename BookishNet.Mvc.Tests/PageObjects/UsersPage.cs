@@ -1,16 +1,11 @@
-﻿using BookishNet.Mvc.Tests.PagePartials;
+﻿using System.Threading;
+using BookishNet.Mvc.Tests.PagePartials;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace BookishNet.Mvc.Tests.PageObjects
 {
-    class UsersPage : NavbarContent
+    internal class UsersPage : NavbarContent
     {
         [FindsBy(How = How.CssSelector, Using = "#filters > li:nth-child(2) > input")]
         public IWebElement FilterByUsernameInput { get; set; }
