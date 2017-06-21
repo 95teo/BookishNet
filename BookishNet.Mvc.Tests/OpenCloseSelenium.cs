@@ -1,6 +1,8 @@
+using BookishNet.Mvc.Tests.WrapperFactory;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using System.Configuration;
 
 namespace BookishNet.Mvc.Tests
 {
@@ -11,18 +13,17 @@ namespace BookishNet.Mvc.Tests
         public void TestInitialize()
         {
             // Start Selenium drivers
-            Driver = new ChromeDriver();
-            Driver.Manage().Window.Maximize();
-            Driver.Url = "http://bookishnet.azurewebsites.net";
+            BrowserFactory.InitBrowser("Chrome");
+            BrowserFactory.LoadApplication(ConfigurationManager.AppSettings["URL"]);
         }
 
 
         [TearDown]
         public void TestCleanup()
         {
-            Driver.Quit();
+            BrowserFactory.CloseAllDrivers();
         }
 
-        protected IWebDriver Driver { get; set; }
+        //protected IWebDriver Driver { get; set; }
     }
 }

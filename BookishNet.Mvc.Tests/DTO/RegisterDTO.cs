@@ -1,6 +1,6 @@
 ﻿namespace BookishNet.Mvc.Tests.DTO
 {
-    internal class RegisterDto
+    public class RegisterDto
     {
         public string Username { get; set; }
 

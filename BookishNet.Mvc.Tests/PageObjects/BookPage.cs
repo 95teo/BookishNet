@@ -1,19 +1,17 @@
 ﻿using BookishNet.Mvc.Tests.Extensions;
 using BookishNet.Mvc.Tests.PagePartials;
-using BookishNet.Mvc.Tests.WrapperFactory;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace BookishNet.Mvc.Tests.PageObjects
 {
-    public class HomePage : NavbarContent
+    public class BookPage : NavbarContent
     {
-        [FindsBy(How = How.CssSelector, Using = "body > nav > div > ul > li:nth-child(1) > a")]
-        public new IWebElement BooksLink { get; set; }
-
-        [FindsBy(How = How.CssSelector, Using = "body > nav > div > ul > li:nth-child(2) > a")]
-        public new IWebElement UsersLink { get; set; }
-
         [FindsBy(How = How.Id, Using = "single-button")]
         private IWebElement ProfileDropdown { get; set; }
 
@@ -26,22 +24,12 @@ namespace BookishNet.Mvc.Tests.PageObjects
         [FindsBy(How = How.CssSelector, Using = "#bs-example-navbar-collapse-1 > ul > li > ul > li.ng-scope > a")]
         private IWebElement LogoutLink { get; set; }
 
-        [FindsBy(How = How.XPath, Using = "//*[@id='MessageField']")]
-        private IWebElement MessageInput { get; set; }
+        [FindsBy(How = How.CssSelector, Using = "#container > div > div > div > ul > li:nth-child(4) > button")]
+        private IWebElement ContactUserButton { get; set; }
 
-        [FindsBy(How = How.XPath, Using = "//*[@id='container']/div/div/div/div/div/button")]
-        private IWebElement SendMessageButton { get; set; }
-
-        private IWebElement Message { get; set; }
-
-        public new void FollowBooksLink()
+        public IWebElement GetContactUserButton()
         {
-            BooksLink.ClickOnIt("BooksLink");
-        }
-
-        public new void FollowUsersLink()
-        {
-            UsersLink.ClickOnIt("UsersLink");
+            return ContactUserButton;
         }
 
         public void ExpandDropdown()
@@ -65,18 +53,6 @@ namespace BookishNet.Mvc.Tests.PageObjects
         {
             ExpandDropdown();
             LogoutLink.ClickOnIt("LogoutLink");
-        }
-
-        public void SendMessage(string message)
-        {
-            MessageInput.EnterText(message, "MessageInput");
-            SendMessageButton.ClickOnIt("SendMessageButton");
-        }
-
-        public IWebElement GetSentMessage()
-        {
-            Message = BrowserFactory.Driver.FindElement(By.XPath("//*[@id='container']/div/div/div/ul/li[1]"));
-            return Message;
         }
     }
 }

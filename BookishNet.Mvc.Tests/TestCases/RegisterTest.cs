@@ -3,6 +3,8 @@ using BookishNet.Mvc.Tests.DTO;
 using BookishNet.Mvc.Tests.PageObjects;
 using NUnit.Framework;
 using OpenQA.Selenium.Support.PageObjects;
+using BookishNet.Mvc.Tests.WrapperFactory;
+using BookishNet.Mvc.Tests.Extensions;
 
 namespace BookishNet.Mvc.Tests.TestCases
 {
@@ -13,22 +15,21 @@ namespace BookishNet.Mvc.Tests.TestCases
         {
             var registerDto = new RegisterDto
             {
-                Username = "test",
-                Email = "test@test.com",
-                Password = "123",
-                ConfirmPassword = "123",
+                Username = "John",
+                Email = "john@gmail.com",
+                Password = "john12A",
+                ConfirmPassword = "john12A",
                 Birthday = "08/01/1997",
                 IsAuthor = false
             };
             Thread.Sleep(2000);
-            var homePage = new LoginPage();
-            PageFactory.InitElements(Driver, homePage);
-            homePage.FollowRegisterLink();
+            Page.Login.FollowRegisterLink();
 
             Thread.Sleep(5000);
-            var registerPage = new RegisterPage();
-            PageFactory.InitElements(Driver, registerPage);
-            registerPage.Register(registerDto);
+            Page.Register.Register(registerDto);
+
+            Thread.Sleep(2000);
+            Assert.IsTrue(Page.Login.GetLoginButton().IsDisplayed("LoginButton"));
         }
     }
 }

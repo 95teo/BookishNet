@@ -2,6 +2,8 @@
 using BookishNet.Mvc.Tests.PageObjects;
 using NUnit.Framework;
 using OpenQA.Selenium.Support.PageObjects;
+using BookishNet.Mvc.Tests.WrapperFactory;
+using BookishNet.Mvc.Tests.Extensions;
 
 namespace BookishNet.Mvc.Tests.TestCases
 {
@@ -11,15 +13,13 @@ namespace BookishNet.Mvc.Tests.TestCases
         public void GoToUserProfileTest()
         {
             Thread.Sleep(2000);
-            var loginPage = new LoginPage();
-            PageFactory.InitElements(Driver, loginPage);
-            loginPage.Login("teo", "teo");
+            Page.Login.Login("teo", "teo");
+
+            Thread.Sleep(8000);
+            Page.Home.OpenUserProfile();
 
             Thread.Sleep(3000);
-            var homePage = new HomePage();
-            PageFactory.InitElements(Driver, homePage);
-            homePage.OpenUserProfile();
-            Thread.Sleep(3000);
+            Assert.IsTrue(Page.UserProfile.GetEditButton().IsDisplayed("EditButton"));
         }
     }
 }

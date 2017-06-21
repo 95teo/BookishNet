@@ -2,6 +2,7 @@
 using BookishNet.Mvc.Tests.PageObjects;
 using NUnit.Framework;
 using OpenQA.Selenium.Support.PageObjects;
+using BookishNet.Mvc.Tests.WrapperFactory;
 
 namespace BookishNet.Mvc.Tests.TestCases
 {
@@ -11,9 +12,7 @@ namespace BookishNet.Mvc.Tests.TestCases
         public void OpenApp()
         {
             Thread.Sleep(2000);
-            var homePage = new LoginPage();
-            PageFactory.InitElements(Driver, homePage);
-            Assert.IsTrue(homePage.LoginButton.Displayed);
+            Assert.IsTrue(Page.Login.GetLoginButton().Displayed);
         }
     }
 }

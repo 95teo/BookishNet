@@ -2,6 +2,8 @@
 using BookishNet.Mvc.Tests.PageObjects;
 using NUnit.Framework;
 using OpenQA.Selenium.Support.PageObjects;
+using BookishNet.Mvc.Tests.WrapperFactory;
+using BookishNet.Mvc.Tests.Extensions;
 
 namespace BookishNet.Mvc.Tests.TestCases
 {
@@ -11,13 +13,10 @@ namespace BookishNet.Mvc.Tests.TestCases
         public void GoToRegisterPage()
         {
             Thread.Sleep(2000);
-            var homePage = new LoginPage();
-            PageFactory.InitElements(Driver, homePage);
-            homePage.FollowRegisterLink();
+            Page.Login.FollowRegisterLink();
 
             Thread.Sleep(5000);
-            var registerPage = new RegisterPage();
-            PageFactory.InitElements(Driver, registerPage);
+            Assert.IsTrue(Page.Register.GetRegisterButton().IsDisplayed("RegisterButton"));
         }
     }
 }

@@ -3,57 +3,63 @@ using BookishNet.Mvc.Tests.DTO;
 using BookishNet.Mvc.Tests.PagePartials;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
+using BookishNet.Mvc.Tests.Extensions;
 
 namespace BookishNet.Mvc.Tests.PageObjects
 {
-    internal class RegisterPage : NavbarContent
+    public class RegisterPage : NavbarContent
     {
         [FindsBy(How = How.CssSelector, Using = "body > nav > div > ul > li:nth-child(4) > a")]
-        public IWebElement RegisterLink { get; set; }
+        private IWebElement RegisterLink { get; set; }
 
         [FindsBy(How = How.Id, Using = "user")]
-        public IWebElement UsernameInput { get; set; }
+        private IWebElement UsernameInput { get; set; }
 
         [FindsBy(How = How.Id, Using = "email")]
-        public IWebElement EmailInput { get; set; }
+        private IWebElement EmailInput { get; set; }
 
         [FindsBy(How = How.Id, Using = "password")]
-        public IWebElement PasswordInput { get; set; }
+        private IWebElement PasswordInput { get; set; }
 
         [FindsBy(How = How.Id, Using = "confirmPassword")]
-        public IWebElement ConfirmPasswordInput { get; set; }
+        private IWebElement ConfirmPasswordInput { get; set; }
 
         [FindsBy(How = How.Id, Using = "birthday")]
-        public IWebElement BirthdayInput { get; set; }
+        private IWebElement BirthdayInput { get; set; }
 
         [FindsBy(How = How.Id, Using = "signup-as-author-btn")]
-        public IWebElement AuthorRadioInput { get; set; }
+        private IWebElement AuthorRadioInput { get; set; }
 
         [FindsBy(How = How.Id, Using = "signup-as-user-btn")]
-        public IWebElement UserRadioInput { get; set; }
+        private IWebElement UserRadioInput { get; set; }
 
         [FindsBy(How = How.CssSelector,
             Using = "#container > div > div > div.login-container > div.form-box > form > button")]
-        public IWebElement RegisterButton { get; set; }
+        private IWebElement RegisterButton { get; set; }
+
+        public IWebElement GetRegisterButton()
+        {
+            return RegisterButton;
+        }
 
         public void FollowRegisterLink()
         {
-            RegisterLink.Click();
+            RegisterLink.ClickOnIt("RegisterLink");
         }
 
         public void Register(RegisterDto registerDto)
         {
-            UsernameInput.SendKeys(registerDto.Username);
-            EmailInput.SendKeys(registerDto.Email);
-            PasswordInput.SendKeys(registerDto.Password);
-            ConfirmPasswordInput.SendKeys(registerDto.ConfirmPassword);
+            UsernameInput.EnterText(registerDto.Username, "UsernameInput");
+            EmailInput.EnterText(registerDto.Email, "EmailInput");
+            PasswordInput.EnterText(registerDto.Password, "PasswordInput");
+            ConfirmPasswordInput.EnterText(registerDto.ConfirmPassword, "ConfirmPasswordInput");
             BirthdayInput.SendKeys(registerDto.Birthday);
             if (registerDto.IsAuthor)
-                AuthorRadioInput.Click();
+                AuthorRadioInput.ClickOnIt("AuthorRadioInput");
             else
-                UserRadioInput.Click();
+                UserRadioInput.ClickOnIt("UserRadioInput");
             Thread.Sleep(2000);
-            //RegisterButton.Click();
+            RegisterButton.ClickOnIt("RegisterButton");
         }
     }
 }

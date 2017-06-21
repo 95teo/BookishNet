@@ -2,6 +2,8 @@ using System.Threading;
 using BookishNet.Mvc.Tests.PageObjects;
 using NUnit.Framework;
 using OpenQA.Selenium.Support.PageObjects;
+using BookishNet.Mvc.Tests.WrapperFactory;
+using BookishNet.Mvc.Tests.Extensions;
 
 namespace BookishNet.Mvc.Tests.TestCases
 {
@@ -10,21 +12,14 @@ namespace BookishNet.Mvc.Tests.TestCases
         [Test]
         public void Logout()
         {
-            /*var loginTest = new LogInTest();
-            loginTest.Login();*/
             Thread.Sleep(2000);
-            var loginPage = new LoginPage();
-            PageFactory.InitElements(Driver, loginPage);
-            loginPage.Login("teo", "teo");
+            Page.Login.Login("teo", "teo");
 
             Thread.Sleep(3000);
-            var homePage = new HomePage();
-            PageFactory.InitElements(Driver, homePage);
-            homePage.Logout();
+            Page.Home.Logout();
 
             Thread.Sleep(3000);
-            PageFactory.InitElements(Driver, loginPage);
-            Assert.IsTrue(loginPage.LoginButton.Displayed);
+            Assert.IsTrue(Page.Login.GetLoginButton().IsDisplayed("LoginButton"));
         }
     }
 }

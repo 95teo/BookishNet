@@ -6,16 +6,19 @@ using BookishNet.Mvc.Tests.WrapperFactory;
 
 namespace BookishNet.Mvc.Tests.TestCases
 {
-    internal class NavigateToBooksPageTest : OpenCloseSelenium
+    internal class NavigateToNotLoggedBookPageTest : OpenCloseSelenium
     {
         [Test]
-        public void GoToBooksPage()
+        public void GoToNotLoggedBookPage()
         {
             Thread.Sleep(2000);
             Page.Login.FollowBooksLink();
 
             Thread.Sleep(5000);
-            Assert.AreEqual("Cauta cartea preferata", Page.Books.GetPermanentText().Text);
+            Page.Books.FollowFirstBookLink();
+
+            Thread.Sleep(2000);
+            Assert.AreEqual("Pentru a vedea mai multe detalii despre cartea dorita este necesara logarea.", Page.NotLoggedBook.GetPermanentText());
         }
     }
 }

@@ -1,24 +1,31 @@
-﻿using System.Threading;
+﻿using BookishNet.Mvc.Tests.Extensions;
 using BookishNet.Mvc.Tests.PageObjects;
 using NUnit.Framework;
-using OpenQA.Selenium.Support.PageObjects;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace BookishNet.Mvc.Tests.TestCases
 {
-    internal class NavigateToUserPageTest : OpenCloseSelenium
+    class NavigateToUserPageTest : OpenCloseSelenium
     {
         [Test]
         public void GoToUserPage()
         {
             Thread.Sleep(2000);
-            var homePage = new LoginPage();
-            PageFactory.InitElements(Driver, homePage);
-            homePage.FollowUsersLink();
+            Page.Login.Login("John", "john12A");
 
-            Thread.Sleep(5000);
-            var usersPage = new UsersPage();
-            PageFactory.InitElements(Driver, usersPage);
-            usersPage.FollowFirstUserLink();
+            Thread.Sleep(3000);
+            Page.Home.FollowUsersLink();
+
+            Thread.Sleep(2000);
+            Page.Users.FollowFirstUserLink();
+
+            Thread.Sleep(2000);
+            Assert.IsTrue(Page.User.GetContactUserButton().IsDisplayed("ContactUserButton"));
         }
     }
 }
