@@ -235,7 +235,7 @@ namespace BookishNet.DataLayer.Tests
             {
                 _bookRepository.Update(_book);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 Assert.IsTrue(_mockSet.Object.IsNullOrEmpty());
             }

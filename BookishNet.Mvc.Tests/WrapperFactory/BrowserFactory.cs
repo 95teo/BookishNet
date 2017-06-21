@@ -1,31 +1,16 @@
-﻿using OpenQA.Selenium;
+﻿using System.Collections.Generic;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.IE;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BookishNet.Mvc.Tests.WrapperFactory
 {
-    class BrowserFactory
+    internal class BrowserFactory
     {
         private static readonly IDictionary<string, IWebDriver> Drivers = new Dictionary<string, IWebDriver>();
-        private static IWebDriver driver;
 
-        public static IWebDriver Driver
-        {
-            get
-            {
-                return driver;
-            }
-            private set
-            {
-                driver = value;
-            }
-        }
+        public static IWebDriver Driver { get; private set; }
 
         public static void InitBrowser(string browserName)
         {
@@ -34,7 +19,7 @@ namespace BookishNet.Mvc.Tests.WrapperFactory
                 case "Firefox":
                     if (Driver == null)
                     {
-                        driver = new FirefoxDriver();
+                        Driver = new FirefoxDriver();
                         Drivers.Add("Firefox", Driver);
                     }
                     break;
@@ -42,7 +27,7 @@ namespace BookishNet.Mvc.Tests.WrapperFactory
                 case "IE":
                     if (Driver == null)
                     {
-                        driver = new InternetExplorerDriver();
+                        Driver = new InternetExplorerDriver();
                         Drivers.Add("IE", Driver);
                     }
                     break;
@@ -50,14 +35,14 @@ namespace BookishNet.Mvc.Tests.WrapperFactory
                 case "Chrome":
                     if (Driver == null)
                     {
-                        driver = new ChromeDriver();
+                        Driver = new ChromeDriver();
                         Drivers.Add("Chrome", Driver);
                     }
                     break;
                 case "":
                     if (Driver == null)
                     {
-                        driver = new ChromeDriver();
+                        Driver = new ChromeDriver();
                         Drivers.Add("Chrome", Driver);
                     }
                     break;

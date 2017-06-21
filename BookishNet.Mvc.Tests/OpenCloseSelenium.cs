@@ -1,8 +1,6 @@
+using System.Configuration;
 using BookishNet.Mvc.Tests.WrapperFactory;
 using NUnit.Framework;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
-using System.Configuration;
 
 namespace BookishNet.Mvc.Tests
 {

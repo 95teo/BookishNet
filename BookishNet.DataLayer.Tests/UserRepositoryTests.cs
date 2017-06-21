@@ -248,7 +248,7 @@ namespace BookishNet.DataLayer.Tests
             {
                 _userRepository.Update(_user);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 Assert.IsTrue(_mockSet.Object.IsNullOrEmpty());
             }

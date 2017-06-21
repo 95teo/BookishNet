@@ -1,16 +1,11 @@
-﻿using BookishNet.Mvc.Tests.Extensions;
+﻿using System.Threading;
+using BookishNet.Mvc.Tests.Extensions;
 using BookishNet.Mvc.Tests.PageObjects;
 using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace BookishNet.Mvc.Tests.TestCases
 {
-    class NavigateToBookPageTest : OpenCloseSelenium
+    internal class NavigateToBookPageTest : OpenCloseSelenium
     {
         [Test]
         public void GoToBookPage()

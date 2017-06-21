@@ -9,27 +9,32 @@ namespace BookishNet.Mvc.Tests.PageObjects
     public class HomePage : NavbarContent
     {
         [FindsBy(How = How.CssSelector, Using = "body > nav > div > ul > li:nth-child(1) > a")]
-        public new IWebElement BooksLink { get; set; }
+        private new IWebElement BooksLink { get; set; }
 
         [FindsBy(How = How.CssSelector, Using = "body > nav > div > ul > li:nth-child(2) > a")]
-        public new IWebElement UsersLink { get; set; }
+        private new IWebElement UsersLink { get; set; }
 
         [FindsBy(How = How.Id, Using = "single-button")]
+        [CacheLookup]
         private IWebElement ProfileDropdown { get; set; }
 
         [FindsBy(How = How.CssSelector, Using = "# bs-example-navbar-collapse-1 > ul > li > ul > li:nth-child(1) > a")]
         private new IWebElement HomeLink { get; set; }
 
         [FindsBy(How = How.CssSelector, Using = "#bs-example-navbar-collapse-1 > ul > li > ul > li:nth-child(2) > a")]
+        [CacheLookup]
         private IWebElement ProfileLink { get; set; }
 
         [FindsBy(How = How.CssSelector, Using = "#bs-example-navbar-collapse-1 > ul > li > ul > li.ng-scope > a")]
+        [CacheLookup]
         private IWebElement LogoutLink { get; set; }
 
         [FindsBy(How = How.XPath, Using = "//*[@id='MessageField']")]
+        [CacheLookup]
         private IWebElement MessageInput { get; set; }
 
         [FindsBy(How = How.XPath, Using = "//*[@id='container']/div/div/div/div/div/button")]
+        [CacheLookup]
         private IWebElement SendMessageButton { get; set; }
 
         private IWebElement Message { get; set; }

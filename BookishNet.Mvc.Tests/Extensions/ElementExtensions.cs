@@ -1,9 +1,5 @@
-﻿using OpenQA.Selenium;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
+using OpenQA.Selenium;
 
 namespace BookishNet.Mvc.Tests.Extensions
 {
@@ -11,7 +7,6 @@ namespace BookishNet.Mvc.Tests.Extensions
     {
         public static void EnterText(this IWebElement element, string text, string elementName)
         {
-
             element.Clear();
             element.SendKeys(text);
             Console.WriteLine(text + " entered in the " + elementName + " field.");
