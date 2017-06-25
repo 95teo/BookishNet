@@ -67,44 +67,34 @@
                 <a href="#/register"><i class="fa fa-plus"></i>Inregistreaza-te</a>
             </li>
             <li ng-if="sessionData.isLoggedIn">
-                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                    <ul class="nav navbar-nav">
-                        <li class="dropdown">
-                            <button id="single-button" type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
-                                <span class="glyphicon"> Welcome, {{sessionData.username}}<b class="caret"></b></span>
-                            </button>
-                            <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
-                                <li role="menuitem">
-                                    <a href="#/home"><i class="fa fa-home"></i>Acasa</a>
-                                </li>
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Welcome, {{sessionData.username}} <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="#/home"><i class="fa fa-home"></i>Acasa</a>
+                            </li>
 
-                                <li role="menuitem">
-                                    <a ng-if="sessionData.role === 'User'" ng-href="#/users:{{sessionData.id }}">Profil</a>
-                                </li>
-                                <li class="divider"></li>
-                                <li ng-if="sessionData.isLoggedIn" ng-controller="loginController">
-                                    <a href="#/logout" ng-click="logout()"><i class="fa fa-sign-out"></i> Delogheaza-te </a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
+                            <li>
+                                <a ng-if="sessionData.role === 'User'" ng-href="#/users:{{sessionData.id }}">Profil</a>
+                            </li>
+                            <li class="divider"></li>
+                            <li ng-if="sessionData.isLoggedIn" ng-controller="loginController">
+                                <a href="#/logout" ng-click="logout()"><i class="fa fa-sign-out"></i> Delogheaza-te </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
             </li>
         </ul>
     </div>
 </nav>
-<div>
-    @RenderBody()
-</div>
 <div id="container">
+    @RenderBody()
     <div ng-view></div>
-    <!--<div class="col-xs-6 col-lg-4 text-lg-right">
-        <button type="button" class="btn-info btn pull-right">Login</button>
-    </div>
-    -->
 </div>
 <footer class="text-center">
-    <p> ★ BookishNet te aduce la un click distanta/mai aproape de cartile tale preferate. ★</p>
+    <p class="align-bottom"> ★ BookishNet te aduce la un click distanta/mai aproape de cartile tale preferate. ★</p>
 </footer>
 <environment names="Development">
     <!--Libraries-->

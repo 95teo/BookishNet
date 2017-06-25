@@ -1,14 +1,16 @@
 ﻿<li ng-repeat="user in users.userList | filter:user" class="list-item" ng-if="!user.isDeleted">
     <div class="list-item-heading panel-heading row">
 
-        <img class="list-item-picture col-xs-3" ng-src="">
+        <img class="list-item-picture col-xs-2" ng-src="">
 
-        <div class="list-item-heading-text col-xs-9">
-            <h3>
-                <p class="panel-button">
+        <div class="list-item-heading-text col-xs-10">
+
+            <p class="panel-button">
+                <h3>
                     <a ng-href="#/users:{{user.id}} ">{{ user.username }}</a>
-                </p>
-            </h3>
+                </h3>
+            </p>
+
             <div class="panel-heading-details">
                 <span ng-if="user.firstName" class="details-glyph glyphicon glyphicon-user"></span>
                 <p>{{ user.firstName }}</p>

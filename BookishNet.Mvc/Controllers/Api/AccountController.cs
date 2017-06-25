@@ -33,6 +33,8 @@ namespace BookishNet.Mvc.Controllers.Api
         public async Task<IActionResult> Login([FromBody] LoginCredentialsDTO loginCredentials, string returnUrl = null)
         {
             var claims = new List<Claim>();
+            if (_userService.GetUserByUsername(loginCredentials.Username) == null)
+                return UserNotFound();
             var user = _userService.GetUserByUsername(loginCredentials.Username);
             if (!Utility.CheckPassword(loginCredentials.Password, user.Password))
                 return UserNotFound();
@@ -78,7 +80,7 @@ namespace BookishNet.Mvc.Controllers.Api
 
 
         [HttpGet]
-        public IActionResult Unauthorized()
+        public new IActionResult Unauthorized()
         {
             return NotFound();
         }

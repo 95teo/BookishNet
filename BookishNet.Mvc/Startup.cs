@@ -18,11 +18,8 @@ namespace BookishNet.Mvc
 {
     public class Startup
     {
-        private readonly IHostingEnvironment _env;
-
         public Startup(IHostingEnvironment env)
         {
-            //_env = env;
             var builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)
                 .AddJsonFile("appsettings.json", false, true)
@@ -36,11 +33,6 @@ namespace BookishNet.Mvc
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            /*if (!_env.IsDevelopment())
-            {
-                services.Configure<MvcOptions>(o => o.Filters.Add(new RequireHttpsAttribute()));
-            }*/
-
             services.AddCors(options =>
             {
                 options.AddPolicy("CorsPolicy",
@@ -78,10 +70,6 @@ namespace BookishNet.Mvc
             app.UseCors("CorsPolicy");
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
-
-            //app.UseCsp(options => options.DefaultSources(s => s.Self()));
-            //app.UseHsts(h => h.MaxAge(days: 365));
-
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
