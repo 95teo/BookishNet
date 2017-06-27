@@ -52,7 +52,7 @@ namespace BookishNet.Mvc.Controllers.Api
             await HttpContext.Authentication.SignInAsync("BookishNetCookie", userPrincipal,
                 new AuthenticationProperties
                 {
-                    ExpiresUtc = DateTime.UtcNow.AddMinutes(5),
+                    ExpiresUtc = DateTime.UtcNow.AddMinutes(15),
                     IsPersistent = true,
                     AllowRefresh = true
                 });

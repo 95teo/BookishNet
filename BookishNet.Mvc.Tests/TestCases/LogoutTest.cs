@@ -13,7 +13,7 @@ namespace BookishNet.Mvc.Tests.TestCases
             Thread.Sleep(2000);
             Page.Login.Login("teo", "teo");
 
-            Thread.Sleep(3000);
+            Thread.Sleep(6000);
             Page.Home.Logout();
 
             Thread.Sleep(3000);

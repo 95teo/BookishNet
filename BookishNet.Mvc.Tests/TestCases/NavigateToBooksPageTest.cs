@@ -12,7 +12,7 @@ namespace BookishNet.Mvc.Tests.TestCases
             Thread.Sleep(2000);
             Page.Login.FollowBooksLink();
 
-            Thread.Sleep(5000);
+            Thread.Sleep(3000);
             Assert.AreEqual("Cauta cartea preferata", Page.Books.GetPermanentText().Text);
         }
     }

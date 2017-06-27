@@ -8,12 +8,12 @@ namespace BookishNet.Mvc.Tests.TestCases
     internal class NavigateToUserProfileTest : OpenCloseSelenium
     {
         [Test]
-        public void GoToUserProfileTest()
+        public void GoToUserProfile()
         {
-            Thread.Sleep(2000);
+            Thread.Sleep(3000);
             Page.Login.Login("teo", "teo");
 
-            Thread.Sleep(8000);
+            Thread.Sleep(9000);
             Page.Home.OpenUserProfile();
 
             Thread.Sleep(3000);

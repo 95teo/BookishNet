@@ -13,10 +13,10 @@ namespace BookishNet.Mvc.Tests.TestCases
             Thread.Sleep(2000);
             Page.Login.Login("John", "john12A");
 
-            Thread.Sleep(2000);
+            Thread.Sleep(3000);
             Page.Home.FollowBooksLink();
 
-            Thread.Sleep(5000);
+            Thread.Sleep(3000);
             Page.Books.FollowFirstBookLink();
 
             Thread.Sleep(2000);

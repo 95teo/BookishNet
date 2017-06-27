@@ -71,11 +71,22 @@
         </div>
 
         <ul class="single-view-page-details panel-body">
+            <li class="col-xs-12" ng-if="(sessionData.role === 'User' || sessionData.role === 'Author') && user.canShowMyBooks">
+                <div class="row">
+                    <h3 class="profile-h3 inline-block">Carti scrise de mine</h3>
+                    <hr class="single-view-page-hr profile-hr">
+                    <ul class="profile-ul">
+                        <li ng-repeat="myBook in user.myBookList| filter:myBook">
+                            <a ng-href="#/books:{{myBook.id}}">{{myBook.title}}</a>
+                        </li>
+                    </ul>
 
+                </div>
+            </li>
             <li class="col-xs-12" ng-if="(sessionData.role === 'User' || sessionData.role === 'Author') && sessionData.id === user.id">
                 <div class="row">
+                    <h6 class="profile-h6 inline-block">(Doar tu poti vedea secțiunea următoare)</h6>
                     <h3 class="profile-h3 inline-block">Carti pe care le-am imprumutat pe acest site</h3>
-                    <h6 class="profile-h6 inline-block">(Doar tu poti vedea asta)</h6>
                     <hr class="single-view-page-hr profile-hr">
                     <ul class="profile-ul">
                         <li ng-repeat="book in user.bookList| filter:book" ng-if="sessionData.id === book.loanerId  && book.isBorrowed">

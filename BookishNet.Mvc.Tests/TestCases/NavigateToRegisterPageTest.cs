@@ -13,7 +13,7 @@ namespace BookishNet.Mvc.Tests.TestCases
             Thread.Sleep(2000);
             Page.Login.FollowRegisterLink();
 
-            Thread.Sleep(5000);
+            Thread.Sleep(3000);
             Assert.IsTrue(Page.Register.GetRegisterButton().IsDisplayed("RegisterButton"));
         }
     }

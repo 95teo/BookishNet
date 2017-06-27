@@ -31,12 +31,23 @@
                     user.isDeleted = user.userEntity.isDeleted;
                     user.penName = user.userEntity.penName;
                     user.phone = user.userEntity.phone;
+                    if (user.roleId === 3) {
+                        user.canShowMyBooks = true;
+                    }
+                    else {
+                        user.canShowMyBooks = false;
+                    }
+                    var authorName = user.firstName + " " + user.secondName;
+                    bookService.getBooksByAuthorName(authorName)
+                        .then(function (response) {
+                            user.myBookList = response.data;
+                        });
                 });
             bookService.getBooksByLoanerId(userId)
                 .then(function(response) {
                     user.bookList = response.data;
                     for (var i = 0; i < user.bookList.length; i++) {
-                        if (user.bookList[i].borrowerId != null) {
+                        if (user.bookList[i].borrowerId !== null) {
                             angular.extend(user.bookList[i], { "username": "" });
                             userService.getUser(user.bookList[i].borrowerId)
                                 .then(function(userObj) {
@@ -50,7 +61,7 @@
                 .then(function(response) {
                     user.borrowedBookList = response.data;
                     for (var i = 0; i < user.borrowedBookList.length; i++) {
-                        if (user.borrowedBookList[i].loanerId != null) {
+                        if (user.borrowedBookList[i].loanerId !== null) {
                             angular.extend(user.borrowedBookList[i], { "username": "" });
                             userService.getUser(user.borrowedBookList[i].loanerId)
                                 .then(function(userObj) {

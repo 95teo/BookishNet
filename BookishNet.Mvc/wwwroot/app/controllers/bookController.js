@@ -30,6 +30,16 @@
                         .then(function(response) {
                             book.genre = response.data.name;
                         });
+                    userService.getUser(book.loanerId)
+                        .then(function (response) {
+                            book.userPhone = response.data.phone;
+                            if (book.userPhone !== null) {
+                                book.canShowPhone = true;
+                            }
+                            else {
+                                book.canShowPhone = false;
+                            }
+                        });
                 });
             genreService.getGenres()
                 .then(function(response) {

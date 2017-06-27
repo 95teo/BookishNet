@@ -14,18 +14,18 @@ namespace BookishNet.Mvc.Tests.PageObjects
         [FindsBy(How = How.CssSelector, Using = "body > nav > div > ul > li:nth-child(2) > a")]
         private new IWebElement UsersLink { get; set; }
 
-        [FindsBy(How = How.Id, Using = "single-button")]
+        [FindsBy(How = How.XPath, Using = "/html/body/nav/div/ul/li[3]/ul/li/a")]
         [CacheLookup]
         private IWebElement ProfileDropdown { get; set; }
 
-        [FindsBy(How = How.CssSelector, Using = "# bs-example-navbar-collapse-1 > ul > li > ul > li:nth-child(1) > a")]
+        [FindsBy(How = How.CssSelector, Using = "body > nav > div > ul > li.ng-scope > ul > li > ul > li:nth-child(1) > a")]
         private new IWebElement HomeLink { get; set; }
 
-        [FindsBy(How = How.CssSelector, Using = "#bs-example-navbar-collapse-1 > ul > li > ul > li:nth-child(2) > a")]
+        [FindsBy(How = How.CssSelector, Using = "body > nav > div > ul > li.ng-scope > ul > li > ul > li:nth-child(2) > a")]
         [CacheLookup]
         private IWebElement ProfileLink { get; set; }
 
-        [FindsBy(How = How.CssSelector, Using = "#bs-example-navbar-collapse-1 > ul > li > ul > li.ng-scope > a")]
+        [FindsBy(How = How.CssSelector, Using = "body > nav > div > ul > li.ng-scope > ul > li > ul > li.ng-scope > a")]
         [CacheLookup]
         private IWebElement LogoutLink { get; set; }
 
@@ -38,6 +38,15 @@ namespace BookishNet.Mvc.Tests.PageObjects
         private IWebElement SendMessageButton { get; set; }
 
         private IWebElement Message { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//*[@id='container']/div/div/h2")]
+        [CacheLookup]
+        private IWebElement PermanentText { get; set; }
+
+        public string GetPermanentText()
+        {
+            return PermanentText.Text;
+        }
 
         public new void FollowBooksLink()
         {

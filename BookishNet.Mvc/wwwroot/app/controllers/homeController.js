@@ -10,8 +10,7 @@
     function homeController($rootScope, $location, $scope) {
         $rootScope.sessionData = JSON.parse(sessionStorage.getItem("session"));
         if ($rootScope.sessionData.isLoggedIn) {
-            $scope.message = "Welcome back " + $rootScope.sessionData.role + "  " + $rootScope.sessionData.username;
-            $scope.isAdministrator = $rootScope.sessionData.role === "Profesor";
+            $scope.message = "Bine ai revenit, " + $rootScope.sessionData.username;
         } else {
             $location.path("/");
         }

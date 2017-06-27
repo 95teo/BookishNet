@@ -13,10 +13,10 @@ namespace BookishNet.Mvc.Tests.TestCases
         {
             var registerDto = new RegisterDto
             {
-                Username = "John",
-                Email = "john@gmail.com",
-                Password = "john12A",
-                ConfirmPassword = "john12A",
+                Username = "Mihai",
+                Email = "mihai@gmail.com",
+                Password = "mihai12A",
+                ConfirmPassword = "mihai12A",
                 Birthday = "08/01/1997",
                 IsAuthor = false
             };

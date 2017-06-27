@@ -10,9 +10,10 @@ namespace BookishNet.Mvc.Tests.TestCases
         [Test]
         public void Login()
         {
-            Thread.Sleep(2000);
+            Thread.Sleep(3000);
             Page.Login.Login("teo", "teo");
-            Assert.IsTrue(Page.Login.GetLoginButton().IsDisplayed("LoginButton"));
+            Thread.Sleep(3000);
+            Assert.IsTrue(Page.Home.GetPermanentText() == "BookishNet - Aplicatia care te aduce mai aproape de cartile tale preferate!");
         }
     }
 }

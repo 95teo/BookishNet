@@ -20,7 +20,7 @@ namespace BookishNet.Mvc.Tests.PageObjects
         [CacheLookup]
         private IWebElement FilterBySecondNameInput { get; set; }
 
-        [FindsBy(How = How.CssSelector, Using = "#accordion > li:nth-child(1) > div > div > h3 > p > a")]
+        [FindsBy(How = How.CssSelector, Using = "#accordion > li:nth-child(1) > div > div > h3 > a")]
         [CacheLookup]
         private IWebElement FirstUserLink { get; set; }
 

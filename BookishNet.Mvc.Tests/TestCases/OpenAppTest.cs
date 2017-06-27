@@ -9,7 +9,7 @@ namespace BookishNet.Mvc.Tests.TestCases
         [Test]
         public void OpenApp()
         {
-            Thread.Sleep(2000);
+            Thread.Sleep(4000);
             Assert.IsTrue(Page.Login.GetLoginButton().Displayed);
         }
     }

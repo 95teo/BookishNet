@@ -14,12 +14,10 @@
                 <input ng-model="book.publishingYear" class="form-control" type="text" placeholder="Anul publicarii">
             </li>
             <li ng-if="sessionData.isLoggedIn">
-                <div class="row">
                     <button type="button" class="add-job-btn pull-right btn btn-default btn-sm " data-toggle="modal" data-target="#addBookModal" data-backdrop="static" data-keyboard="false">
                         <span class="glyphicon glyphicon-plus"></span>
                         Adauga o carte
                     </button>
-                </div>
 
                 <div class="modal fade" id="addBookModal" tabindex="-1" role="dialog" aria-labelledby="addBookModalLabel">
                     <div class="modal-dialog" role="document">
@@ -31,5 +29,5 @@
         </ul>
     </div>
 
-    <ul book-item-directive class="right panel-group col-lg-offset-right-2 col-lg-8 col-md-8 col-md-offset-right-1 col-sm-8 col-xs-12 pull-right" ng-if="sessionData.role === 'User' || sessionData.role === '' " id="accordion" role="tablist" aria-multiselectable="true"></ul>
+    <ul book-item-directive class="right panel-group col-lg-offset-right-2 col-lg-8 col-md-8 col-md-offset-right-1 col-sm-8 col-xs-12 pull-right" ng-if="sessionData.role === 'User' || sessionData.role === '' || sessionData.role === 'Author'" id="accordion" role="tablist" aria-multiselectable="true"></ul>
 </div>
