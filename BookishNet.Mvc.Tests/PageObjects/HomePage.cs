@@ -18,10 +18,12 @@ namespace BookishNet.Mvc.Tests.PageObjects
         [CacheLookup]
         private IWebElement ProfileDropdown { get; set; }
 
-        [FindsBy(How = How.CssSelector, Using = "body > nav > div > ul > li.ng-scope > ul > li > ul > li:nth-child(1) > a")]
+        [FindsBy(How = How.CssSelector,
+            Using = "body > nav > div > ul > li.ng-scope > ul > li > ul > li:nth-child(1) > a")]
         private new IWebElement HomeLink { get; set; }
 
-        [FindsBy(How = How.CssSelector, Using = "body > nav > div > ul > li.ng-scope > ul > li > ul > li:nth-child(2) > a")]
+        [FindsBy(How = How.CssSelector,
+            Using = "body > nav > div > ul > li.ng-scope > ul > li > ul > li:nth-child(2) > a")]
         [CacheLookup]
         private IWebElement ProfileLink { get; set; }
 
@@ -58,7 +60,7 @@ namespace BookishNet.Mvc.Tests.PageObjects
             UsersLink.ClickOnIt("UsersLink");
         }
 
-        public void ExpandDropdown()
+        private void ExpandDropdown()
         {
             ProfileDropdown.Click();
         }

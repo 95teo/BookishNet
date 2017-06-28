@@ -66,6 +66,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DTO\BookDto.cs" />
     <Compile Include="DTO\RegisterDto.cs" />
     <Compile Include="Extensions\ElementExtensions.cs" />
     <Compile Include="OpenCloseSelenium.cs" />
@@ -82,6 +83,7 @@
     <Compile Include="PageObjects\UsersPage.cs" />
     <Compile Include="PagePartials\NavbarContent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestCases\DemoTest.cs" />
     <Compile Include="TestCases\LogInTest.cs" />
     <Compile Include="TestCases\LogoutTest.cs" />
     <Compile Include="TestCases\NavigateToBookPageTest.cs" />

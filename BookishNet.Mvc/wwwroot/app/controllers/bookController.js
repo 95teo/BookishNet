@@ -31,12 +31,11 @@
                             book.genre = response.data.name;
                         });
                     userService.getUser(book.loanerId)
-                        .then(function (response) {
+                        .then(function(response) {
                             book.userPhone = response.data.phone;
                             if (book.userPhone !== null) {
                                 book.canShowPhone = true;
-                            }
-                            else {
+                            } else {
                                 book.canShowPhone = false;
                             }
                         });

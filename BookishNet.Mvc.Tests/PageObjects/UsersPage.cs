@@ -1,12 +1,11 @@
 ﻿using System.Threading;
 using BookishNet.Mvc.Tests.Extensions;
-using BookishNet.Mvc.Tests.PagePartials;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
 
 namespace BookishNet.Mvc.Tests.PageObjects
 {
-    public class UsersPage : NavbarContent
+    public class UsersPage : HomePage
     {
         [FindsBy(How = How.CssSelector, Using = "#filters > li:nth-child(2) > input")]
         [CacheLookup]
@@ -28,7 +27,7 @@ namespace BookishNet.Mvc.Tests.PageObjects
         [CacheLookup]
         private IWebElement PermanentText { get; set; }
 
-        public IWebElement GetPermanentText()
+        public new IWebElement GetPermanentText()
         {
             return PermanentText;
         }

@@ -1,4 +1,5 @@
-﻿using BookishNet.Mvc.Tests.PagePartials;
+﻿using BookishNet.Mvc.Tests.Extensions;
+using BookishNet.Mvc.Tests.PagePartials;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
 
@@ -17,6 +18,11 @@ namespace BookishNet.Mvc.Tests.PageObjects
         public string GetPermanentText()
         {
             return PermanentText.Text;
+        }
+
+        public void FollowRegisterLink()
+        {
+            RegisterLink.ClickOnIt("RegisterLink");
         }
     }
 }

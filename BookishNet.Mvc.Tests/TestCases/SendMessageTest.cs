@@ -16,7 +16,7 @@ namespace BookishNet.Mvc.Tests.TestCases
             Thread.Sleep(3000);
             Page.Home.SendMessage("Hello");
 
-            Thread.Sleep(2000);
+            Thread.Sleep(3000);
             Assert.IsTrue(Page.Home.GetSentMessage().IsDisplayed("SentMessage"));
         }
     }

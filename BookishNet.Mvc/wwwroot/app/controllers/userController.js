@@ -33,13 +33,12 @@
                     user.phone = user.userEntity.phone;
                     if (user.roleId === 3) {
                         user.canShowMyBooks = true;
-                    }
-                    else {
+                    } else {
                         user.canShowMyBooks = false;
                     }
                     var authorName = user.firstName + " " + user.secondName;
                     bookService.getBooksByAuthorName(authorName)
-                        .then(function (response) {
+                        .then(function(response) {
                             user.myBookList = response.data;
                         });
                 });
